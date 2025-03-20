@@ -40,6 +40,7 @@ async function getRegionalActivations() {
             regionalActivations.push(activation);
         }
     });
+    console.log(regionalActivations[0]);
 };
 
 // GET THE DATA READY TO DISPLAY

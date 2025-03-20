@@ -40,12 +40,12 @@ h1 {
     border: #333 solid 2px;
 }
 
-article {
+section {
     margin: 2.5rem 0;
     font-family: Domine, serif;
 }
 
-article > ul {
+section > ul {
     font-family: Inter, sans;
 }
 
@@ -77,9 +77,22 @@ aside {
     padding-top: 2rem;
 }
 
+.small {
+    font-size: 0.75rem;
+}
+
 aside > h3 {
     color: azure;
     font-family: Inter, sans;
+}
+
+#arrl {
+    color: white;
+}
+
+#arrl > p > a {
+    color: white;
+    font-weight: bold;
 }
 
 .band-conditions {
