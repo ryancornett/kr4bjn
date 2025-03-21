@@ -55,14 +55,114 @@
                 </ul>
             </section>
 
+            <section class="oscillator">
+                <h3>Practice Oscillator</h3>
+                <input type="text" id="morse-output" readonly>
+                <button id="morse-output-clear">Clear</button>
+
+                <div id="paddle-zone">
+                    <div class="left-paddle"><div id="dit-indicator" class="indicator">Dit</div>
+                    <p class="small" style="text-align: center; margin-top: 0.25rem;">left click</p>
+                </div>
+                    <div class="middle-paddle">
+                        Paddle Zone
+                        <p class="small" style="text-align: center; margin-top: 0.25rem;">(hover here)</p>
+                    </div>
+                    <div class="right-paddle">
+                        <div id="dah-indicator" class="indicator">Dah</div>
+                        <p class="small" style="text-align: center; margin-top: 0.25rem;">right click</p>
+                    </div>
+                </div>
+
+                <label>Keyer Speed (WPM): <input type="range" id="wpm" min="5" max="30" value="15"></label>
+                <label>Farnsworth Spacing: <input type="range" id="farnsworth" min="0" max="100" value="50"></label>
+
+                <div style="margin-top: 1rem;">
+                    <label for="sidetone-volume">Sidetone Volume:</label>
+                    <input type="range" id="sidetone-volume" min="0" max="1" step="0.01" value="0.5">
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <label for="sidetone-pitch">Sidetone Pitch (Hz):</label>
+                    <input type="range" id="sidetone-pitch" min="300" max="1000" step="10" value="600">
+                    <span id="pitch-display">600 Hz</span>
+                </div>
+                
+                
+                <div style="margin-top: 1rem;">
+                    <label>Raw Morse:</label>
+                    <div id="raw-morse" style="font-family: monospace; background: #111; color: lime; padding: 0.5rem;"></div>
+                </div>
+                
+
+                <div class="letters">
+                    <div class="letters_1">
+                        <p>A<span class="cw-decoded">di-dah</span></p>
+                        <p>B<span class="cw-decoded">dah-di-di-dit</span></p>
+                        <p>C<span class="cw-decoded">dah-di-dah-dit</span></p>
+                        <p>D<span class="cw-decoded">dah-di-dit</span></p>
+                        <p>E<span class="cw-decoded">dit</span></p>
+                        <p>F<span class="cw-decoded">di-di-dah-dit</span></p>
+                        <p>G<span class="cw-decoded">dah-dah-dit</span></p>
+                        <p>H<span class="cw-decoded">di-di-di-dit</span></p>
+                        <p>I<span class="cw-decoded">di-dit</span></p>
+                        <p>J<span class="cw-decoded">di-dah-dah-dah</span></p>
+                        <p>K<span class="cw-decoded">dah-di-dah</span></p>
+                        <p>L<span class="cw-decoded">di-dah-di-dit</span></p>
+                        <p>M<span class="cw-decoded">dah-dah</span></p>
+                    </div>
+                    <div class="letters_1">
+                        <p>N<span class="cw-decoded">dah-dit</span></p>
+                        <p>O<span class="cw-decoded">dah-dah-dah</span></p>
+                        <p>P<span class="cw-decoded">di-dah-dah-dit</span></p>
+                        <p>Q<span class="cw-decoded">dah-dah-di-dah</span></p>
+                        <p>R<span class="cw-decoded">di-dah-dit</span></p>
+                        <p>S<span class="cw-decoded">di-di-dit</span></p>
+                        <p>T<span class="cw-decoded">dah</span></p>
+                        <p>U<span class="cw-decoded">di-di-dah</span></p>
+                        <p>V<span class="cw-decoded">di-di-di-dah</span></p>
+                        <p>W<span class="cw-decoded">di-dah-dah</span></p>
+                        <p>X<span class="cw-decoded">dah-di-di-dah</span></p>
+                        <p>Y<span class="cw-decoded">dah-di-dah-dah</span></p>
+                        <p>Z<span class="cw-decoded">dah-dah-di-dit</span></p>
+                    </div>
+                </div>
+                <div class="numbers-symbols">
+                    <div class="numbers">
+                        <p>0<span class="cw-decoded">dah-dah-dah-dah-dah</span></p>
+                        <p>1<span class="cw-decoded">di-dah-dah-dah-dah</span></p>
+                        <p>2<span class="cw-decoded">di-di-dah-dah-dah</span></p>
+                        <p>3<span class="cw-decoded">di-di-di-dah-dah</span></p>
+                        <p>4<span class="cw-decoded">di-di-di-di-dah</span></p>
+                        <p>5<span class="cw-decoded">di-di-di-di-dit</span></p>
+                        <p>6<span class="cw-decoded">dah-di-di-di-dit</span></p>
+                        <p>7<span class="cw-decoded">dah-dah-di-di-dit</span></p>
+                        <p>8<span class="cw-decoded">dah-dah-dah-di-dit</span></p>
+                        <p>9<span class="cw-decoded">dah-dah-dah-dah-dit</span></p>
+                    </div>
+                    <div class="symbols">
+                        <p>.<span class="cw-decoded">di-dah-di-dah-di-dah</span></p>
+                        <p>,<span class="cw-decoded">dah-dah-di-di-dah-dah</span></p>
+                        <p>?<span class="cw-decoded">di-di-dah-dah-di-dit</span></p>
+                        <p>/<span class="cw-decoded">dah-di-di-dah-dit</span></p>
+                        <p>!<span class="cw-decoded">dah-di-dah-di-dah-dah</span></p>
+                        <p>;<span class="cw-decoded">dah-di-dah-di-dah-dit</span></p>
+                        <p>:<span class="cw-decoded">dah-dah-dah-di-di-dat</span></p>
+                        <p>-<span class="cw-decoded">dah-di-di-di-di-dah</span></p>
+                        <p>'<span class="cw-decoded">di-dah-dah-dah-dah-dit</span></p>
+                        <p>error<span class="cw-decoded">di-di-di-di-di-di-di-dit</span></p>
+                    </div>
+                </div>
+            </section>
+
             <h3>Band Conditions</h3>
-            <div class="band-conditions">
+            <!-- <div class="band-conditions">
                 <a href="https://www.hamqsl.com/solar.html" title="Click to add Solar-Terrestrial Data to your website!"><img src="https://www.hamqsl.com/solar101pic.php" alt="Solar-terrestrial data"></a>
                 
                 <a href="https://prop.kc2g.com/renders/current/mufd-normal-now.svg" id="muf" target="_blank">
                     <img src="https://prop.kc2g.com/renders/current/mufd-normal-now.svg" alt="Worldwide maximum usable frequency map" class="exclude">
                 </a>
-            </div>
+            </div> -->
         </main>
 
         <aside>

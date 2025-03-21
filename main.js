@@ -12,7 +12,7 @@ const year = new Date().getFullYear();
 let rights = document.getElementById('rights');
 rights.textContent = year == 2025 ? "All rights reserved 2025" : `All rights reserved 2025-${year}`;
 
-setTimeout(await displayData, 3000);
+// setTimeout(await displayData, 3000);
 
 async function getTimeData() {
     const options = { weekday: 'long', hour: '2-digit', minute: '2-digit', hour12: false };
@@ -114,3 +114,186 @@ arrlTransmitting.textContent = arrlDataForDisplay.transmitting ? "W1AW is curren
 
 const arrlDetails = document.getElementById('arrl-details');
 arrlDetails.textContent = arrlDataForDisplay.details;
+
+
+// CW KEYER
+const rawMorseDisplay = document.getElementById("raw-morse");
+const sidetoneVolumeSlider = document.getElementById("sidetone-volume");
+const sidetonePitchSlider = document.getElementById("sidetone-pitch");
+const pitchDisplay = document.getElementById("pitch-display");
+
+let morseInput = "";
+let inputTimer;
+let spaceTimer;
+let iambicTimer;
+let ditPressed = false;
+let dahPressed = false;
+let paddleMode = false;
+
+const morseOutputField = document.getElementById("morse-output");
+const ditIndicator = document.getElementById("dit-indicator");
+const dahIndicator = document.getElementById("dah-indicator");
+const wpmSlider = document.getElementById("wpm");
+const farnsworthSlider = document.getElementById("farnsworth");
+
+// Your full dictionary
+const morseDictionary = {
+    ".": "E", "-": "T", "..": "I", ".-": "A", "-.": "N", "--": "M", "...": "S", "..-": "U", ".-.": "R", "-..": "D",
+    ".--": "W", "--.": "G", "---": "O", "-.-": "K", "....": "H", "-...": "B", ".-..": "L", "..-.": "F", "...-": "V",
+    "-.-.": "C", ".--.": "P", "-.--": "Y", "-..-": "X", "--..": "Z", "--.-": "Q", ".---": "J", ".----": "1", "..---": "2",
+    "...--": "3", "....-": "4", ".....": "5", "-....": "6", "--...": "7", "---..": "8", "----.": "9", "-----": "0",
+    "........": "correction", ".-.-.-": ".", "..--..": "?", "--..--": ",", ".-.-.": "+", ".--.-.": "@", "-.-.--": "!",
+    "---...": ":", "-.-.-.": ";", "-....-": "-", "-.--.": "(", "-.--.-": ")", ".----.": "'", "...-..-": "$", ".-..-.": "\"",
+    "-...-": "=", "-..-.": "/", "space": " "
+};
+
+function getTiming() {
+    const wpm = parseInt(wpmSlider.value);
+    const farnsworth = parseInt(farnsworthSlider.value);
+    const sidetonePitchSlider = document.getElementById("sidetone-pitch");
+    const pitchDisplay = document.getElementById("pitch-display");
+
+    const ditLength = 1200 / wpm;
+    const farnsworthFactor = (farnsworth / 100);
+    const charPause = ditLength * 3 * (1 + farnsworthFactor);
+    const wordPause = ditLength * 7 * (1 + farnsworthFactor);
+
+    return { ditLength, charPause, wordPause };
+}
+
+function playTone(duration) {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    const pitch = parseInt(sidetonePitchSlider.value);
+    const volume = parseFloat(sidetoneVolumeSlider.value);
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(pitch, audioCtx.currentTime);
+    gainNode.gain.value = volume;
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.start();
+    setTimeout(() => oscillator.stop(), duration);
+}
+
+function playDit() {
+    const { ditLength } = getTiming();
+    playTone(ditLength);
+    morseInput += ".";
+    updateRawDisplay();
+    ditIndicator.classList.add("active");
+    resetTimers();
+    setTimeout(() => ditIndicator.classList.remove("active"), ditLength);
+}
+
+function playDah() {
+    const { ditLength } = getTiming();
+    const dahLength = ditLength * 3;
+    playTone(dahLength);
+    morseInput += "-";
+    updateRawDisplay();
+    dahIndicator.classList.add("active");
+    resetTimers();
+    setTimeout(() => dahIndicator.classList.remove("active"), dahLength);
+}
+
+function resetTimers() {
+    clearTimeout(inputTimer);
+    clearTimeout(spaceTimer);
+
+    const { charPause, wordPause } = getTiming();
+
+    inputTimer = setTimeout(() => {
+        decodeMorse(morseInput);
+        morseInput = "";
+        updateRawDisplay();
+    }, charPause);
+
+    spaceTimer = setTimeout(() => {
+        morseOutputField.value += " ";
+        rawMorseDisplay.innerText += " / ";
+    }, wordPause);
+}
+
+function decodeMorse(input) {
+    const decoded = morseDictionary[input] || "?";
+
+    if (decoded === "correction") {
+        // Backspace-like behavior
+        morseOutputField.value = morseOutputField.value.slice(0, -1);
+    } else {
+        morseOutputField.value += decoded;
+    }
+}
+
+function updateRawDisplay() {
+    rawMorseDisplay.innerText = morseInput;
+}
+
+// Mouse hover activates paddle mode
+document.getElementById("paddle-zone").addEventListener("mouseenter", () => {
+    paddleMode = true;
+});
+document.getElementById("paddle-zone").addEventListener("mouseleave", () => {
+    paddleMode = false;
+    clearInterval(iambicTimer);
+    ditPressed = false;
+    dahPressed = false;
+});
+
+// Handle mouse down for left/right click
+document.addEventListener("mousedown", (event) => {
+    if (!paddleMode) return;
+    event.preventDefault();
+
+    if (event.button === 0) ditPressed = true;
+    if (event.button === 2) dahPressed = true;
+
+    handlePaddleInput();
+});
+
+// Handle mouseup to stop repeating
+document.addEventListener("mouseup", (event) => {
+    if (event.button === 0) ditPressed = false;
+    if (event.button === 2) dahPressed = false;
+
+    if (!ditPressed && !dahPressed) {
+        clearInterval(iambicTimer);
+    }
+});
+
+// Iambic alternating paddle logic
+function handlePaddleInput() {
+    const { ditLength } = getTiming();
+    let toggle = true;
+
+    clearInterval(iambicTimer);
+
+    if (ditPressed && dahPressed) {
+        iambicTimer = setInterval(() => {
+            toggle ? playDit() : playDah();
+            toggle = !toggle;
+        }, ditLength * 2);
+    } else if (ditPressed) {
+        playDit();
+    } else if (dahPressed) {
+        playDah();
+    }
+}
+
+// Clear output
+document.getElementById('morse-output-clear').addEventListener('click', () => {
+    morseOutputField.value = "";
+    rawMorseDisplay.innerText = "";
+});
+
+sidetonePitchSlider.addEventListener("input", () => {
+    pitchDisplay.textContent = `${sidetonePitchSlider.value} Hz`;
+});
+
+// Block right-click menu inside paddle zone
+document.getElementById("paddle-zone").addEventListener("contextmenu", e => e.preventDefault());

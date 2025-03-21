@@ -95,6 +95,45 @@ aside > h3 {
     font-weight: bold;
 }
 
+.oscillator {
+    width: 80%;
+}
+
+#paddle-zone {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+}
+
+.indicator {
+    padding: 1rem;
+    border: 2px solid #888;
+    width: 80px;
+    text-align: center;
+    transition: 0.1s all ease-in-out;
+}
+
+  .active {
+    background-color: limegreen;
+    color: black;
+    border-color: #0f0;
+}
+
+.letters, .numbers-symbols {
+    margin-top: 2rem;
+    display: flex;
+    width: 67%;
+    justify-content: space-between;
+}
+
+.cw-decoded {
+    margin-left: 0.75rem;
+}
+
 .band-conditions {
     display: flex;
     flex-direction: column;
