@@ -12,7 +12,7 @@ const year = new Date().getFullYear();
 let rights = document.getElementById('rights');
 rights.textContent = year == 2025 ? "All rights reserved 2025" : `All rights reserved 2025-${year}`;
 
-// setTimeout(await displayData, 3000);
+setTimeout(await displayData, 3000);
 
 async function getTimeData() {
     const options = { weekday: 'long', hour: '2-digit', minute: '2-digit', hour12: false };

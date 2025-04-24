@@ -88,11 +88,22 @@ aside > h3 {
 
 #arrl {
     color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
 #arrl > p > a {
     color: white;
     font-weight: bold;
+}
+
+#time-day {
+    color: rgb(129, 156, 255)
+}
+
+#arrl-details {
+    color: rgb(98, 248, 153)
 }
 
 .oscillator {
