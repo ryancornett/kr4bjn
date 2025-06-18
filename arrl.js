@@ -33,7 +33,7 @@ const evenDay = {
 }
 
 function getARRLDisplayData(obj) {
-    console.log(obj);
+    // console.log(obj);
     if (obj.timeCategory === "error") {
         return {
             "transmitting": false,
@@ -92,25 +92,25 @@ function getARRLDisplayData(obj) {
             case "tuesday":
                 return {
                     "transmitting": true,
-                    "details": evenDay[obj.timeCategory]
+                    "details": oddDay[obj.timeCategory]
                 };
                 
             case "wednesday":
                     return {
                         "transmitting": true,
-                        "details": oddDay[obj.timeCategory]
+                        "details": evenDay[obj.timeCategory]
                     };
             
             case "thursday":
                 return {
                     "transmitting": true,
-                    "details": evenDay[obj.timeCategory]
+                    "details": oddDay[obj.timeCategory]
                 };
 
             case "friday":
                 return {
                     "transmitting": true,
-                    "details": oddDay[obj.timeCategory]
+                    "details": evenDay[obj.timeCategory]
                 };
 
             default:

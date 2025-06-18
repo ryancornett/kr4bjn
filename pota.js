@@ -43,12 +43,19 @@ async function getRegionalActivations() {
     console.log(regionalActivations[0]);
 };
 
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+const dd = String(today.getDate()).padStart(2, '0');
+const todayStr = `${yyyy}-${mm}-${dd}`;
+
 // GET THE DATA READY TO DISPLAY
 
 const cardHolder = document.querySelector('.cards');
 
 function populateActivationCards() {
-    regionalActivations.forEach(activation => {
+    const upcomingActivations = regionalActivations.filter(act => act.startDate >= todayStr);
+    upcomingActivations.forEach(activation => {
         const card = document.createElement('div');
         card.classList.add('card');
             // CARD HEADER
@@ -116,6 +123,7 @@ function populateActivationCards() {
                         utcIcon.alt = "Clock icon";
                     utcRow.appendChild(utcIcon);
                         const utcRowRight = document.createElement('div');
+                        console.log(activation.startDate);
                             utcRowRight.textContent = `${activation.startDate.substring(5)} ${activation.startTime} UTC`;
                     utcRow.appendChild(utcRowRight);
                 body.appendChild(utcRow);            

@@ -264,53 +264,29 @@ footer {
     filter: invert();
 }
 
-.slit-in-diagonal-2 {
-    -webkit-animation: slit-in-diagonal-2 1.3s ease-out infinite both;
-    animation: slit-in-diagonal-2 1.3s ease-out infinite both;
+.rotate-center {
+	-webkit-animation: rotate-center 1s ease-in-out infinite both;
+	        animation: rotate-center 1s ease-in-out infinite both;
 }
 
-@-webkit-keyframes slit-in-diagonal-2 {
-    0% {
-      -webkit-transform: translateZ(-800px) rotate3d(-1, 1, 0, -90deg);
-              transform: translateZ(-800px) rotate3d(-1, 1, 0, -90deg);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-      opacity: 0;
-    }
-    54% {
-      -webkit-transform: translateZ(-160px) rotate3d(-1, 1, 0, -87deg);
-              transform: translateZ(-160px) rotate3d(-1, 1, 0, -87deg);
-      -webkit-animation-timing-function: ease-in-out;
-              animation-timing-function: ease-in-out;
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: translateZ(0) rotate3d(-1, 1, 0, 0);
-              transform: translateZ(0) rotate3d(-1, 1, 0, 0);
-      -webkit-animation-timing-function: ease-out;
-              animation-timing-function: ease-out;
-    }
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
   }
-  @keyframes slit-in-diagonal-2 {
-    0% {
-      -webkit-transform: translateZ(-800px) rotate3d(-1, 1, 0, -90deg);
-              transform: translateZ(-800px) rotate3d(-1, 1, 0, -90deg);
-      -webkit-animation-timing-function: ease-in;
-              animation-timing-function: ease-in;
-      opacity: 0;
-    }
-    40% {
-      -webkit-transform: translateZ(-160px) rotate3d(-1, 1, 0, -87deg);
-              transform: translateZ(-160px) rotate3d(-1, 1, 0, -87deg);
-      -webkit-animation-timing-function: ease-in-out;
-              animation-timing-function: ease-in-out;
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: translateZ(0) rotate3d(-1, 1, 0, 0);
-              transform: translateZ(0) rotate3d(-1, 1, 0, 0);
-      -webkit-animation-timing-function: ease-out;
-              animation-timing-function: ease-out;
-    }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
   

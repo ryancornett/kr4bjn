@@ -150,8 +150,6 @@ const morseDictionary = {
 function getTiming() {
     const wpm = parseInt(wpmSlider.value);
     const farnsworth = parseInt(farnsworthSlider.value);
-    const sidetonePitchSlider = document.getElementById("sidetone-pitch");
-    const pitchDisplay = document.getElementById("pitch-display");
 
     const ditLength = 1200 / wpm;
     const farnsworthFactor = (farnsworth / 100);
