@@ -40,7 +40,6 @@ async function getRegionalActivations() {
             regionalActivations.push(activation);
         }
     });
-    console.log(regionalActivations[0]);
 };
 
 const today = new Date();
@@ -123,7 +122,6 @@ function populateActivationCards() {
                         utcIcon.alt = "Clock icon";
                     utcRow.appendChild(utcIcon);
                         const utcRowRight = document.createElement('div');
-                        console.log(activation.startDate);
                             utcRowRight.textContent = `${activation.startDate.substring(5)} ${activation.startTime} UTC`;
                     utcRow.appendChild(utcRowRight);
                 body.appendChild(utcRow);            
