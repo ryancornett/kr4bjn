@@ -8,18 +8,16 @@
     --dark-blue: #05164c;
     --color-one: --dark-blue;
     --color-two: --dark-gray;
-}
-
-body {
-    display: flex;
+    --icon-link: #3849b7;
+    --icon-link-hover: #6b7be1;
 }
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70vw;
-    margin-bottom: 12rem;
+    width: 85vw;
+    margin: 0 auto;
 }
 
 h2 {
@@ -31,12 +29,12 @@ h2 {
 
 h1 {
     font-family: Domine, serif;
-    font-size: 5rem;
+    font-size: clamp(2rem, 10vw, 5rem);
     margin: 1rem 0 0 0;
 }
 
 .hero {
-    height: 40vh;
+    height: 20vh;
     border: #333 solid 2px;
 }
 
@@ -47,6 +45,23 @@ section {
 
 section > ul {
     font-family: Inter, sans;
+}
+
+section ul li {
+    display: flex;
+    align-items: center;
+}
+
+.quiet-icon {
+    font-size: 1.225rem;
+    color: var(--icon-link);
+    cursor: pointer;
+    padding-left: 0.25rem;
+}
+
+.quiet-icon:hover {
+    color: var(--icon-link-hover);
+    transform: scale(109%);
 }
 
 #verses {
@@ -68,13 +83,11 @@ section > ul {
 }
 
 aside {
-    width: 30vw;
     background: -webkit-linear-gradient(var(--dark-gray), var(--dark-blue));
     background: linear-gradient(var(--dark-gray), var(--dark-blue));
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 2rem;
 }
 
 .small {
@@ -106,10 +119,6 @@ aside > h3 {
     color: rgb(98, 248, 153)
 }
 
-.oscillator {
-    width: 80%;
-}
-
 #paddle-zone {
     display: flex;
     justify-content: space-around;
@@ -129,9 +138,9 @@ aside > h3 {
 }
 
   .active {
-    background-color: limegreen;
+    background-color: rgb(140, 243, 251);
     color: black;
-    border-color: #0f0;
+    border-color: rgb(49, 164, 206);
 }
 
 .letters, .numbers-symbols {
@@ -155,7 +164,7 @@ aside > h3 {
 }
 
 .band-conditions > a > img:not(.exclude) {
-    width: 50vw;
+    width: 90vw;
 }
 
 #muf {
@@ -167,13 +176,10 @@ aside > h3 {
   }
 
 #muf > img {
-    width: 80%;
+    width: 95%;
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
     min-height: 8vh;
     margin-top: 4rem;
     color: azure;
@@ -288,5 +294,61 @@ footer {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+
+@media screen and (min-width: 760px) {
+    body {
+    display: flex;
+}
+
+main {
+    width: 70vw;
+    margin-bottom: 12rem;
+}
+
+    hero {
+        height: 40vh;
+    }
+
+    .oscillator {
+    width: 80%;
+}
+
+    .letters-details, .numbers-symbols-details {
+        margin-top: 3rem;
+    }
+
+    summary {
+        font-size: 1.3rem;
+    }
+
+    .band-conditions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 1rem 0 6rem 0;
+}
+
+.band-conditions > a > img:not(.exclude) {
+    width: 50vw;
+}
+
+aside {
+    width: 30vw;
+    background: -webkit-linear-gradient(var(--dark-gray), var(--dark-blue));
+    background: linear-gradient(var(--dark-gray), var(--dark-blue));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 }
   
