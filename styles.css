@@ -64,6 +64,10 @@ section ul li {
     transform: scale(109%);
 }
 
+.club-logos {
+    display: none;
+}
+
 #verses {
     background: azure;
     padding: 1rem;
@@ -306,8 +310,24 @@ main {
     margin-bottom: 12rem;
 }
 
-    hero {
+    .hero {
         height: 40vh;
+    }
+
+    .club-logos {
+        display: flex;
+        gap: 1.5rem;
+        margin: 0;
+    }
+
+    .club-logos img {
+        aspect-ratio: 1/1.2;
+        width: clamp(5vw, 75px, 10vw);
+    }
+
+    #naqcc-banner {
+        aspect-ratio: 6/1;
+        width: 240px;
     }
 
     .oscillator {
