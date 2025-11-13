@@ -76,7 +76,6 @@ section ul li {
     width: 82%;
     font-size: 0.8rem;
     margin: 2.5rem 0;
-    filter: drop-shadow(0 8px 8px rgb(82, 87, 105));
 }
 
 #verse-ref {
@@ -147,11 +146,15 @@ aside > h3 {
     border-color: rgb(49, 164, 206);
 }
 
+.keyer-setting-label {
+    color: rgb(8, 144, 193);
+}
+
 .letters, .numbers-symbols {
     margin-top: 2rem;
     display: flex;
-    width: 67%;
     justify-content: space-between;
+    font-size: 0.8rem;
 }
 
 .cw-decoded {
@@ -332,6 +335,14 @@ main {
 
     .oscillator {
     width: 80%;
+}
+
+.letters, .numbers-symbols {
+    font-size: 1.1rem;
+    width: 67%;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
 }
 
     .letters-details, .numbers-symbols-details {

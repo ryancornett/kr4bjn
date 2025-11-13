@@ -232,6 +232,18 @@ function updateRawDisplay() {
     rawMorseDisplay.innerText = morseInput;
 }
 
+// Touch for mobile paddles
+document.getElementById("dit-indicator").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    playDit();
+});
+
+document.getElementById("dah-indicator").addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    playDah();
+});
+
+
 // Mouse hover activates paddle mode
 document.getElementById("paddle-zone").addEventListener("mouseenter", () => {
     paddleMode = true;
@@ -290,8 +302,58 @@ document.getElementById('morse-output-clear').addEventListener('click', () => {
 });
 
 sidetonePitchSlider.addEventListener("input", () => {
-    pitchDisplay.textContent = `${sidetonePitchSlider.value} Hz`;
+    pitchDisplay.textContent = `${sidetonePitchSlider.value}`;
 });
 
 // Block right-click menu inside paddle zone
 document.getElementById("paddle-zone").addEventListener("contextmenu", e => e.preventDefault());
+
+
+
+wpmSlider.addEventListener("input", () => {
+    document.getElementById("wpm-value").textContent = wpmSlider.value;
+});
+
+farnsworthSlider.addEventListener("input", () => {
+    document.getElementById("farnsworth-value").textContent = farnsworthSlider.value;
+});
+
+
+// Save settings when user changes controls
+sidetoneVolumeSlider.addEventListener("input", () => {
+    localStorage.setItem("cw_volume", sidetoneVolumeSlider.value);
+});
+
+sidetonePitchSlider.addEventListener("input", () => {
+    localStorage.setItem("cw_pitch", sidetonePitchSlider.value);
+});
+
+wpmSlider.addEventListener("input", () => {
+    localStorage.setItem("cw_wpm", wpmSlider.value);
+});
+
+farnsworthSlider.addEventListener("input", () => {
+    localStorage.setItem("cw_farnsworth", farnsworthSlider.value);
+});
+
+// Restore saved settings
+window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("cw_volume")) {
+        sidetoneVolumeSlider.value = localStorage.getItem("cw_volume");
+    }
+
+    if (localStorage.getItem("cw_pitch")) {
+        sidetonePitchSlider.value = localStorage.getItem("cw_pitch");
+        pitchDisplay.textContent = `${sidetonePitchSlider.value}`;
+    }
+
+    if (localStorage.getItem("cw_wpm")) {
+        wpmSlider.value = localStorage.getItem("cw_wpm");
+        document.getElementById("wpm-value").textContent = localStorage.getItem("cw_wpm");
+    }
+
+    if (localStorage.getItem("cw_farnsworth")) {
+        farnsworthSlider.value = localStorage.getItem("cw_farnsworth");
+        document.getElementById("farnsworth-value").textContent = localStorage.getItem("cw_farnsworth");
+    }
+});
