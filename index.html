@@ -191,6 +191,20 @@
         <img src="img/pota-logo.png" />
       </section>
 
+      <section class="cw-player">
+        <p>Listen to "What hath God wrought!" in CW (Morse code)</p>
+        <script src="https://lcwo.net/js/jscwlib.js"></script>
+        <div id="player"></div>
+        <script>
+          const m = new jscw();
+          m.setWpm(12);
+          m.setEff(12);
+          m.setFreq(600);
+          m.setText("What hath God wrought!");
+          m.renderPlayer("player", m);
+        </script>
+      </section>
+
       <section class="oscillator">
         <h3>Practice Oscillator</h3>
         <input type="text" style="direction: rtl" id="morse-output" readonly />
@@ -222,15 +236,17 @@
             >Keyer Speed:
             <input type="range" id="wpm" min="5" max="30" value="12"
           /></label>
-          <span class="keyer-setting-label" id="wpm-value">12</span> <span>WPM</span>
+          <span class="keyer-setting-label" id="wpm-value">12</span>
+          <span>WPM</span>
         </div>
-        
+
         <div style="margin-top: 1rem">
           <label
             >Farnsworth Spacing:
             <input type="range" id="farnsworth" min="0" max="100" value="60"
           /></label>
-          <span class="keyer-setting-label" id="farnsworth-value">60</span> <span>ms</span>
+          <span class="keyer-setting-label" id="farnsworth-value">60</span>
+          <span>ms</span>
         </div>
 
         <div style="margin-top: 1rem">

@@ -333,6 +333,16 @@ main {
         width: 240px;
     }
 
+    .cw-player {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cw-player p {
+        font-size: 0.85rem;
+    }
+
     .oscillator {
     width: 80%;
 }
