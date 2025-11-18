@@ -73,6 +73,19 @@ section ul li {
     display: none;
 }
 
+.dit-dah-explainer {
+    display: flex;
+    background-color: rgb(140, 243, 251);
+    font-size: 0.85rem;
+    justify-content: space-between;
+    padding: 0 0.75rem;
+}
+.dit-dah-explainer p + p {
+    margin-left: 0.75rem;
+}
+
+.font-size-2 { font-size: 1.25rem;}
+
 #verses {
     background: azure;
     padding: 1rem;
@@ -161,6 +174,23 @@ aside > h3 {
     justify-content: space-between;
     font-size: 0.8rem;
 }
+
+.cw-character { position: relative; cursor: pointer; }
+
+.cw-character::before {
+    content: attr(data-label);
+    position: absolute;
+    width: 100%;
+    height: fit-content;
+    background-color: #333;
+    color: white;
+    top: 30;
+    right: 50;
+    font-size: 1.15rem;
+    display: none;
+}
+
+.cw-character:hover::before { display: flex; align-items: center; }
 
 .cw-decoded {
     margin-left: 0.75rem;
@@ -351,6 +381,8 @@ main {
     .oscillator {
     width: 80%;
 }
+
+.font-size-2 { font-size: 2rem;}
 
 .letters, .numbers-symbols {
     font-size: 1.1rem;
