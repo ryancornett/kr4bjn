@@ -23,7 +23,6 @@ main {
 h2 {
     text-transform: uppercase;
     font-family: Domine, serif;
-    margin: 2.5rem 0 0 0;
     font-size: 0.85rem;
 }
 
@@ -33,14 +32,28 @@ h1 {
     margin: 1rem 0 0 0;
 }
 
-.callsign-phonetic { font-family: monospace; font-size: 0.8rem;}
-.custom { color: var(--icon-link); margin-top: 0.4rem; }
-.cw-call { font-size: 1.15rem; font-weight: bold; }
+.callsign-phonetic { font-family: monospace; font-size: 0.8rem; font-weight: bold; margin-top: 1rem; }
+.custom { color: var(--icon-link); }
+.cw-call { font-size: 1.15rem; }
 
 .hero {
     margin-top: 1rem;
     height: 20vh;
     border: #333 solid 2px;
+}
+
+#about {
+    margin-top: 1rem;
+}
+
+.img-wrapper {
+width: 80%;
+    margin: 1rem auto
+}
+
+#about img {
+    width: 100%;
+    border: solid 2px #999;
 }
 
 section {
@@ -350,6 +363,18 @@ main {
 
     .hero {
         height: 40vh;
+    }
+
+    #about {
+        width: 70%;
+        margin: 0 auto 0.75rem auto;
+        font-family: Inter, sans-serif;
+        font-size: 0.9rem;
+        color: #fff;
+    }
+
+    #about h2 {
+        padding-bottom: 0.75rem;
     }
 
     .club-logos {

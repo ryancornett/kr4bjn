@@ -2,10 +2,63 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>KR4BJN</title>
-    <meta name="description" content="Site for station KR4BJN." />
+    <title>
+      KR4BJN — Amateur Radio Station | EM87 Eastern Kentucky | QRP, CW & POTA
+    </title>
+
+    <meta
+      name="description"
+      content="KR4BJN is a QRP-focused amateur radio station in EM87, Eastern Kentucky. Operating CW, FT8, Parks on the Air (POTA), and homebrew antennas with a QMX 5-band rig."
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="KR4BJN — Amateur Radio Station in Eastern Kentucky"
+    />
+    <meta
+      property="og:description"
+      content="QRP, CW, FT8, and Parks on the Air from grid square EM87. Learn more about station KR4BJN, gear, clubs, and tools."
+    />
+    <meta property="og:url" content="https://your-domain-here.com/" />
+    <meta
+      property="og:image"
+      content="https://your-domain-here.com/img/qmx-og.jpg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KR4BJN — Amateur Radio Station" />
+    <meta
+      name="twitter:description"
+      content="QRP & CW from Eastern Kentucky (EM87)."
+    />
+    <meta
+      name="twitter:image"
+      content="https://your-domain-here.com/img/qmx-og.jpg"
+    />
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ryan Cornett",
+  "alternateName": "KR4BJN",
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Eastern Kentucky, USA"
+  },
+  "url": "https://ryancornett.com",
+  "sameAs": [
+    "https://www.qrz.com/db/KR4BJN",
+    "https://reformed.link/Ryan"
+  ],
+  "knowsAbout": ["amateur radio", "QRP", "CW", "Parks on the Air"]
+}
+</script>
+
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@quietui/quiet-browser@1.6.2/dist/themes/quiet.css"
@@ -18,12 +71,16 @@
   </head>
   <body>
     <main>
-      <h2>EM87 | Eastern Kentucky, USA</h2>
       <h1>KR4BJN</h1>
-      <h3 class="callsign-phonetic">kilo • romeo • four • bravo • juliett • november</h3>
-      <h3  class="callsign-phonetic custom">kentucky • redbud • four • bluegrass • jamboree • nomad</h3>
-      <h3  class="callsign-phonetic cw-call">-·- ·-· ····- -··· ·--- -·</h3>
-      <img src="img/qmx.jpg" alt="A ham radio transceiver" class="hero" />
+      <h2>EM87 | Eastern Kentucky, USA</h2>
+      <p class="callsign-phonetic">
+        kilo • romeo • four • bravo • juliett • november
+      </p>
+      <p class="callsign-phonetic custom">
+        kentucky • redbud • four • banjo • jubilee • nomad
+      </p>
+      <p class="callsign-phonetic cw-call">-·- ·-· ····- -··· ·--- -·</p>
+      <img src="img/qmx.jpg" alt="A ham radio transceiver" class="hero" loading="lazy" />
 
       <div class="lists">
         <section class="interests">
@@ -38,6 +95,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to Parks on the Air"
                 ></quiet-icon
               ></a>
             </li>
@@ -50,6 +108,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to information about Morse code"
                 ></quiet-icon
               ></a>
             </li>
@@ -62,6 +121,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to information about QRP (low-power) operations"
                 ></quiet-icon
               ></a>
             </li>
@@ -75,6 +135,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to a video explaining the FT-8 data mode"
                 ></quiet-icon
               ></a>
             </li>
@@ -92,6 +153,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to QRP labs"
                 ></quiet-icon
               ></a>
             </li>
@@ -104,6 +166,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to CWMorse.us"
                 ></quiet-icon
               ></a>
             </li>
@@ -113,8 +176,12 @@
                 href="https://www.amazon.com/dp/B0CZH8BHV9?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1&th=1"
                 target="_blank"
                 rel="noopener noreferrer"
-              ></a
-              ><quiet-icon class="quiet-icon" name="external-link"></quiet-icon>
+                ><quiet-icon
+                  class="quiet-icon"
+                  name="external-link"
+                  aria-label="Link to this Morse code key"
+                ></quiet-icon
+              ></a>
             </li>
             <li>
               Homemade end-fed half-wave antenna
@@ -125,6 +192,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to a video explaining EFHW antennae"
                 ></quiet-icon
               ></a>
             </li>
@@ -143,6 +211,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to LCARA"
                 ></quiet-icon
               ></a>
             </li>
@@ -155,6 +224,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to LICW"
                 ></quiet-icon
               ></a>
             </li>
@@ -167,6 +237,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to ARRL"
                 ></quiet-icon
               ></a>
             </li>
@@ -179,6 +250,7 @@
                 ><quiet-icon
                   class="quiet-icon"
                   name="external-link"
+                  aria-label="Link to NAQCC"
                 ></quiet-icon
               ></a>
             </li>
@@ -187,12 +259,13 @@
       </div>
 
       <section class="club-logos">
-        <img src="img/LCARA_logo.jpg" />
-        <img src="img/LICW-Logo.png" />
-        <img src="img/League_diamond_color_high.jpg" />
-        <img src="img/NAQCCbanner09.jpg" id="naqcc-banner" />
-        <img src="img/pota-logo.png" />
-      </section>
+  <img src="img/LCARA_logo.jpg" alt="Lake Cumberland Amateur Radio Association logo" loading="lazy" />
+  <img src="img/LICW-Logo.png" alt="Long Island CW Club logo" loading="lazy" />
+  <img src="img/League_diamond_color_high.jpg" alt="ARRL logo" loading="lazy" />
+  <img src="img/NAQCCbanner09.jpg" id="naqcc-banner" alt="North American QRP CW Club banner" loading="lazy" />
+  <img src="img/pota-logo.png" alt="Parks on the Air logo" loading="lazy" />
+</section>
+
 
       <section class="cw-player">
         <p>Listen to "What hath God wrought!" in CW (Morse code)</p>
@@ -292,42 +365,100 @@
         </div>
 
         <div class="dit-dah-explainer">
-          <p>"Dits" (or "dots") are the short Morse sound <span class="font-size-2">→ ·</span></p>
-          <p>"Dahs" (or "dashes") are the long Morse sound <span class="font-size-2">→ -</span></p>
+          <p>
+            "Dits" (or "dots") are the short Morse sound
+            <span class="font-size-2">→ ·</span>
+          </p>
+          <p>
+            "Dahs" (or "dashes") are the long Morse sound
+            <span class="font-size-2">→ -</span>
+          </p>
         </div>
 
         <details class="letters-details">
           <summary>Letters</summary>
           <div class="letters">
             <div class="letters_1">
-              <p class="cw-character" data-label="A  · -">A<span class="cw-decoded">di-dah</span></p>
-              <p class="cw-character" data-label="B  - · · ·">B<span class="cw-decoded">dah-di-di-dit</span></p>
-              <p class="cw-character" data-label="C  - · - ·">C<span class="cw-decoded">dah-di-dah-dit</span></p>
-              <p class="cw-character" data-label="D  - · ·">D<span class="cw-decoded">dah-di-dit</span></p>
-              <p class="cw-character" data-label="E  ·">E<span class="cw-decoded">dit</span></p>
-              <p class="cw-character" data-label="F  · · - ·">F<span class="cw-decoded">di-di-dah-dit</span></p>
-              <p class="cw-character" data-label="G  - - ·">G<span class="cw-decoded">dah-dah-dit</span></p>
-              <p class="cw-character" data-label="H  · · · ·">H<span class="cw-decoded">di-di-di-dit</span></p>
-              <p class="cw-character" data-label="I  · ·">I<span class="cw-decoded">di-dit</span></p>
-              <p class="cw-character" data-label="J  · - - -">J<span class="cw-decoded">di-dah-dah-dah</span></p>
-              <p class="cw-character" data-label="K  - · -">K<span class="cw-decoded">dah-di-dah</span></p>
-              <p class="cw-character" data-label="L  · - · ·">L<span class="cw-decoded">di-dah-di-dit</span></p>
-              <p class="cw-character" data-label="M  - -">M<span class="cw-decoded">dah-dah</span></p>
+              <p class="cw-character" data-label="A  · -">
+                A<span class="cw-decoded">di-dah</span>
+              </p>
+              <p class="cw-character" data-label="B  - · · ·">
+                B<span class="cw-decoded">dah-di-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="C  - · - ·">
+                C<span class="cw-decoded">dah-di-dah-dit</span>
+              </p>
+              <p class="cw-character" data-label="D  - · ·">
+                D<span class="cw-decoded">dah-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="E  ·">
+                E<span class="cw-decoded">dit</span>
+              </p>
+              <p class="cw-character" data-label="F  · · - ·">
+                F<span class="cw-decoded">di-di-dah-dit</span>
+              </p>
+              <p class="cw-character" data-label="G  - - ·">
+                G<span class="cw-decoded">dah-dah-dit</span>
+              </p>
+              <p class="cw-character" data-label="H  · · · ·">
+                H<span class="cw-decoded">di-di-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="I  · ·">
+                I<span class="cw-decoded">di-dit</span>
+              </p>
+              <p class="cw-character" data-label="J  · - - -">
+                J<span class="cw-decoded">di-dah-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label="K  - · -">
+                K<span class="cw-decoded">dah-di-dah</span>
+              </p>
+              <p class="cw-character" data-label="L  · - · ·">
+                L<span class="cw-decoded">di-dah-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="M  - -">
+                M<span class="cw-decoded">dah-dah</span>
+              </p>
             </div>
             <div class="letters_1">
-              <p class="cw-character" data-label="N  - ·">N<span class="cw-decoded">dah-dit</span></p>
-              <p class="cw-character" data-label="O  - - -">O<span class="cw-decoded">dah-dah-dah</span></p>
-              <p class="cw-character" data-label="P  · - - ·">P<span class="cw-decoded">di-dah-dah-dit</span></p>
-              <p class="cw-character" data-label="Q  - - · -">Q<span class="cw-decoded">dah-dah-di-dah</span></p>
-              <p class="cw-character" data-label="R  · - ·">R<span class="cw-decoded">di-dah-dit</span></p>
-              <p class="cw-character" data-label="S  · · ·">S<span class="cw-decoded">di-di-dit</span></p>
-              <p class="cw-character" data-label="T  -">T<span class="cw-decoded">dah</span></p>
-              <p class="cw-character" data-label="U  · · -">U<span class="cw-decoded">di-di-dah</span></p>
-              <p class="cw-character" data-label="V  · · · -">V<span class="cw-decoded">di-di-di-dah</span></p>
-              <p class="cw-character" data-label="W  · - -">W<span class="cw-decoded">di-dah-dah</span></p>
-              <p class="cw-character" data-label="X  - · · -">X<span class="cw-decoded">dah-di-di-dah</span></p>
-              <p class="cw-character" data-label="Y  - · - -">Y<span class="cw-decoded">dah-di-dah-dah</span></p>
-              <p class="cw-character" data-label="Z  - - · ·">Z<span class="cw-decoded">dah-dah-di-dit</span></p>
+              <p class="cw-character" data-label="N  - ·">
+                N<span class="cw-decoded">dah-dit</span>
+              </p>
+              <p class="cw-character" data-label="O  - - -">
+                O<span class="cw-decoded">dah-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label="P  · - - ·">
+                P<span class="cw-decoded">di-dah-dah-dit</span>
+              </p>
+              <p class="cw-character" data-label="Q  - - · -">
+                Q<span class="cw-decoded">dah-dah-di-dah</span>
+              </p>
+              <p class="cw-character" data-label="R  · - ·">
+                R<span class="cw-decoded">di-dah-dit</span>
+              </p>
+              <p class="cw-character" data-label="S  · · ·">
+                S<span class="cw-decoded">di-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="T  -">
+                T<span class="cw-decoded">dah</span>
+              </p>
+              <p class="cw-character" data-label="U  · · -">
+                U<span class="cw-decoded">di-di-dah</span>
+              </p>
+              <p class="cw-character" data-label="V  · · · -">
+                V<span class="cw-decoded">di-di-di-dah</span>
+              </p>
+              <p class="cw-character" data-label="W  · - -">
+                W<span class="cw-decoded">di-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label="X  - · · -">
+                X<span class="cw-decoded">dah-di-di-dah</span>
+              </p>
+              <p class="cw-character" data-label="Y  - · - -">
+                Y<span class="cw-decoded">dah-di-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label="Z  - - · ·">
+                Z<span class="cw-decoded">dah-dah-di-dit</span>
+              </p>
             </div>
           </div>
         </details>
@@ -335,29 +466,67 @@
           <summary>Numbers & Symbols</summary>
           <div class="numbers-symbols">
             <div class="numbers">
-              <p>0<span class="cw-decoded">dah-dah-dah-dah-dah</span></p>
-              <p>1<span class="cw-decoded">di-dah-dah-dah-dah</span></p>
-              <p>2<span class="cw-decoded">di-di-dah-dah-dah</span></p>
-              <p>3<span class="cw-decoded">di-di-di-dah-dah</span></p>
-              <p>4<span class="cw-decoded">di-di-di-di-dah</span></p>
-              <p>5<span class="cw-decoded">di-di-di-di-dit</span></p>
-              <p>6<span class="cw-decoded">dah-di-di-di-dit</span></p>
-              <p>7<span class="cw-decoded">dah-dah-di-di-dit</span></p>
-              <p>8<span class="cw-decoded">dah-dah-dah-di-dit</span></p>
-              <p>9<span class="cw-decoded">dah-dah-dah-dah-dit</span></p>
+              <p class="cw-character" data-label="0  - - - - -">
+                0<span class="cw-decoded">dah-dah-dah-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label="1  · - - - -">
+                1<span class="cw-decoded">di-dah-dah-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label="2  · · - - -">
+                2<span class="cw-decoded">di-di-dah-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label="3  · · · - -">
+                3<span class="cw-decoded">di-di-di-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label="4  · · · · -">
+                4<span class="cw-decoded">di-di-di-di-dah</span>
+              </p>
+              <p class="cw-character" data-label="5  · · · · ·">
+                5<span class="cw-decoded">di-di-di-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="6  - · · · ·">
+                6<span class="cw-decoded">dah-di-di-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="7  - - · · ·">
+                7<span class="cw-decoded">dah-dah-di-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="8  - - - · ·">
+                8<span class="cw-decoded">dah-dah-dah-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="9  - - - - ·">
+                9<span class="cw-decoded">dah-dah-dah-dah-dit</span>
+              </p>
             </div>
             <div class="symbols">
-              <p>.<span class="cw-decoded">di-dah-di-dah-di-dah</span></p>
-              <p>,<span class="cw-decoded">dah-dah-di-di-dah-dah</span></p>
-              <p>?<span class="cw-decoded">di-di-dah-dah-di-dit</span></p>
-              <p>/<span class="cw-decoded">dah-di-di-dah-dit</span></p>
-              <p>!<span class="cw-decoded">dah-di-dah-di-dah-dah</span></p>
-              <p>;<span class="cw-decoded">dah-di-dah-di-dah-dit</span></p>
-              <p>:<span class="cw-decoded">dah-dah-dah-di-di-dat</span></p>
-              <p>-<span class="cw-decoded">dah-di-di-di-di-dah</span></p>
-              <p>'<span class="cw-decoded">di-dah-dah-dah-dah-dit</span></p>
-              <p>
-                error<span class="cw-decoded">di-di-di-di-di-di-di-dit</span>
+              <p class="cw-character" data-label=".  · - · - · -">
+                .<span class="cw-decoded">di-dah-di-dah-di-dah</span>
+              </p>
+              <p class="cw-character" data-label=",  - - · · - -">
+                ,<span class="cw-decoded">dah-dah-di-di-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label="?  · · -  - · ·">
+                ?<span class="cw-decoded">di-di-dah-dah-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="/  - · · - ·">
+                /<span class="cw-decoded">dah-di-di-dah-dit</span>
+              </p>
+              <p class="cw-character" data-label="!  - · - · - -">
+                !<span class="cw-decoded">dah-di-dah-di-dah-dah</span>
+              </p>
+              <p class="cw-character" data-label=";  - · - · - ·">
+                ;<span class="cw-decoded">dah-di-dah-di-dah-dit</span>
+              </p>
+              <p class="cw-character" data-label=":  - - - · · ·">
+                :<span class="cw-decoded">dah-dah-dah-di-di-dit</span>
+              </p>
+              <p class="cw-character" data-label="-  - · · · · -">
+                -<span class="cw-decoded">dah-di-di-di-di-dah</span>
+              </p>
+              <p class="cw-character" data-label="'  · - - - - ·">
+                '<span class="cw-decoded">di-dah-dah-dah-dah-dit</span>
+              </p>
+              <p class="cw-character" data-label="*error  · · · · · · · ·">
+                *error<span class="cw-decoded">di-di-di-di-di-di-di-dit</span>
               </p>
             </div>
           </div>
@@ -372,6 +541,7 @@
           ><img
             src="https://www.hamqsl.com/solar101pic.php"
             alt="Solar-terrestrial data"
+            loading="lazy"
         /></a>
 
         <a
@@ -383,6 +553,7 @@
             src="https://prop.kc2g.com/renders/current/mufd-normal-now.svg"
             alt="Worldwide maximum usable frequency map"
             class="exclude"
+            loading="lazy"
           />
         </a>
       </div>
@@ -393,6 +564,17 @@
         <p id="verse-text"></p>
         <p id="verse-ref"></p>
       </div>
+
+            <section id="about">
+        <h2>About the Station Operator</h2>
+        <p class="bio">
+          Hi, I'm Ryan (KR4BJN). I'm located in EM87, Eastern Kentucky, USA. I
+          enjoy CW (Morse code), FT8, Parks on the Air hunting and activations,
+          and experimenting with homebrew antennas and portable gear.
+        </p>
+
+        <div class="img-wrapper"><img src="img/ryan.jpg" alt="Ryan" /></div>
+      </section>
 
       <section id="arrl">
         <h3>ARRL Transmissions</h3>
