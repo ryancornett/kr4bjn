@@ -22,11 +22,8 @@
       property="og:description"
       content="QRP, CW, FT8, and Parks on the Air from grid square EM87. Learn more about station KR4BJN, gear, clubs, and tools."
     />
-    <meta property="og:url" content="https://your-domain-here.com/" />
-    <meta
-      property="og:image"
-      content="https://your-domain-here.com/img/qmx-og.jpg"
-    />
+    <meta property="og:url" content="https://kr4bjn.com/" />
+    <meta property="og:image" content="https://kr4bjn.com/img/ryan.jpg" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="KR4BJN — Amateur Radio Station" />
@@ -34,39 +31,36 @@
       name="twitter:description"
       content="QRP & CW from Eastern Kentucky (EM87)."
     />
-    <meta
-      name="twitter:image"
-      content="https://your-domain-here.com/img/qmx-og.jpg"
-    />
+    <meta name="twitter:image" content="https://kr4bjn.com/img/ryan.jpg" />
 
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Ryan Cornett",
-  "alternateName": "KR4BJN",
-  "homeLocation": {
-    "@type": "Place",
-    "name": "Eastern Kentucky, USA"
-  },
-  "url": "https://ryancornett.com",
-  "sameAs": [
-    "https://www.qrz.com/db/KR4BJN",
-    "https://reformed.link/Ryan"
-  ],
-  "knowsAbout": ["amateur radio", "QRP", "CW", "Parks on the Air"]
-}
-</script>
-
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ryan Cornett",
+        "alternateName": "KR4BJN",
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Eastern Kentucky, USA"
+        },
+        "url": "https://ryancornett.com",
+        "sameAs": [
+          "https://www.qrz.com/db/KR4BJN",
+          "https://reformed.link/Ryan"
+        ],
+        "knowsAbout": ["amateur radio", "QRP", "CW", "Parks on the Air"]
+      }
+    </script>
 
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@quietui/quiet-browser@1.6.2/dist/themes/quiet.css"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css"
     />
     <script
       type="module"
-      src="https://cdn.jsdelivr.net/npm/@quietui/quiet-browser@1.6.2/dist/quiet.loader.js"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
     ></script>
+
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -80,7 +74,12 @@
         kentucky • redbud • four • banjo • jubilee • nomad
       </p>
       <p class="callsign-phonetic cw-call">-·- ·-· ····- -··· ·--- -·</p>
-      <img src="img/qmx.jpg" alt="A ham radio transceiver" class="hero" loading="lazy" />
+      <img
+        src="img/qmx.jpg"
+        alt="A ham radio transceiver"
+        class="hero"
+        loading="lazy"
+      />
 
       <div class="lists">
         <section class="interests">
@@ -92,12 +91,14 @@
                 href="https://parksontheair.com/index.html"
                 target="_blank"
                 rel="noopener noreferrer"
-                ><quiet-icon
-                  class="quiet-icon"
-                  name="external-link"
+              >
+                <sl-icon
+                  class="sl-icon"
+                  name="box-arrow-up-right"
                   aria-label="Link to Parks on the Air"
-                ></quiet-icon
-              ></a>
+                ></sl-icon>
+                ></a
+              >
             </li>
             <li>
               CW (Morse code)
@@ -259,26 +260,32 @@
       </div>
 
       <section class="club-logos">
-  <img src="img/LCARA_logo.jpg" alt="Lake Cumberland Amateur Radio Association logo" loading="lazy" />
-  <img src="img/LICW-Logo.png" alt="Long Island CW Club logo" loading="lazy" />
-  <img src="img/League_diamond_color_high.jpg" alt="ARRL logo" loading="lazy" />
-  <img src="img/NAQCCbanner09.jpg" id="naqcc-banner" alt="North American QRP CW Club banner" loading="lazy" />
-  <img src="img/pota-logo.png" alt="Parks on the Air logo" loading="lazy" />
-</section>
-
-
-      <section class="cw-player">
-        <p>Listen to "What hath God wrought!" in CW (Morse code)</p>
-        <script src="https://lcwo.net/js/jscwlib.js"></script>
-        <div id="player"></div>
-        <script>
-          const m = new jscw();
-          m.setWpm(12);
-          m.setEff(12);
-          m.setFreq(600);
-          m.setText("What hath God wrought!");
-          m.renderPlayer("player", m);
-        </script>
+        <img
+          src="img/LCARA_logo.jpg"
+          alt="Lake Cumberland Amateur Radio Association logo"
+          loading="lazy"
+        />
+        <img
+          src="img/LICW-Logo.png"
+          alt="Long Island CW Club logo"
+          loading="lazy"
+        />
+        <img
+          src="img/League_diamond_color_high.jpg"
+          alt="ARRL logo"
+          loading="lazy"
+        />
+        <img
+          src="img/NAQCCbanner09.jpg"
+          id="naqcc-banner"
+          alt="North American QRP CW Club banner"
+          loading="lazy"
+        />
+        <img
+          src="img/pota-logo.png"
+          alt="Parks on the Air logo"
+          loading="lazy"
+        />
       </section>
 
       <section class="oscillator">
@@ -307,8 +314,103 @@
           </div>
         </div>
 
+        <div class="dit-dah-explainer">
+          <p>
+            "Dits" (or "dots") are the short Morse sound
+            <span class="font-size-2">→ ·</span>
+          </p>
+          <p>
+            "Dahs" (or "dashes") are the long Morse sound
+            <span class="font-size-2">→ -</span>
+          </p>
+        </div>
+
         <div style="margin-top: 1rem">
-          <label
+          <label>Raw Morse:</label>
+          <div
+            id="raw-morse"
+            style="
+              font-family: monospace;
+              background: #111;
+              color: rgb(140, 243, 251);
+              padding: 0.5rem;
+              height: 2rem;
+            "
+          ></div>
+        </div>
+
+        <sl-card
+          class="settings-panel"
+          style="max-width: 480px; margin: 1rem auto"
+        >
+          <strong slot="header">Sidetone Settings</strong>
+
+          <sl-input
+            label="Pitch (Hz)"
+            type="range"
+            min="300"
+            max="1000"
+            step="10"
+            id="sidetone-pitch"
+            value="600"
+            pill
+          ></sl-input>
+          <sl-input
+            label="Volume"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            id="sidetone-volume"
+            value="0.5"
+            pill
+          ></sl-input>
+          <sl-input
+            label="WPM"
+            type="range"
+            min="5"
+            max="40"
+            step="1"
+            id="wpm"
+            value="20"
+            pill
+          ></sl-input>
+          <sl-input
+            label="Farnsworth (%)"
+            type="range"
+            min="0"
+            max="100"
+            step="5"
+            id="farnsworth"
+            value="0"
+            pill
+          ></sl-input>
+
+          <sl-radio-group
+            label="Waveform"
+            name="waveform"
+            value="sine"
+            id="waveform-group"
+          >
+            <sl-radio value="sine">Sine</sl-radio>
+            <sl-radio value="square">Square</sl-radio>
+            <sl-radio value="triangle">Triangle</sl-radio>
+            <sl-radio value="sawtooth">Sawtooth</sl-radio>
+          </sl-radio-group>
+
+          <canvas
+            id="waveform-preview"
+            width="400"
+            height="80"
+            style="
+              width: 100%;
+              border: 1px solid var(--sl-color-neutral-200);
+              margin-top: 1rem;
+            "
+          ></canvas>
+        </sl-card>
+
+        <!-- <label
             >Keyer Speed:
             <input type="range" id="wpm" min="5" max="30" value="12"
           /></label>
@@ -345,35 +447,17 @@
             min="300"
             max="1000"
             step="10"
-            value="600"
+            value="500"
           />
           <span id="pitch-display" class="keyer-setting-label">600</span> Hz
         </div>
 
-        <div style="margin-top: 1rem">
-          <label>Raw Morse:</label>
-          <div
-            id="raw-morse"
-            style="
-              font-family: monospace;
-              background: #111;
-              color: rgb(140, 243, 251);
-              padding: 0.5rem;
-              height: 2rem;
-            "
-          ></div>
-        </div>
-
-        <div class="dit-dah-explainer">
-          <p>
-            "Dits" (or "dots") are the short Morse sound
-            <span class="font-size-2">→ ·</span>
-          </p>
-          <p>
-            "Dahs" (or "dashes") are the long Morse sound
-            <span class="font-size-2">→ -</span>
-          </p>
-        </div>
+        <sl-radio-group label="Waveform:" name="waveform" value="sine" id="waveform-group">
+  <sl-radio value="sine">Sine</sl-radio>
+  <sl-radio value="square">Square</sl-radio>
+  <sl-radio value="triangle">Triangle</sl-radio>
+<sl-radio value="sawtooth">Sawtooth</sl-radio>
+</sl-radio-group> -->
 
         <details class="letters-details">
           <summary>Letters</summary>
@@ -419,7 +503,7 @@
                 M<span class="cw-decoded">dah-dah</span>
               </p>
             </div>
-            <div class="letters_1">
+            <div class="letters_2">
               <p class="cw-character" data-label="N  - ·">
                 N<span class="cw-decoded">dah-dit</span>
               </p>
@@ -465,70 +549,8 @@
         <details class="numbers-symbols-details">
           <summary>Numbers & Symbols</summary>
           <div class="numbers-symbols">
-            <div class="numbers">
-              <p class="cw-character" data-label="0  - - - - -">
-                0<span class="cw-decoded">dah-dah-dah-dah-dah</span>
-              </p>
-              <p class="cw-character" data-label="1  · - - - -">
-                1<span class="cw-decoded">di-dah-dah-dah-dah</span>
-              </p>
-              <p class="cw-character" data-label="2  · · - - -">
-                2<span class="cw-decoded">di-di-dah-dah-dah</span>
-              </p>
-              <p class="cw-character" data-label="3  · · · - -">
-                3<span class="cw-decoded">di-di-di-dah-dah</span>
-              </p>
-              <p class="cw-character" data-label="4  · · · · -">
-                4<span class="cw-decoded">di-di-di-di-dah</span>
-              </p>
-              <p class="cw-character" data-label="5  · · · · ·">
-                5<span class="cw-decoded">di-di-di-di-dit</span>
-              </p>
-              <p class="cw-character" data-label="6  - · · · ·">
-                6<span class="cw-decoded">dah-di-di-di-dit</span>
-              </p>
-              <p class="cw-character" data-label="7  - - · · ·">
-                7<span class="cw-decoded">dah-dah-di-di-dit</span>
-              </p>
-              <p class="cw-character" data-label="8  - - - · ·">
-                8<span class="cw-decoded">dah-dah-dah-di-dit</span>
-              </p>
-              <p class="cw-character" data-label="9  - - - - ·">
-                9<span class="cw-decoded">dah-dah-dah-dah-dit</span>
-              </p>
-            </div>
-            <div class="symbols">
-              <p class="cw-character" data-label=".  · - · - · -">
-                .<span class="cw-decoded">di-dah-di-dah-di-dah</span>
-              </p>
-              <p class="cw-character" data-label=",  - - · · - -">
-                ,<span class="cw-decoded">dah-dah-di-di-dah-dah</span>
-              </p>
-              <p class="cw-character" data-label="?  · · -  - · ·">
-                ?<span class="cw-decoded">di-di-dah-dah-di-dit</span>
-              </p>
-              <p class="cw-character" data-label="/  - · · - ·">
-                /<span class="cw-decoded">dah-di-di-dah-dit</span>
-              </p>
-              <p class="cw-character" data-label="!  - · - · - -">
-                !<span class="cw-decoded">dah-di-dah-di-dah-dah</span>
-              </p>
-              <p class="cw-character" data-label=";  - · - · - ·">
-                ;<span class="cw-decoded">dah-di-dah-di-dah-dit</span>
-              </p>
-              <p class="cw-character" data-label=":  - - - · · ·">
-                :<span class="cw-decoded">dah-dah-dah-di-di-dit</span>
-              </p>
-              <p class="cw-character" data-label="-  - · · · · -">
-                -<span class="cw-decoded">dah-di-di-di-di-dah</span>
-              </p>
-              <p class="cw-character" data-label="'  · - - - - ·">
-                '<span class="cw-decoded">di-dah-dah-dah-dah-dit</span>
-              </p>
-              <p class="cw-character" data-label="*error  · · · · · · · ·">
-                *error<span class="cw-decoded">di-di-di-di-di-di-di-dit</span>
-              </p>
-            </div>
+            <div class="numbers">Loading...</div>
+            <div class="symbols">Loading...</div>
           </div>
         </details>
       </section>
@@ -565,7 +587,7 @@
         <p id="verse-ref"></p>
       </div>
 
-            <section id="about">
+      <section id="about">
         <h2>About the Station Operator</h2>
         <p class="bio">
           Hi, I'm Ryan (KR4BJN). I'm located in EM87, Eastern Kentucky, USA. I

@@ -1,120 +1,143 @@
 import { bibleVerses } from "./bible.js";
 import { displayData } from "./pota.js";
 import { getARRLDisplayData } from "./arrl.js";
+import {
+  Item,
+  lettersAtoM,
+  lettersNtoZ,
+  numbers,
+  symbols,
+} from "./cw-legend.js";
 
-const verseText = document.getElementById('verse-text');
-const verseRef = document.getElementById('verse-ref');
+const verseText = document.getElementById("verse-text");
+const verseRef = document.getElementById("verse-ref");
 const verse = bibleVerses[Math.floor(Math.random() * bibleVerses.length)];
 verseText.textContent = verse.text;
 verseRef.textContent = `${verse.book} ${verse.chapter}:${verse.verses} BSB`;
 
 const year = new Date().getFullYear();
-let rights = document.getElementById('rights');
-rights.textContent = year == 2025 ? "All rights reserved 2025" : `All rights reserved 2025-${year}`;
+let rights = document.getElementById("rights");
+rights.textContent =
+  year == 2025
+    ? "All rights reserved 2025"
+    : `All rights reserved 2025-${year}`;
 
 setTimeout(await displayData, 3000);
 
 async function getTimeData() {
-    const options = { weekday: 'long', hour: '2-digit', minute: '2-digit', hour12: false };
-    
-    // Get UTC time
-    const now = new Date();
-    const utcString = now.toISOString().slice(11, 16); // Extracts HH:MM from UTC
+  const options = {
+    weekday: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  };
 
-    // Get Eastern Time (ET)
-    const estFormatter = new Intl.DateTimeFormat('en-US', { ...options, timeZone: 'America/New_York' });
-    const estParts = estFormatter.formatToParts(now);
-    const keyDay = estParts.find(part => part.type === 'weekday').value;
-    const keyTime = estParts.filter(part => part.type === 'hour' || part.type === 'minute')
-                            .map(part => part.value.padStart(2, '0')) // Ensures two-digit format
-                            .join(':');
+  // Get UTC time
+  const now = new Date();
+  const utcString = now.toISOString().slice(11, 16); // Extracts HH:MM from UTC
 
-    // Determine if it's EST or EDT
-    const estOrEdt = now.toLocaleString('en-US', { timeZone: 'America/New_York', timeZoneName: 'short' })
-                        .split(' ')
-                        .pop(); // Extracts "EST" or "EDT"
+  // Get Eastern Time (ET)
+  const estFormatter = new Intl.DateTimeFormat("en-US", {
+    ...options,
+    timeZone: "America/New_York",
+  });
+  const estParts = estFormatter.formatToParts(now);
+  const keyDay = estParts.find((part) => part.type === "weekday").value;
+  const keyTime = estParts
+    .filter((part) => part.type === "hour" || part.type === "minute")
+    .map((part) => part.value.padStart(2, "0")) // Ensures two-digit format
+    .join(":");
 
-    // Return object with separated values
-    return { keyDay, keyTime, estOrEdt, utcString };
+  // Determine if it's EST or EDT
+  const estOrEdt = now
+    .toLocaleString("en-US", {
+      timeZone: "America/New_York",
+      timeZoneName: "short",
+    })
+    .split(" ")
+    .pop(); // Extracts "EST" or "EDT"
+
+  // Return object with separated values
+  return { keyDay, keyTime, estOrEdt, utcString };
 }
 
 function timeToMinutes(timeString) {
-    const [hours, minutes] = timeString.split(':').map(Number);
-    return hours * 60 + minutes; // Convert hours to minutes and add minutes
+  const [hours, minutes] = timeString.split(":").map(Number);
+  return hours * 60 + minutes; // Convert hours to minutes and add minutes
 }
 
 const timeData = await getTimeData();
 
 async function getTimeCategory() {
+  const timeMinutes = timeToMinutes(timeData.keyTime); // Convert keyTime to minutes since midnight
 
-    const timeMinutes = timeToMinutes(timeData.keyTime); // Convert keyTime to minutes since midnight
+  switch (true) {
+    case timeMinutes >= 0 && timeMinutes < 540: // 12:00 AM - 8:59 AM
+      return "outsideHours";
 
-    switch (true) {
-        case (timeMinutes >= 0 && timeMinutes < 540): // 12:00 AM - 8:59 AM
-            return "outsideHours"; 
-        
-        case (timeMinutes >= 540 && timeMinutes < 600): // 9:00 AM - 9:59 AM
-            return 900;
+    case timeMinutes >= 540 && timeMinutes < 600: // 9:00 AM - 9:59 AM
+      return 900;
 
-        case (timeMinutes >= 600 && timeMinutes < 945): // 10:00 AM - 3:44 PM
-            return "vot";
+    case timeMinutes >= 600 && timeMinutes < 945: // 10:00 AM - 3:44 PM
+      return "vot";
 
-        case (timeMinutes >= 945 && timeMinutes < 960): // 3:45 PM - 3:59 PM
-            return 345;
+    case timeMinutes >= 945 && timeMinutes < 960: // 3:45 PM - 3:59 PM
+      return 345;
 
-        case (timeMinutes >= 960 && timeMinutes < 1020): // 4:00 PM - 4:59 PM
-            return 400;
+    case timeMinutes >= 960 && timeMinutes < 1020: // 4:00 PM - 4:59 PM
+      return 400;
 
-        case (timeMinutes >= 1020 && timeMinutes < 1080): // 5:00 PM - 5:59 PM
-            return "code";
-        
-        case (timeMinutes >= 1080 && timeMinutes < 1140): // 6:00 PM - 6:59 PM
-            return "digital";
-        
-        case (timeMinutes >= 1140 && timeMinutes < 1200): // 7:00 PM - 7:59 PM
-            return 700;
+    case timeMinutes >= 1020 && timeMinutes < 1080: // 5:00 PM - 5:59 PM
+      return "code";
 
-        case (timeMinutes >= 1200 && timeMinutes < 1260): // 8:00 PM - 8:59 PM
-            return "code";
-        
-        case (timeMinutes >= 1260 && timeMinutes < 1305): // 9:00 PM - 9:44 PM
-            return "digital";
-        
-        case (timeMinutes >= 1305 && timeMinutes < 1320): // 9:45 PM - 9:59 PM
-            return "voice";
+    case timeMinutes >= 1080 && timeMinutes < 1140: // 6:00 PM - 6:59 PM
+      return "digital";
 
-        case (timeMinutes >= 1320 && timeMinutes < 1380): // 10:00 PM - 11:00 PM
-            return 1000;
-        
-        case (timeMinutes >= 1380 && timeMinutes < 1440): // 11:00 PM - 11:59 PM
-            return "code";
+    case timeMinutes >= 1140 && timeMinutes < 1200: // 7:00 PM - 7:59 PM
+      return 700;
 
-        default:
-            return "error";
-    }
+    case timeMinutes >= 1200 && timeMinutes < 1260: // 8:00 PM - 8:59 PM
+      return "code";
+
+    case timeMinutes >= 1260 && timeMinutes < 1305: // 9:00 PM - 9:44 PM
+      return "digital";
+
+    case timeMinutes >= 1305 && timeMinutes < 1320: // 9:45 PM - 9:59 PM
+      return "voice";
+
+    case timeMinutes >= 1320 && timeMinutes < 1380: // 10:00 PM - 11:00 PM
+      return 1000;
+
+    case timeMinutes >= 1380 && timeMinutes < 1440: // 11:00 PM - 11:59 PM
+      return "code";
+
+    default:
+      return "error";
+  }
 }
 
 const arrlInfo = {
-    "timeCategory": await getTimeCategory(),
-    "day": timeData.keyDay.toLowerCase()
-}
+  timeCategory: await getTimeCategory(),
+  day: timeData.keyDay.toLowerCase(),
+};
 
 const arrlDataForDisplay = getARRLDisplayData(arrlInfo);
 
 // Function to construct displayText
 function buildDisplayText(timeData) {
-    return `${timeData.keyDay} ${timeData.estOrEdt} ${timeData.keyTime} | UTC ${timeData.utcString}`;
+  return `${timeData.keyDay} ${timeData.estOrEdt} ${timeData.keyTime} | UTC ${timeData.utcString}`;
 }
 
-const timeAndDay = document.getElementById('time-day');
+const timeAndDay = document.getElementById("time-day");
 timeAndDay.textContent = buildDisplayText(timeData);
 
-const arrlTransmitting = document.getElementById('arrl-transmitting');
-arrlTransmitting.textContent = arrlDataForDisplay.transmitting ? "W1AW is currently transmitting:" : "W1AW is not transmitting.";
+const arrlTransmitting = document.getElementById("arrl-transmitting");
+arrlTransmitting.textContent = arrlDataForDisplay.transmitting
+  ? "W1AW is currently transmitting:"
+  : "W1AW is not transmitting.";
 
-const arrlDetails = document.getElementById('arrl-details');
+const arrlDetails = document.getElementById("arrl-details");
 arrlDetails.textContent = arrlDataForDisplay.details;
-
 
 // CW KEYER
 const rawMorseDisplay = document.getElementById("raw-morse");
@@ -138,222 +161,383 @@ const farnsworthSlider = document.getElementById("farnsworth");
 
 // Your full dictionary
 const morseDictionary = {
-    ".": "E", "-": "T", "..": "I", ".-": "A", "-.": "N", "--": "M", "...": "S", "..-": "U", ".-.": "R", "-..": "D",
-    ".--": "W", "--.": "G", "---": "O", "-.-": "K", "....": "H", "-...": "B", ".-..": "L", "..-.": "F", "...-": "V",
-    "-.-.": "C", ".--.": "P", "-.--": "Y", "-..-": "X", "--..": "Z", "--.-": "Q", ".---": "J", ".----": "1", "..---": "2",
-    "...--": "3", "....-": "4", ".....": "5", "-....": "6", "--...": "7", "---..": "8", "----.": "9", "-----": "0",
-    "........": "correction", ".-.-.-": ".", "..--..": "?", "--..--": ",", ".-.-.": "+", ".--.-.": "@", "-.-.--": "!",
-    "---...": ":", "-.-.-.": ";", "-....-": "-", "-.--.": "(", "-.--.-": ")", ".----.": "'", "...-..-": "$", ".-..-.": "\"",
-    "-...-": "=", "-..-.": "/", "space": " "
+  ".": "E",
+  "-": "T",
+  "..": "I",
+  ".-": "A",
+  "-.": "N",
+  "--": "M",
+  "...": "S",
+  "..-": "U",
+  ".-.": "R",
+  "-..": "D",
+  ".--": "W",
+  "--.": "G",
+  "---": "O",
+  "-.-": "K",
+  "....": "H",
+  "-...": "B",
+  ".-..": "L",
+  "..-.": "F",
+  "...-": "V",
+  "-.-.": "C",
+  ".--.": "P",
+  "-.--": "Y",
+  "-..-": "X",
+  "--..": "Z",
+  "--.-": "Q",
+  ".---": "J",
+  ".----": "1",
+  "..---": "2",
+  "...--": "3",
+  "....-": "4",
+  ".....": "5",
+  "-....": "6",
+  "--...": "7",
+  "---..": "8",
+  "----.": "9",
+  "-----": "0",
+  "........": "correction",
+  ".-.-.-": ".",
+  "..--..": "?",
+  "--..--": ",",
+  ".-.-.": "+",
+  ".--.-.": "@",
+  "-.-.--": "!",
+  "---...": ":",
+  "-.-.-.": ";",
+  "-....-": "-",
+  "-.--.": "(",
+  "-.--.-": ")",
+  ".----.": "'",
+  "...-..-": "$",
+  ".-..-.": '"',
+  "-...-": "=",
+  "-..-.": "/",
+  space: " ",
 };
 
 function getTiming() {
-    const wpm = parseInt(wpmSlider.value);
-    const farnsworth = parseInt(farnsworthSlider.value);
+  const wpm = parseInt(wpmSlider.value);
+  const farnsworth = parseInt(farnsworthSlider.value);
 
-    const ditLength = 1200 / wpm;
-    const farnsworthFactor = (farnsworth / 100);
-    const charPause = ditLength * 3 * (1 + farnsworthFactor);
-    const wordPause = ditLength * 7 * (1 + farnsworthFactor);
+  const ditLength = 1200 / wpm;
+  const farnsworthFactor = farnsworth / 100;
+  const charPause = ditLength * 3 * (1 + farnsworthFactor);
+  const wordPause = ditLength * 7 * (1 + farnsworthFactor);
 
-    return { ditLength, charPause, wordPause };
+  return { ditLength, charPause, wordPause };
 }
 
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+let waveformType = "sine";
+const waveformGroup = document.getElementById("waveform-group");
+
+// Load saved waveform from localStorage (if any)
+const savedWaveform = localStorage.getItem("cw_waveform");
+if (savedWaveform) {
+    waveformGroup.value = savedWaveform;
+    waveformType = savedWaveform;
+}
+
+// Listen for changes from Shoelace component
+waveformGroup.addEventListener("sl-change", (event) => {
+    waveformType = event.target.value;
+    localStorage.setItem("cw_waveform", waveformType);
+    drawWaveformPreview(waveformType);
+});
+
+
 function playTone(duration) {
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const oscillator = audioCtx.createOscillator();
     const gainNode = audioCtx.createGain();
 
     const pitch = parseInt(sidetonePitchSlider.value);
     const volume = parseFloat(sidetoneVolumeSlider.value);
+    const now = audioCtx.currentTime;
 
-    oscillator.type = "sine";
-    oscillator.frequency.setValueAtTime(pitch, audioCtx.currentTime);
-    gainNode.gain.value = volume;
+    oscillator.type = waveformType || "sine";
+    oscillator.frequency.setValueAtTime(pitch, now);
+
+    gainNode.gain.setValueAtTime(0.0001, now); // start silent
+    gainNode.gain.exponentialRampToValueAtTime(volume, now + 0.01); // smooth fade in
+    gainNode.gain.setValueAtTime(volume, now + duration / 1000 - 0.02); // hold
+    gainNode.gain.exponentialRampToValueAtTime(0.0001, now + duration / 1000); // smooth fade out
 
     oscillator.connect(gainNode);
     gainNode.connect(audioCtx.destination);
 
-    oscillator.start();
-    setTimeout(() => oscillator.stop(), duration);
+    oscillator.start(now);
+    oscillator.stop(now + duration / 1000 + 0.02); // let it fade out fully
 }
 
 function playDit() {
-    const { ditLength } = getTiming();
-    playTone(ditLength);
-    morseInput += ".";
-    updateRawDisplay();
-    ditIndicator.classList.add("active");
-    resetTimers();
-    setTimeout(() => ditIndicator.classList.remove("active"), ditLength);
+  const { ditLength } = getTiming();
+  playTone(ditLength);
+  morseInput += ".";
+  updateRawDisplay();
+  ditIndicator.classList.add("active");
+  resetTimers();
+  setTimeout(() => ditIndicator.classList.remove("active"), ditLength);
 }
 
 function playDah() {
-    const { ditLength } = getTiming();
-    const dahLength = ditLength * 3;
-    playTone(dahLength);
-    morseInput += "-";
-    updateRawDisplay();
-    dahIndicator.classList.add("active");
-    resetTimers();
-    setTimeout(() => dahIndicator.classList.remove("active"), dahLength);
+  const { ditLength } = getTiming();
+  const dahLength = ditLength * 3;
+  playTone(dahLength);
+  morseInput += "-";
+  updateRawDisplay();
+  dahIndicator.classList.add("active");
+  resetTimers();
+  setTimeout(() => dahIndicator.classList.remove("active"), dahLength);
 }
 
 function resetTimers() {
-    clearTimeout(inputTimer);
-    clearTimeout(spaceTimer);
+  clearTimeout(inputTimer);
+  clearTimeout(spaceTimer);
 
-    const { charPause, wordPause } = getTiming();
+  const { charPause, wordPause } = getTiming();
 
-    inputTimer = setTimeout(() => {
-        decodeMorse(morseInput);
-        morseInput = "";
-        updateRawDisplay();
-    }, charPause);
+  inputTimer = setTimeout(() => {
+    decodeMorse(morseInput);
+    morseInput = "";
+    updateRawDisplay();
+  }, charPause);
 
-    spaceTimer = setTimeout(() => {
-        morseOutputField.value += " ";
-        rawMorseDisplay.innerText += " / ";
-    }, wordPause);
+  spaceTimer = setTimeout(() => {
+    morseOutputField.value += " ";
+    rawMorseDisplay.innerText += " / ";
+  }, wordPause);
 }
 
 function decodeMorse(input) {
-    const decoded = morseDictionary[input] || "?";
+  const decoded = morseDictionary[input] || "?";
 
-    if (decoded === "correction") {
-        // Backspace-like behavior
-        morseOutputField.value = morseOutputField.value.slice(0, -1);
-    } else {
-        morseOutputField.value += decoded;
-    }
+  if (decoded === "correction") {
+    // Backspace-like behavior
+    morseOutputField.value = morseOutputField.value.slice(0, -1);
+  } else {
+    morseOutputField.value += decoded;
+  }
 }
 
 function updateRawDisplay() {
-    rawMorseDisplay.innerText = morseInput;
+  rawMorseDisplay.innerText = morseInput;
 }
 
 // Touch for mobile paddles
 document.getElementById("dit-indicator").addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    playDit();
+  e.preventDefault();
+  playDit();
 });
 
 document.getElementById("dah-indicator").addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    playDah();
+  e.preventDefault();
+  playDah();
 });
-
 
 // Mouse hover activates paddle mode
 document.getElementById("paddle-zone").addEventListener("mouseenter", () => {
-    paddleMode = true;
+  paddleMode = true;
 });
 document.getElementById("paddle-zone").addEventListener("mouseleave", () => {
-    paddleMode = false;
-    clearInterval(iambicTimer);
-    ditPressed = false;
-    dahPressed = false;
+  paddleMode = false;
+  clearInterval(iambicTimer);
+  ditPressed = false;
+  dahPressed = false;
 });
 
 // Handle mouse down for left/right click
 document.addEventListener("mousedown", (event) => {
-    if (!paddleMode) return;
-    event.preventDefault();
+  if (!paddleMode) return;
+  event.preventDefault();
 
-    if (event.button === 0) ditPressed = true;
-    if (event.button === 2) dahPressed = true;
+  if (event.button === 0) ditPressed = true;
+  if (event.button === 2) dahPressed = true;
 
-    handlePaddleInput();
+  handlePaddleInput();
 });
 
 // Handle mouseup to stop repeating
 document.addEventListener("mouseup", (event) => {
-    if (event.button === 0) ditPressed = false;
-    if (event.button === 2) dahPressed = false;
+  if (event.button === 0) ditPressed = false;
+  if (event.button === 2) dahPressed = false;
 
-    if (!ditPressed && !dahPressed) {
-        clearInterval(iambicTimer);
-    }
+  if (!ditPressed && !dahPressed) {
+    clearInterval(iambicTimer);
+  }
 });
 
 // Iambic alternating paddle logic
 function handlePaddleInput() {
-    const { ditLength } = getTiming();
-    let toggle = true;
+  const { ditLength } = getTiming();
+  let toggle = true;
 
-    clearInterval(iambicTimer);
+  clearInterval(iambicTimer);
 
-    if (ditPressed && dahPressed) {
-        iambicTimer = setInterval(() => {
-            toggle ? playDit() : playDah();
-            toggle = !toggle;
-        }, ditLength * 2);
-    } else if (ditPressed) {
-        playDit();
-    } else if (dahPressed) {
-        playDah();
-    }
+  if (ditPressed && dahPressed) {
+    iambicTimer = setInterval(() => {
+      toggle ? playDit() : playDah();
+      toggle = !toggle;
+    }, ditLength * 2);
+  } else if (ditPressed) {
+    playDit();
+  } else if (dahPressed) {
+    playDah();
+  }
 }
 
-// Clear output
-document.getElementById('morse-output-clear').addEventListener('click', () => {
-    morseOutputField.value = "";
-    rawMorseDisplay.innerText = "";
-});
-
-sidetonePitchSlider.addEventListener("input", () => {
-    pitchDisplay.textContent = `${sidetonePitchSlider.value}`;
-});
-
 // Block right-click menu inside paddle zone
-document.getElementById("paddle-zone").addEventListener("contextmenu", e => e.preventDefault());
-
-
+document
+  .getElementById("paddle-zone")
+  .addEventListener("contextmenu", (e) => e.preventDefault());
 
 wpmSlider.addEventListener("input", () => {
-    document.getElementById("wpm-value").textContent = wpmSlider.value;
+  document.getElementById("wpm").textContent = wpmSlider.value;
 });
 
 farnsworthSlider.addEventListener("input", () => {
-    document.getElementById("farnsworth-value").textContent = farnsworthSlider.value;
+  document.getElementById("farnsworth").textContent =
+    farnsworthSlider.value;
 });
-
 
 // Save settings when user changes controls
 sidetoneVolumeSlider.addEventListener("input", () => {
-    localStorage.setItem("cw_volume", sidetoneVolumeSlider.value);
+  localStorage.setItem("cw_volume", sidetoneVolumeSlider.value);
 });
 
 sidetonePitchSlider.addEventListener("input", () => {
-    localStorage.setItem("cw_pitch", sidetonePitchSlider.value);
+  localStorage.setItem("cw_pitch", sidetonePitchSlider.value);
 });
 
 wpmSlider.addEventListener("input", () => {
-    localStorage.setItem("cw_wpm", wpmSlider.value);
+  localStorage.setItem("cw_wpm", wpmSlider.value);
 });
 
 farnsworthSlider.addEventListener("input", () => {
-    localStorage.setItem("cw_farnsworth", farnsworthSlider.value);
+  localStorage.setItem("cw_farnsworth", farnsworthSlider.value);
 });
+
+function playMorseCodeSequence(codeStr) {
+  const { ditLength } = getTiming();
+  const gap = ditLength; // Inter-element space
+  const symbols = codeStr.trim().split(" "); // `· - · ·` → ["·", "-", "·", "·"]
+  let delay = 0;
+
+  symbols.forEach((sym) => {
+    setTimeout(() => {
+      if (sym === "·") {
+        playDit();
+      } else if (sym === "-") {
+        playDah();
+      }
+    }, delay);
+    delay += (sym === "-" ? ditLength * 3 : ditLength) + gap;
+  });
+}
 
 // Restore saved settings
 window.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem("cw_volume")) {
-        sidetoneVolumeSlider.value = localStorage.getItem("cw_volume");
-    }
+  if (localStorage.getItem("cw_volume")) {
+    sidetoneVolumeSlider.value = localStorage.getItem("cw_volume");
+  }
 
-    if (localStorage.getItem("cw_pitch")) {
-        sidetonePitchSlider.value = localStorage.getItem("cw_pitch");
-        pitchDisplay.textContent = `${sidetonePitchSlider.value}`;
-    }
+  if (localStorage.getItem("cw_pitch")) {
+    sidetonePitchSlider.value = localStorage.getItem("cw_pitch");
+  }
 
-    if (localStorage.getItem("cw_wpm")) {
-        wpmSlider.value = localStorage.getItem("cw_wpm");
-        document.getElementById("wpm-value").textContent = localStorage.getItem("cw_wpm");
-    }
+  if (localStorage.getItem("cw_wpm")) {
+    wpmSlider.value = localStorage.getItem("cw_wpm");
+  }
 
-    if (localStorage.getItem("cw_farnsworth")) {
-        farnsworthSlider.value = localStorage.getItem("cw_farnsworth");
-        document.getElementById("farnsworth-value").textContent = localStorage.getItem("cw_farnsworth");
-    }
+  if (localStorage.getItem("cw_farnsworth")) {
+    farnsworthSlider.value = localStorage.getItem("cw_farnsworth");
+  }
+
+    const lettersAtoMContainer = document.querySelector(".letters_1");
+    lettersAtoMContainer.innerHTML = ""; // Clear loading text
+    lettersAtoM.forEach((item) => {
+      const el = item.build("p", playMorseCodeSequence);
+      el.classList.add("cw-character");
+      lettersAtoMContainer.appendChild(el);
+    });
+
+  const lettersNtoZContainer = document.querySelector(".letters_2");
+  lettersNtoZContainer.innerHTML = ""; // Clear loading text
+  lettersNtoZ.forEach((item) => {
+    const el = item.build("p", playMorseCodeSequence);
+    el.classList.add("cw-character");
+    lettersNtoZContainer.appendChild(el);
+  });
+
+  const numbersContainer = document.querySelector(".numbers");
+  numbersContainer.innerHTML = ""; // Clear loading text
+  numbers.forEach((item) => {
+    const el = item.build("p", playMorseCodeSequence);
+    el.classList.add("cw-character");
+    numbersContainer.appendChild(el);
+  });
+
+  const symbolsContainer = document.querySelector(".symbols");
+  symbolsContainer.innerHTML = ""; // Clear loading text
+  symbols.forEach((item) => {
+    const el = item.build("p", playMorseCodeSequence);
+    el.classList.add("cw-character");
+    symbolsContainer.appendChild(el);
+  });
 });
+
+
+
+
+const previewCanvas = document.getElementById('waveform-preview');
+const ctx = previewCanvas.getContext('2d');
+
+function drawWaveformPreview(type = 'sine') {
+    const width = previewCanvas.width;
+    const height = previewCanvas.height;
+    ctx.clearRect(0, 0, width, height);
+
+    ctx.beginPath();
+    ctx.strokeStyle = '#4a90e2';
+    ctx.lineWidth = 2;
+
+    const step = width / 100;
+    const mid = height / 2;
+    const amp = height / 2.5;
+
+    for (let x = 0; x <= width; x += step) {
+        const t = x / width; // time (0 to 1)
+        let y;
+
+        switch (type) {
+            case 'square':
+                y = (t % 1) < 0.5 ? -1 : 1;
+                break;
+            case 'triangle':
+                y = 2 * Math.abs(2 * (t - Math.floor(t + 0.5))) - 1;
+                break;
+            case 'sawtooth':
+                y = 2 * (t - Math.floor(t + 0.5));
+                break;
+            case 'sine':
+            default:
+                y = Math.sin(t * 2 * Math.PI * 4); // 4 cycles
+                break;
+        }
+
+        const drawY = mid - y * amp;
+
+        if (x === 0) {
+            ctx.moveTo(x, drawY);
+        } else {
+            ctx.lineTo(x, drawY);
+        }
+    }
+
+    ctx.stroke();
+}
+drawWaveformPreview(waveformType);
+
+// TODO: Fix the raw morse output with Farnsworth timing adjustments
+// TODO: Revert for clearing output from textarea

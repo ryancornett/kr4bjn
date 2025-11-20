@@ -70,14 +70,14 @@ section ul li {
     align-items: center;
 }
 
-.quiet-icon {
+.sl-icon {
     font-size: 1.225rem;
     color: var(--icon-link);
     cursor: pointer;
     padding-left: 0.25rem;
 }
 
-.quiet-icon:hover {
+.sl-icon:hover {
     color: var(--icon-link-hover);
     transform: scale(109%);
 }
@@ -95,6 +95,10 @@ section ul li {
 }
 .dit-dah-explainer p + p {
     margin-left: 0.75rem;
+}
+
+sl-radio-group {
+    margin-top: 1rem;
 }
 
 .font-size-2 { font-size: 1.25rem;}
@@ -411,8 +415,8 @@ main {
 
 .letters, .numbers-symbols {
     font-size: 1.1rem;
-    width: 67%;
-    justify-content: space-between;
+    width: 87%;
+    justify-content: space-around;
     margin-left: auto;
     margin-right: auto;
 }
