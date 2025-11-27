@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      CW Oscillator | KR4BJN
+    </title>
+
+    <meta
+      name="description"
+      content="KR4BJN is a QRP-focused amateur radio station in EM87, Eastern Kentucky. Operating CW, FT8, Parks on the Air (POTA), and homebrew antennas with a QMX 5-band rig."
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="KR4BJN — Amateur Radio Station in Eastern Kentucky"
+    />
+    <meta
+      property="og:description"
+      content="QRP, CW, FT8, and Parks on the Air from grid square EM87. Learn more about station KR4BJN, gear, clubs, and tools."
+    />
+    <meta property="og:url" content="https://kr4bjn.com/" />
+    <meta property="og:image" content="https://kr4bjn.com/img/ryan.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KR4BJN — Amateur Radio Station" />
+    <meta
+      name="twitter:description"
+      content="QRP & CW from Eastern Kentucky (EM87)."
+    />
+    <meta name="twitter:image" content="https://kr4bjn.com/img/ryan.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ryan Cornett",
+        "alternateName": "KR4BJN",
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Eastern Kentucky, USA"
+        },
+        "url": "https://ryancornett.com",
+        "sameAs": [
+          "https://www.qrz.com/db/KR4BJN",
+          "https://reformed.link/Ryan"
+        ],
+        "knowsAbout": ["amateur radio", "QRP", "CW", "Parks on the Air"]
+      }
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
+    ></script>
+
+    <link rel="stylesheet" href="../styles/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="left-header">
+        <h1>KR4BJN</h1>
+        <h2>EM87 | Eastern Kentucky, USA</h2>
+      </div>
+      <div class="right-header">
+        <p class="callsign-phonetic">
+          kilo • romeo • four • bravo • juliett • november
+        </p>
+        <p class="callsign-phonetic custom">
+          kentucky • redbud • four • banjo • jubilee • nomad
+        </p>
+        <p class="callsign-phonetic cw-call">-·- ·-· ····- -··· ·--- -·</p>
+        
+      </div>
+      
+    </header>
+
+<nav>
+</nav>
+  <main id="cw-main">
+      <section class="oscillator">
+        <h3>Practice Oscillator</h3>
+        <input type="text" style="direction: rtl" id="morse-output" readonly />
+        <button id="morse-output-clear">Clear</button>
+
+        <div id="paddle-zone">
+          <div class="left-paddle">
+            <div id="dit-indicator" class="indicator touch-paddle">Dit</div>
+            <p class="small" style="text-align: center; margin-top: 0.25rem">
+              left click / tap
+            </p>
+          </div>
+          <div class="middle-paddle">
+            Paddle Zone
+            <p class="small" style="text-align: center; margin-top: 0.25rem">
+              (hover here)
+            </p>
+          </div>
+          <div class="right-paddle">
+            <div id="dah-indicator" class="indicator touch-paddle">Dah</div>
+            <p class="small" style="text-align: center; margin-top: 0.25rem">
+              right click
+            </p>
+          </div>
+        </div>
+
+        <div class="dit-dah-explainer">
+          <p>
+            "Dits" (or "dots") are the short Morse sound
+            <span class="font-size-2">→ ·</span>
+          </p>
+          <p>
+            "Dahs" (or "dashes") are the long Morse sound
+            <span class="font-size-2">→ -</span>
+          </p>
+        </div>
+
+        <div style="margin-top: 1rem">
+          <label>Raw Morse:</label>
+          <div
+            id="raw-morse"
+            style="
+              font-family: monospace;
+              background: #111;
+              color: rgb(140, 243, 251);
+              padding: 0.5rem;
+              height: 2rem;
+            "
+          ></div>
+        </div>
+
+        <div id="sidetone-waveform">
+          <sl-card
+            class="settings-panel"
+          >
+            <section id="sidetone-settings">
+              <strong slot="header">Sidetone Settings</strong>
+              <sl-input
+                label="Pitch (Hz)"
+                type="range"
+                min="300"
+                max="1000"
+                step="10"
+                id="sidetone-pitch"
+                value="600"
+                pill
+              ></sl-input>
+              <sl-input
+                label="Volume"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                id="sidetone-volume"
+                value="0.5"
+                pill
+              ></sl-input>
+              <sl-input
+                label="WPM"
+                type="range"
+                min="5"
+                max="40"
+                step="1"
+                id="wpm"
+                value="20"
+                pill
+              ></sl-input>
+              <sl-input
+                label="Farnsworth (%)"
+                type="range"
+                min="0"
+                max="100"
+                step="5"
+                id="farnsworth"
+                value="0"
+                pill
+              ></sl-input>
+            </section>
+          
+          </sl-card>
+          <section id="waveform-wrapper">
+              <sl-card>
+                <sl-radio-group
+                  label="Waveform"
+                  name="waveform"
+                  value="sine"
+                  id="waveform-group"
+                >
+                  <sl-radio value="sine">Sine</sl-radio>
+                  <sl-radio value="square">Square</sl-radio>
+                  <sl-radio value="triangle">Triangle</sl-radio>
+                  <sl-radio value="sawtooth">Sawtooth</sl-radio>
+                </sl-radio-group>
+                <canvas
+                  id="waveform-preview"
+                  width="400"
+                  height="80"
+                  style="
+                    width: 100%;
+                    border: 1px solid var(--sl-color-neutral-200);
+                    margin-top: 1rem;
+                  "
+                ></canvas>
+              </sl-card>
+            </section>
+        </div>
+
+        <details class="letters-details">
+          <summary>Letters</summary>
+          <div class="letters">
+            <div class="letters_1">Loading...</div>
+            <div class="letters_2">Loading...</div>
+          </div>
+        </details>
+        <details class="numbers-symbols-details">
+          <summary>Numbers & Symbols</summary>
+          <div class="numbers-symbols">
+            <div class="numbers">Loading...</div>
+            <div class="symbols">Loading...</div>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+   
+      <div id="footer-left"><img src="../img/site-icon.png" alt=""></div>
+
+      <div id="footer-center">
+        <div id="verses">
+          <p id="verse-text"></p>
+          <p id="verse-ref"></p>
+        </div>
+        <section id="arrl">
+          <h3>ARRL Transmissions</h3>
+          <p id="time-day"></p>
+          <h4 id="arrl-transmitting"></h4>
+          <p id="arrl-details"></p>
+          <p class="small">
+            Find frequencies and other info
+            <a href="https://www.arrl.org/w1aw-operating-schedule" target="_blank"
+              >here.</a
+            >
+          </p>
+        </section>
+      </div>
+
+      <div class="footer-links">
+      </div>
+    </footer>
+    <p id="rights"></p>
+
+    <script src="../scripts/keyer.js" defer type="module"></script>
+    <script src="../scripts/main.js" defer type="module"></script>
+  </body>
+</html>

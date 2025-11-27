@@ -144,4 +144,4 @@ async function displayData() {
     populateActivationCards();
 }
 
-export { displayData }
+setTimeout(await displayData, 3000);

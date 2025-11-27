@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --dark-gray: #333;
+    --dark-blue: #05164c;
+    --color-one: --dark-blue;
+    --color-two: --dark-gray;
+    --icon-link: #3849b7;
+    --icon-link-hover: #b7c7e6;
+    --border-color: #dee0f6;
+}
+main {
+    height: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.my-pota iframe {
+    margin-top: 3rem;;
+    overflow-y: scroll;
+}
+
+.pota {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+.pota > h2 {
+    font-size: 1.75rem;
+    font-family: Domine, serif;
+    margin: 1.75rem 0 0 0;
+}
+
+.legend .card { margin: 1rem 0;}
+
+.cards {
+    padding: 2rem 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem
+}
+
+.card {
+    flex-basis: 49%;
+    border: solid 2px var(--border-color);
+    padding: 0.5rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-around;
+    font-family: Inter, sans;
+    color: var(--icon-link);
+}
+
+.card-info-row, .card-state-row, .card-frequency-row, .card-utc-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.pota-png {
+    height: 2rem;
+    filter:brightness(1.2);
+}
+
+.card-footer {
+    font-family: Poppins, sans;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: var(--icon-link);
+}
+
+.spinner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+.spinner img {
+    aspect-ratio: 1;
+    width: 15%;
+    display: block;
+}
+
+.rotate-center {
+	-webkit-animation: rotate-center 1s ease-in-out infinite both;
+	        animation: rotate-center 1s ease-in-out infinite both;
+}
+
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+  @-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}

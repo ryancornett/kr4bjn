@@ -61,7 +61,8 @@
       src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
     ></script>
 
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/pota.css" />
   </head>
   <body>
     <header>
@@ -77,84 +78,50 @@
           kentucky • redbud • four • banjo • jubilee • nomad
         </p>
         <p class="callsign-phonetic cw-call">-·- ·-· ····- -··· ·--- -·</p>
-        
       </div>
-      
     </header>
 
     <nav></nav>
-    <main id="index-main">
 
-    <div id="left-wrapper">
-      <div id="hero-container">
-        <img
-              src="img/qmx.jpg"
-              alt="A ham radio transceiver"
-              class="hero"
-              loading="lazy"
-            />
-      </div>
+    <main>
+      <form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  id="contact-form"
+>
 
-      <section id="about">
-        <h2>About the Station Operator</h2>
-        <p class="bio">
-          Hi, I'm Ryan (KR4BJN). I'm located in EM87, Eastern Kentucky, USA. I
-          enjoy CW (Morse code), FT8, Parks on the Air hunting and activations,
-          and experimenting with homebrew antennas and portable gear.
-        </p>
+  <!-- Hidden input for Netlify -->
+  <input type="hidden" name="form-name" value="contact" />
 
-        <div class="img-wrapper"><img src="img/ryan.jpg" alt="Ryan" /></div>
-      </section>
-    </div>
-      <div id="right-wrapper">
-        <div class="lists">
-          <section class="interests">
-            <h3>Amateur Radio Interests</h3>
-            <ul id="interests-ul"></ul>
-          </section>
-          <section class="gear">
-            <h3>Gear</h3>
-            <ul id="gear-ul"></ul>
-          </section>
-          <section class="clubs">
-            <h3>Clubs</h3>
-            <ul id="clubs-ul"></ul>
-          </section>
-        </div>
-        <section class="club-logos">
-          <img
-            src="img/LCARA_logo.jpg"
-            alt="Lake Cumberland Amateur Radio Association logo"
-            loading="lazy"
-          />
-          <img
-            src="img/LICW-Logo.png"
-            alt="Long Island CW Club logo"
-            loading="lazy"
-          />
-          <img
-            src="img/pota-logo.png"
-            alt="Parks on the Air logo"
-            loading="lazy"
-          />
-          <img
-            src="img/League_diamond_color_high.jpg"
-            alt="ARRL logo"
-            loading="lazy"
-          />
-          <img
-            src="img/NAQCCbanner09.jpg"
-            id="naqcc-banner"
-            alt="North American QRP CW Club banner"
-            loading="lazy"
-          />
-        </section>
-      </div>
+  <!-- Honeypot spam field -->
+  <input type="hidden" name="bot-field" />
+
+  <sl-input name="name" label="Name" required></sl-input>
+
+  <sl-input name="email" type="email" label="Email" required></sl-input>
+
+  <sl-input name="callsign" label="Callsign"></sl-input>
+
+  <sl-textarea name="message" label="Message" rows="5" required></sl-textarea>
+
+  <sl-button type="submit" variant="primary" style="margin-top: 1rem;" disabled>
+    Send Message
+  </sl-button>
+  <p>Form will be enabled soon.</p>
+
+</form>
+
+<sl-alert variant="success" open id="form-success" style="display: none;">
+  <strong>Message sent!</strong> Thanks for reaching out.
+</sl-alert>
+
     </main>
 
     <footer>
    
-      <div id="footer-left"><img src="img/site-icon.png" alt=""></div>
+      <div id="footer-left"><img src="../img/site-icon.png" alt=""></div>
 
       <div id="footer-center">
         <div id="verses">
@@ -180,6 +147,6 @@
     </footer>
     <p id="rights"></p>
 
-    <script src="scripts/main.js" defer type="module"></script>
+    <script src="../scripts/main.js" defer type="module"></script>
   </body>
 </html>

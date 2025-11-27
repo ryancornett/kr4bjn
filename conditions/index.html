@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      HF Band Conditions | KR4BJN
+    </title>
+
+    <meta
+      name="description"
+      content="KR4BJN is a QRP-focused amateur radio station in EM87, Eastern Kentucky. Operating CW, FT8, Parks on the Air (POTA), and homebrew antennas with a QMX 5-band rig."
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="KR4BJN — Amateur Radio Station in Eastern Kentucky"
+    />
+    <meta
+      property="og:description"
+      content="QRP, CW, FT8, and Parks on the Air from grid square EM87. Learn more about station KR4BJN, gear, clubs, and tools."
+    />
+    <meta property="og:url" content="https://kr4bjn.com/" />
+    <meta property="og:image" content="https://kr4bjn.com/img/ryan.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="KR4BJN — Amateur Radio Station" />
+    <meta
+      name="twitter:description"
+      content="QRP & CW from Eastern Kentucky (EM87)."
+    />
+    <meta name="twitter:image" content="https://kr4bjn.com/img/ryan.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ryan Cornett",
+        "alternateName": "KR4BJN",
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Eastern Kentucky, USA"
+        },
+        "url": "https://ryancornett.com",
+        "sameAs": [
+          "https://www.qrz.com/db/KR4BJN",
+          "https://reformed.link/Ryan"
+        ],
+        "knowsAbout": ["amateur radio", "QRP", "CW", "Parks on the Air"]
+      }
+    </script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
+    ></script>
+
+    <link rel="stylesheet" href="../styles/styles.css" />
+  </head>
+  <body>
+
+    <header>
+      <div class="left-header">
+        <h1>KR4BJN</h1>
+        <h2>EM87 | Eastern Kentucky, USA</h2>
+      </div>
+      <div class="right-header">
+        <p class="callsign-phonetic">
+          kilo • romeo • four • bravo • juliett • november
+        </p>
+        <p class="callsign-phonetic custom">
+          kentucky • redbud • four • banjo • jubilee • nomad
+        </p>
+        <p class="callsign-phonetic cw-call">-·- ·-· ····- -··· ·--- -·</p>
+        
+      </div>
+      
+    </header>
+
+    <nav></nav>
+    <main id="conditions-main">
+
+      <h2 style="margin: 1.75rem 0; font-size: 1.75rem;">HF Band Conditions</h2>
+      <div class="band-conditions">
+        <a
+          href="https://www.hamqsl.com/solar.html"
+          title="Click to add Solar-Terrestrial Data to your website!"
+          ><img
+            src="https://www.hamqsl.com/solar101pic.php"
+            alt="Solar-terrestrial data"
+            loading="lazy"
+        /></a>
+
+        <div id="solar-data-explainer">
+            <ul>
+                <li>A higher Solar Flux Index (SFI) means more radio “fuel” from the Sun, better chances of long-range HF communications.</li>
+
+<li>More sunspots (SN) generally mean higher solar activity, which enhances the ionosphere's reflecting power.</li>
+
+<li>Geomagnetic indices (K-index, A-index): These measure how calm or disturbed Earth's magnetic field is. Lower values = better for radio propagation; higher values = storms/disruptions.</li>
+
+<li>X-ray flux, 304 Å (angstrom) UV radiation, particle flux (protons/electrons), etc.: These indicate more subtle or advanced effects (like absorption in the lower ionosphere, or auroral disturbances). If any of these climb, propagation may degrade.</li>
+</ul>
+
+<!-- <div>
+    <p>If many of the values are in the “good” range and the band-condition ratings show “Good”, then it's a favorable time for radio operators to make long-distance contacts.</p>
+    
+    <p>If the geomagnetic or particle indices are high (indicating a disturbance or storm), even a high solar flux might not translate into good propagation — because disturbances can upset the ionosphere's “mirror”.</p>
+    
+    <p>The conditions vary with time (day/night), frequency band, and geographic region, so what's shown is a global/average reading (local conditions might differ).</p>
+</div> -->
+        </div>
+
+        <a
+          href="https://prop.kc2g.com/renders/current/mufd-normal-now.svg"
+          id="muf"
+          target="_blank"
+        >
+          <img
+            src="https://prop.kc2g.com/renders/current/mufd-normal-now.svg"
+            alt="Worldwide maximum usable frequency map"
+            class="exclude"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <div id="muf-data-explainer">
+            <ul>
+                <li>MUF stands for Maximum Usable Frequency — the highest radio frequency at which a short-wave (HF) radio signal can still be reflected by the ionosphere and make long-distance (“skip”) contacts.</li>
+
+<li>In simple terms: Above the MUF value, the signal goes through the ionosphere into space, rather than being bounced back to Earth.</li>
+
+<li>MUF is path- and time-dependent; what works between two locations at one hour may not work at another.</li>
+
+</ul>
+
+<!-- <div>
+    <p>The map shows colors or contours representing the current estimated MUF for radio paths over wide regions. If a region shows, say, 25 MHz, that means signals up to about 25 MHz might successfully propagate that distance via the ionosphere.</p>
+    
+    <p>A higher MUF number means the ionosphere is more ionized (usually due to sunlight and solar activity), so higher-frequency HF bands (e.g., 15 m, 12 m, 10 m) may be usable for long-distance contacts.</p>
+    
+    <p>A lower MUF means conditions are weaker, so you'll likely need to use lower-frequency HF bands (e.g., 40 m, 80 m) for reliable contacts.</p>
+</div> -->
+
+    </main>
+
+    <footer>
+   
+      <div id="footer-left"><img src="../img/site-icon.png" alt=""></div>
+
+      <div id="footer-center">
+        <div id="verses">
+          <p id="verse-text"></p>
+          <p id="verse-ref"></p>
+        </div>
+        <section id="arrl">
+          <h3>ARRL Transmissions</h3>
+          <p id="time-day"></p>
+          <h4 id="arrl-transmitting"></h4>
+          <p id="arrl-details"></p>
+          <p class="small">
+            Find frequencies and other info
+            <a href="https://www.arrl.org/w1aw-operating-schedule" target="_blank"
+              >here.</a
+            >
+          </p>
+        </section>
+      </div>
+
+      <div class="footer-links">
+      </div>
+    </footer>
+    <p id="rights"></p>
+
+    <script src="../scripts/main.js" defer type="module"></script>
+  </body>
+</html>

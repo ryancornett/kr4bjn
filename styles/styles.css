@@ -6,15 +6,17 @@
     box-sizing: border-box;
     --dark-gray: #333;
     --dark-blue: #05164c;
+    --dark-green: rgb(41, 235, 112);
+    --light-blue: rgb(140, 243, 251);
     --color-one: --dark-blue;
     --color-two: --dark-gray;
     --icon-link: #3849b7;
-    --icon-link-hover: #6b7be1;
+    --icon-link-hover: #b7c7e6;
 }
 
 main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     width: 85vw;
     margin: 0 auto;
@@ -29,12 +31,22 @@ h2 {
 h1 {
     font-family: Domine, serif;
     font-size: clamp(2rem, 10vw, 5rem);
-    margin: 1rem 0 0 0;
+    margin: 0;
+    user-select: none;
+    cursor: pointer;
 }
 
-.callsign-phonetic { font-family: monospace; font-size: 0.8rem; font-weight: bold; margin-top: 1rem; }
+.callsign-phonetic { font-family: monospace; font-size: 0.8rem; font-weight: bold; }
+    
+.callsign-phonetic + .callsign-phonetic { padding-top: 0.75rem; }
 .custom { color: var(--icon-link); }
 .cw-call { font-size: 1.15rem; }
+
+#hero-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .hero {
     margin-top: 1rem;
@@ -57,7 +69,6 @@ width: 80%;
 }
 
 section {
-    margin: 2.5rem 0;
     font-family: Domine, serif;
 }
 
@@ -88,7 +99,7 @@ section ul li {
 
 .dit-dah-explainer {
     display: flex;
-    background-color: rgb(140, 243, 251);
+    background-color: var(--light-blue);
     font-size: 0.85rem;
     justify-content: space-between;
     padding: 0 0.75rem;
@@ -111,6 +122,7 @@ sl-radio-group {
     width: 82%;
     font-size: 0.8rem;
     margin: 2.5rem 0;
+    color: black;
 }
 
 #verse-ref {
@@ -138,7 +150,6 @@ aside > h3 {
 }
 
 #arrl {
-    color: white;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
@@ -150,11 +161,11 @@ aside > h3 {
 }
 
 #time-day {
-    color: rgb(129, 156, 255)
+    color: var(--light-blue)
 }
 
 #arrl-details {
-    color: rgb(98, 248, 153)
+    color: var(--dark-green);
 }
 
 #paddle-zone {
@@ -245,8 +256,11 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: -webkit-linear-gradient(var(--dark-gray), var(--dark-blue));
-    background: linear-gradient(var(--dark-gray), var(--dark-blue));
+    background: var(--dark-blue)
+}
+
+#footer-left img{
+    width: clamp(125px, 20vw, 350px);
 }
 
 .footer-links {
@@ -255,95 +269,30 @@ footer {
     align-items: center;
 }
 
-.footer-links > a {
+.footer-links ul { list-style: none; }
+
+.footer-links ul li {
+    padding: 0.5rem 0.2rem;
+}
+.footer-links ul li a {
     color: inherit;
     text-decoration: none;
     font-family: Poppins, sans-serif;
 }
-
-.footer-links > a + a {
-    margin-left: 2rem;
+.footer-links ul li:hover {
+    background-color: #b7c7e6;
+    color: var(--dark-blue);
 }
-
-.pota {
+#rights {
+    background-color: var(--dark-blue);
     color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 6rem;
-}
-
-.pota > h2 {
-    font-size: 1.1rem;
-}
-
-.cards {
-    padding: 2rem 0;
-    width: 70%;
-    font-size: 0.9rem;
-}
-
-.card {
+    font-size: 0.75rem;
     width: 100%;
+    text-align: center;
+    padding-bottom: 2rem;
 }
 
-.card + .card {
-    margin-top: 1.5rem;
-}
 
-.card-header {
-    display: flex;
-    justify-content: space-around;
-    font-family: Inter, sans;
-}
-
-.card-info-row, .card-state-row, .card-frequency-row, .card-utc-row {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
-
-.pota-png {
-    height: 0.9rem;
-    filter:brightness(2);
-}
-
-.card-footer {
-    font-family: Poppins, sans;
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-}
-
-.spinner {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-  
-.spinner img {
-    aspect-ratio: 1;
-    width: 30%;
-    display: block;
-    filter: invert();
-}
-
-.rotate-center {
-	-webkit-animation: rotate-center 1s ease-in-out infinite both;
-	        animation: rotate-center 1s ease-in-out infinite both;
-}
-
-@-webkit-keyframes rotate-center {
-  0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
 @keyframes rotate-center {
   0% {
     -webkit-transform: rotate(0);
@@ -356,13 +305,63 @@ footer {
 }
 
 @media screen and (min-width: 760px) {
-    body {
+    header {
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem auto;
+}
+
+nav {
+    width: 100%;
+    background-color: var(--dark-gray);
+}
+
+nav ul{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+nav ul li a {
+    font-family: Poppins, sans-serif;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 1rem;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: var(--icon-link-hover);
 }
 
 main {
     width: 70vw;
     margin-bottom: 12rem;
+}
+
+#index-main {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: unset;
+    margin-top: 2rem;
+    padding-top: 3rem;
+}
+
+#index-main #left-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 45%;
+}
+#index-main #right-wrapper {
+    width: 55%;
 }
 
     .hero {
@@ -374,28 +373,58 @@ main {
         margin: 0 auto 0.75rem auto;
         font-family: Inter, sans-serif;
         font-size: 0.9rem;
-        color: #fff;
     }
 
     #about h2 {
-        padding-bottom: 0.75rem;
+        padding-bottom: 1rem;
+    }
+
+    .bio {
+        margin-bottom: 2rem;
     }
 
     .club-logos {
         display: flex;
         gap: 1.5rem;
         margin: 0;
+        flex-wrap: wrap;
     }
 
     .club-logos img {
         aspect-ratio: 1/1.2;
-        width: clamp(5vw, 75px, 10vw);
+        max-width: 8vw;
+        flex-basis: 25%;
     }
 
     #naqcc-banner {
-        aspect-ratio: 6/1;
-        width: 240px;
+        aspect-ratio: 4/1;
+        min-width: 400px;
     }
+
+    #cw-main {
+        width: 70vw;
+        margin-bottom: 8rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    #sidetone-waveform {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+        margin: 1rem auto;
+        gap: 1rem;
+    }
+
+    .settings-panel {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    sl-input[type="range"]:hover::part(input) {
+  cursor: pointer;
+}
 
     .cw-player {
         display: flex;
@@ -409,6 +438,27 @@ main {
 
     .oscillator {
     width: 80%;
+    margin: 2.5rem 0;
+}
+
+#conditions-main {
+    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#solar-data-explainer, #muf-data-explainer {
+    width: 70ch;
+    margin: 0 auto;
+    font-family: Inter, sans-serif;
+    font-size: 0.9rem;
+    display: flex;
+    gap:1rem;
+}
+
+#contact-form {
+    margin-top: 3rem;
 }
 
 .font-size-2 { font-size: 2rem;}
@@ -429,15 +479,6 @@ main {
         font-size: 1.3rem;
     }
 
-    .band-conditions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    margin: 1rem 0 6rem 0;
-}
-
 .band-conditions > a > img:not(.exclude) {
     width: 50vw;
 }
@@ -453,9 +494,23 @@ aside {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
-}
+    min-height: 20vh;
+    margin-top: 0;
+    flex-direction: row;
+    padding: 2rem 0;
+    }
+
+    #footer-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-basis: 35%;
+    }
+    #footer-center {
+        flex-basis: 35%;
+    }
+
+    #arrl { margin-top: 4rem; }
 }
   

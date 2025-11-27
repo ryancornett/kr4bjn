@@ -61,7 +61,8 @@
       src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
     ></script>
 
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/pota.css" />
   </head>
   <body>
     <header>
@@ -77,84 +78,64 @@
           kentucky • redbud • four • banjo • jubilee • nomad
         </p>
         <p class="callsign-phonetic cw-call">-·- ·-· ····- -··· ·--- -·</p>
-        
       </div>
-      
     </header>
 
     <nav></nav>
-    <main id="index-main">
 
-    <div id="left-wrapper">
-      <div id="hero-container">
-        <img
-              src="img/qmx.jpg"
-              alt="A ham radio transceiver"
-              class="hero"
-              loading="lazy"
-            />
-      </div>
-
-      <section id="about">
-        <h2>About the Station Operator</h2>
-        <p class="bio">
-          Hi, I'm Ryan (KR4BJN). I'm located in EM87, Eastern Kentucky, USA. I
-          enjoy CW (Morse code), FT8, Parks on the Air hunting and activations,
-          and experimenting with homebrew antennas and portable gear.
-        </p>
-
-        <div class="img-wrapper"><img src="img/ryan.jpg" alt="Ryan" /></div>
+    <main>
+      <section class="my-pota">
+        <iframe src="https://pota-stats.wd4dan.net/?call=KR4BJN&options=hunteronly" height="450" width="708" frameborder="0" scrolling="no"></iframe>
       </section>
-    </div>
-      <div id="right-wrapper">
-        <div class="lists">
-          <section class="interests">
-            <h3>Amateur Radio Interests</h3>
-            <ul id="interests-ul"></ul>
-          </section>
-          <section class="gear">
-            <h3>Gear</h3>
-            <ul id="gear-ul"></ul>
-          </section>
-          <section class="clubs">
-            <h3>Clubs</h3>
-            <ul id="clubs-ul"></ul>
-          </section>
+      <div class="pota">
+        <h2>Regional POTA Activation Schedule</h2>
+        <div class="legend">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-activator">Activator's Call Sign</h3>
+            <h3 class="card-reference">Park ID</h3>
+          </div>
+          <div>
+            <div class="card-info-row">
+              <img
+                class="pota-png"
+                src="img/location-icon.png"
+                alt="Location icon"
+              />
+              <div>Park ID - Park Name</div>
+            </div>
+            <div class="card-state-row">
+              <img class="pota-png" src="img/star-icon.png" alt="State icon" />
+              <div>US-State</div>
+            </div>
+            <div class="card-state-row">
+              <img
+                class="pota-png"
+                src="img/dial-icon.png"
+                alt="Tuning dial icon"
+              />
+              <div>Frequency</div>
+            </div>
+            <div class="card-state-row">
+              <img class="pota-png" src="img/utc-icon.png" alt="Clock icon" />
+              <div>MM/DD ##:## UTC</div>
+            </div>
+          </div>
+          <div class="card-footer">Additional information provided by the activator, typically the mode used (CW, FT-8, SSB, etc.)</div>
         </div>
-        <section class="club-logos">
-          <img
-            src="img/LCARA_logo.jpg"
-            alt="Lake Cumberland Amateur Radio Association logo"
-            loading="lazy"
-          />
-          <img
-            src="img/LICW-Logo.png"
-            alt="Long Island CW Club logo"
-            loading="lazy"
-          />
-          <img
-            src="img/pota-logo.png"
-            alt="Parks on the Air logo"
-            loading="lazy"
-          />
-          <img
-            src="img/League_diamond_color_high.jpg"
-            alt="ARRL logo"
-            loading="lazy"
-          />
-          <img
-            src="img/NAQCCbanner09.jpg"
-            id="naqcc-banner"
-            alt="North American QRP CW Club banner"
-            loading="lazy"
-          />
-        </section>
+      </div>
+        <div class="cards">
+          <p>Loading...</p>
+          <div class="spinner rotate-center">
+            <img src="img/state-park-icon.png" alt="Amateur Radio Icon" />
+          </div>
+        </div>
       </div>
     </main>
 
     <footer>
    
-      <div id="footer-left"><img src="img/site-icon.png" alt=""></div>
+      <div id="footer-left"><img src="../img/site-icon.png" alt=""></div>
 
       <div id="footer-center">
         <div id="verses">
@@ -180,6 +161,7 @@
     </footer>
     <p id="rights"></p>
 
-    <script src="scripts/main.js" defer type="module"></script>
+    <script src="../scripts/pota.js" defer type="module"></script>
+    <script src="../scripts/main.js" defer type="module"></script>
   </body>
 </html>
