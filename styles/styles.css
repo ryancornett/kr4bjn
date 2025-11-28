@@ -342,7 +342,7 @@ nav ul li a:hover {
 
 main {
     width: 70vw;
-    margin-bottom: 12rem;
+    margin-bottom: 4rem;
 }
 
 #index-main {
@@ -507,6 +507,22 @@ footer {
         align-items: center;
         flex-basis: 35%;
     }
+    #footer-socials {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1.25rem;
+    }
+
+    #footer-socials a sl-icon {
+        font-size: 1.75rem;
+        color: white;
+        transition: all 0.25s ease-in-out;
+    }
+    #footer-socials a sl-icon:hover {
+        color: var(--icon-link-hover);
+        transform: scale(1.2);
+    }
+
     #footer-center {
         flex-basis: 35%;
     }

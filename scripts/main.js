@@ -218,7 +218,6 @@ const footerLinks = [
   { name: "HF Band Conditions", url: "/conditions", external: false },
   { name: "Regional POTA Spots", url: "/pota", external: false },
   { name: "Contact", url: "/contact", external: false },
-  { name: "QRZ", url: "https://www.qrz.com/db/KR4BJN", external: true },
   { name: "RyanCornett.com", url: "https://ryancornett.com", external: true },
   { name: "More Links...", url: "https://reformed.link/Ryan", external: true },
 ];
@@ -239,6 +238,28 @@ if (footerLinks) {
     ul.appendChild(li);
   });
   footerLinksContainer.appendChild(ul);
+}
+
+const socials = [
+  { name: "Twitter", url: "https://twitter.com/ryancornettky", icon: "twitter-x" },
+  { name: "YouTube", url: "https://www.youtube.com/@RyanCornett", icon: "youtube" },
+  { name: "QRZ", url: "https://www.qrz.com/db/KR4BJN", icon: "globe2" },
+  { name: "GitHub", url: "https://github.com/ryancornett", icon: "github" },
+];
+
+const socialContainer = document.getElementById("footer-socials");
+if (socialContainer) {
+  socials.forEach((social) => {
+    const a = document.createElement("a");
+    a.href = social.url;
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+    a.classList.add("social-icon");
+    const icon = document.createElement("sl-icon");
+    icon.name = social.icon;
+    a.appendChild(icon);
+    socialContainer.appendChild(a);
+  });
 }
 
 // END FOOTER
