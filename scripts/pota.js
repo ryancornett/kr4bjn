@@ -60,14 +60,20 @@ function populateActivationCards() {
             // CARD HEADER
             const header = document.createElement('div');
             header.classList.add('card-header');
-                const activator = document.createElement('h3');
+                const activator = document.createElement('a');
                 activator.classList.add('card-activator');
                 activator.textContent = activation.activator;
+                activator.href = `https://pota.app/#/profile/${activation.activator}`;
+                activator.target = "_blank";
+                activator.rel = "noopener";
                 header.appendChild(activator);
                 
-                const reference = document.createElement('h3');
+                const reference = document.createElement('a');
                 reference.classList.add('card-reference');
                 reference.textContent = activation.reference;
+                reference.href = `https://pota.app/#/park/${activation.reference}`;
+                reference.target = "_blank";
+                reference.rel = "noopener";
                 header.appendChild(reference);
             card.appendChild(header);
             // CARD BODY

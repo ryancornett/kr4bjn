@@ -60,6 +60,21 @@ main {
     color: var(--icon-link);
 }
 
+.card-activator, .card-reference {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--icon-link);
+    font-size: large;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    gap: 0.25rem;
+    cursor: pointer;
+}
+.card-activator:hover, .card-reference:hover {
+    color: var(--dark-blue);
+    transform: scale(1.05);
+}
+
 .card-info-row, .card-state-row, .card-frequency-row, .card-utc-row {
     display: flex;
     justify-content: flex-start;
