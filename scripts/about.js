@@ -33,7 +33,7 @@ class AboutLink {
 const interestLinks = [
     new AboutLink(
         "Parks on the Air® (POTA)",
-        "https://parksontheair.com/",
+        "https://pota.app/#/profile/KR4BJN",
         "Link to POTA",
         "Parks on the Air® Website"
     ),
@@ -71,6 +71,12 @@ const gearLinks = [
         "CWMorse Outdoor Double Paddle Key Product Page"
     ),
     new AboutLink(
+        "CWMorse Outdoor Double Paddle Key",
+        "https://cwmorse.us/products/pocket-single-paddle-cootie-key-with-magnets",
+        "Link to CWMorse Outdoor Cootie Key",
+        "CWMorse Outdoor Double Cootie Key Product Page"
+    ),
+    new AboutLink(
         "Putikeeg Mini Straight Key",
         "https://www.amazon.com/dp/B0CZH8BHV9?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1&th=1",
         "Link to Putikeeg Mini Straight Key",
@@ -92,7 +98,7 @@ const clubLinks = [
         "Lake Cumberland Amateur Radio Association Website"
     ),
     new AboutLink(
-        "Long Island CW Club (LICW)",
+        "Long Island CW Club (LICW) #7695",
         "https://licw.org/",
         "Link to LICW",
         "Long Island CW Club Website"
@@ -104,10 +110,16 @@ const clubLinks = [
         "American Radio Relay League Website"
     ),
     new AboutLink(
-        "North American QRP CW Club (NAQCC)",
+        "North American QRP CW Club (NAQCC) #12239",
         "https://naqcc.info/",
         "Link to the NAQCC",
         "North American QRP CW Club Website"
+    ),
+    new AboutLink(
+        "Straight Key Century Club (SKCC) #30858",
+        "https://www.skccgroup.com/",
+        "Link to the SKCC",
+        "Straight Key Century Club Website"
     ),
 ];
 

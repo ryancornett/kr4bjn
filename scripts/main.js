@@ -7,7 +7,7 @@ const navLinks = [
   { name: "Photo Gallery", url: "/photos" },
   { name: "Morse Code (CW)", url: "/cw" },
   { name: "HF Band Conditions", url: "/conditions" },
-  { name: "Regional POTA Spots", url: "/pota" },
+  { name: "POTA Info", url: "/pota" },
   { name: "Contact", url: "/contact" },
 ];
 const nav = document.querySelector("nav");
