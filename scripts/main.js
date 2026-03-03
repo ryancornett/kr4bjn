@@ -8,7 +8,7 @@ const navLinks = [
   { name: "Morse Code (CW)", url: "/cw" },
   { name: "HF Band Conditions", url: "/conditions" },
   { name: "POTA Info", url: "/pota" },
-  { name: "Contact", url: "/contact" },
+  { name: "QSO Log", url: "/qsos" },
 ];
 const nav = document.querySelector("nav");
 if (nav) {

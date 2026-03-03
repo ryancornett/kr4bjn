@@ -1,36 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>
-      Contact | KR4BJN
-    </title>
+    <title>QSO Log | KR4BJN</title>
 
-    <meta
-      name="description"
-      content="Send KR4BJN a message with the provided form."
-    />
+    <meta name="description" content="See station KR4BJN's QSOs." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="../favicon.png" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Contact | KR4BJN"
-    />
-    <meta
-      property="og:description"
-      content="Send KR4BJN a message with the provided form."
-    />
+    <meta property="og:title" content="Contact | KR4BJN" />
+    <meta property="og:description" content="See station KR4BJN's QSOs." />
     <meta property="og:url" content="https://kr4bjn.com/contact" />
     <meta property="og:image" content="https://kr4bjn.com/img/ryan.jpg" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Contact | KR4BJN" />
-    <meta
-      name="twitter:description"
-      content="Send KR4BJN a message with the provided form."
-    />
+    <meta name="twitter:title" content="QSO Log | KR4BJN" />
+    <meta name="twitter:description" content="See station KR4BJN's QSOs." />
     <meta name="twitter:image" content="https://kr4bjn.com/img/ryan.jpg" />
 
     <script type="application/ld+json">
@@ -84,43 +70,65 @@
     <nav></nav>
 
     <main>
-      <form
-  name="contact"
-  method="POST"
-  data-netlify="true"
-  netlify-honeypot="bot-field"
-  id="contact-form"
->
+      <iframe
+        frameborder="1"
+        height="525"
+        scrolling="yes"
+        src="https://logbook.qrz.com/lbstat/KR4BJN/"
+        width="720"
+        style="margin-top: 3rem;"
+      ></iframe>
 
-  <!-- Hidden input for Netlify -->
-  <input type="hidden" name="form-name" value="contact" />
+      <!-- <form
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        id="contact-form"
+      >
+        <input
+          type="hidden"
+          name="form-name"
+          value="contact"
+          data-reason="For Netlify"
+        />
 
-  <!-- Honeypot spam field -->
-  <input type="hidden" name="bot-field" />
+        <input
+          type="hidden"
+          name="bot-field"
+          data-reason="For Netlify Honeypot spam field"
+        />
 
-  <sl-input name="name" label="Name" required></sl-input>
+        <sl-input name="name" label="Name" required></sl-input>
 
-  <sl-input name="email" type="email" label="Email" required></sl-input>
+        <sl-input name="email" type="email" label="Email" required></sl-input>
 
-  <sl-input name="callsign" label="Callsign"></sl-input>
+        <sl-input name="callsign" label="Callsign"></sl-input>
 
-  <sl-textarea name="message" label="Message" rows="5" required></sl-textarea>
+        <sl-textarea
+          name="message"
+          label="Message"
+          rows="5"
+          required
+        ></sl-textarea>
 
-  <sl-button type="submit" variant="primary" style="margin-top: 1rem;" disabled>
-    Send Message
-  </sl-button>
-  <p>Form will be enabled soon.</p>
+        <sl-button
+          type="submit"
+          variant="primary"
+          style="margin-top: 1rem"
+          disabled
+        >
+          Send Message
+        </sl-button>
+        <p>Form will be enabled soon.</p>
+      </form>
 
-</form>
-
-<sl-alert variant="success" open id="form-success" style="display: none;">
-  <strong>Message sent!</strong> Thanks for reaching out.
-</sl-alert>
-
+      <sl-alert variant="success" open id="form-success" style="display: none">
+        <strong>Message sent!</strong> Thanks for reaching out.
+      </sl-alert> -->
     </main>
 
     <footer>
-   
       <div id="footer-left">
         <img src="../img/site-icon.png" alt="" />
         <div id="footer-socials"></div>
@@ -138,15 +146,16 @@
           <p id="arrl-details"></p>
           <p class="small">
             Find frequencies and other info
-            <a href="https://www.arrl.org/w1aw-operating-schedule" target="_blank"
+            <a
+              href="https://www.arrl.org/w1aw-operating-schedule"
+              target="_blank"
               >here.</a
             >
           </p>
         </section>
       </div>
 
-      <div class="footer-links">
-      </div>
+      <div class="footer-links"></div>
     </footer>
     <p id="rights"></p>
 
