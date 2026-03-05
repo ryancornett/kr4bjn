@@ -93,13 +93,13 @@ const gearLinks = [
 const clubLinks = [
     new AboutLink(
         "Lake Cumberland Amateur Radio Association (LCARA)",
-        "https://lcara.org/",
+        "https://www.lcara.net/",
         "Link to LCARA",
         "Lake Cumberland Amateur Radio Association Website"
     ),
     new AboutLink(
         "Long Island CW Club (LICW) #7695",
-        "https://licw.org/",
+        "https://longislandcwclub.org/",
         "Link to LICW",
         "Long Island CW Club Website"
     ),
