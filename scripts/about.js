@@ -59,19 +59,31 @@ const interestLinks = [
 
 const gearLinks = [
     new AboutLink(
-        "QMX 5-band",
+        "QMX 5-band (60m-15m)",
         "https://shop.qrp-labs.com/qmx",
         "Link to QMX 5-band transceiver",
         "QMX 5-band Transceiver Product Page"
     ),
     new AboutLink(
-        "CWMorse Outdoor Double Paddle Key",
-        "https://cwmorse.us/products/outdoor-pocket-double-paddle-morse-code-key",
-        "Link to CWMorse Outdoor Double Paddle Key",
-        "CWMorse Outdoor Double Paddle Key Product Page"
+        "J-38 Straight Key",
+        "https://www.ebay.com/itm/236675923675",
+        "Link to J-38 Straight Key listing",
+        "J-38 Straight Key Listing Page"
     ),
     new AboutLink(
-        "CWMorse Outdoor Double Paddle Key",
+        "Hamwurx Cootie Paddle II Key",
+        "https://www.ebay.com/itm/127424238554",
+        "Link to Hamwurx Cootie Paddle II listing",
+            "Hamwurx Cootie Paddle II Listing Page"
+        ),
+    new AboutLink(
+        "Pocket Single Paddle Cootie Key With Magnets",
+        "https://cwmorse.us/products/outdoor-pocket-double-paddle-morse-code-key",
+        "Link to Pocket Single Paddle Cootie Key With Magnets",
+        "Pocket Single Paddle Cootie Key With Magnets Product Page"
+    ),
+    new AboutLink(
+        "CWMorse Outdoor Double Paddle Key x2",
         "https://cwmorse.us/products/pocket-single-paddle-cootie-key-with-magnets",
         "Link to CWMorse Outdoor Cootie Key",
         "CWMorse Outdoor Double Cootie Key Product Page"

@@ -216,8 +216,8 @@ const footerLinks = [
   { name: "Photo Gallery", url: "/photos", external: false },
   { name: "Morse Code (CW)", url: "/cw", external: false },
   { name: "HF Band Conditions", url: "/conditions", external: false },
-  { name: "Regional POTA Spots", url: "/pota", external: false },
-  { name: "Contact", url: "/contact", external: false },
+  { name: "POTA Info", url: "/pota", external: false },
+  { name: "QSO Log", url: "/qsos", external: false },
   { name: "RyanCornett.com", url: "https://ryancornett.com", external: true },
   { name: "More Links...", url: "https://reformed.link/Ryan", external: true },
 ];
