@@ -1,4 +1,4 @@
-import { lettersAtoM, lettersNtoZ, numbers, symbols } from "./cw-legend.js";
+import { lettersAtoM, lettersNtoZ, numbers, symbols, qcodes, abbreviations } from "./cw-legend.js";
 
 const rawMorseDisplay = document.getElementById("raw-morse");
 const sidetoneVolumeSlider = document.getElementById("sidetone-volume");
@@ -352,6 +352,34 @@ window.addEventListener("DOMContentLoaded", () => {
     const el = item.build("p", playMorseCodeSequence);
     el.classList.add("cw-character");
     symbolsContainer.appendChild(el);
+  });
+  
+  const qcodesContainer = document.querySelector(".qcodes");
+  qcodesContainer.innerHTML = ""; // Clear loading text
+  qcodes.forEach((item) => {
+    const name = document.createElement("h5");
+    name.textContent = item.name;
+    const meaning = document.createElement("p");
+    meaning.textContent = item.meaning;
+    const el = document.createElement("div");
+    el.classList.add("q-abbr");
+    el.appendChild(name);
+    el.appendChild(meaning);
+    qcodesContainer.appendChild(el);
+  });
+
+  const abbreviationsContainer = document.querySelector(".abbreviations");
+  abbreviationsContainer.innerHTML = ""; // Clear loading text
+  abbreviations.forEach((item) => {
+    const name = document.createElement("h5");
+    name.textContent = item.name;
+    const meaning = document.createElement("p");
+    meaning.textContent = item.meaning;
+    const el = document.createElement("div");
+    el.classList.add("q-abbr");
+    el.appendChild(name);
+    el.appendChild(meaning);
+    abbreviationsContainer.appendChild(el);
   });
 });
 

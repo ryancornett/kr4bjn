@@ -47,19 +47,38 @@ if (clubLinksContainer) {
 
 const verseText = document.getElementById("verse-text");
 const verseRef = document.getElementById("verse-ref");
-const verse = bibleVerses[Math.floor(Math.random() * bibleVerses.length)];
-if (verseText && verseRef) {
-  verseText.textContent = verse.text;
-  verseRef.textContent = `${verse.book} ${verse.chapter}:${verse.verses} BSB`;
+let currentVerseId = null;
+
+function getRandomVerse() {
+  const verse = bibleVerses[Math.floor(Math.random() * bibleVerses.length)];
+  if (currentVerseId !== null && verse.id === currentVerseId) {
+    return getRandomVerse();
+  }
+  currentVerseId = verse.id;
+  if (verseText && verseRef) {
+    verseText.classList.remove("animate");
+    verseRef.classList.remove("animate");
+    verseText.offsetWidth; // Trigger reflow to restart animation
+    verseRef.offsetWidth; // Trigger reflow to restart animation
+    verseText.textContent = verse.text;
+    verseRef.textContent = `${verse.book} ${verse.chapter}:${verse.verses} BSB`;
+    verseText.classList.add("animate");
+    verseRef.classList.add("animate");
+  }
 }
 
+getRandomVerse();
+setInterval(getRandomVerse, 15000);
+
+const rightsText = "All rights reserved 2025";
+const rightsName = ", Ryan Cornett";
 const year = new Date().getFullYear();
 let rights = document.getElementById("rights");
 if (rights) {
 rights.textContent =
   year == 2025
-    ? "All rights reserved 2025"
-    : `All rights reserved 2025-${year}`;
+    ? rightsText + rightsName
+    : `${rightsText}-${year}${rightsName}`;
 }
 
 async function getTimeData() {
@@ -218,7 +237,6 @@ const footerLinks = [
   { name: "HF Band Conditions", url: "/conditions", external: false },
   { name: "POTA Info", url: "/pota", external: false },
   { name: "QSO Log", url: "/qsos", external: false },
-  { name: "RyanCornett.com", url: "https://ryancornett.com", external: true },
   { name: "More Links...", url: "https://reformed.link/Ryan", external: true },
 ];
 

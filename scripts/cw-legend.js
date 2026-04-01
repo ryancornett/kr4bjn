@@ -87,4 +87,40 @@ const symbols = [
   new Item("*error*", "error", "di-di-di-di-di-di-di-dit", "· · · · · · · ·"),
 ];
 
-export { Item, lettersAtoM, lettersNtoZ, numbers, symbols };
+const qcodes = [
+  { name: "QRL", meaning: "Frequency busy(?)" },
+  { name: "QRZ", meaning: "Who is calling me?" },
+  { name: "QSB", meaning: "Signal fading(?)" },
+  { name: "QRM", meaning: "Manmade interference" },
+  { name: "QRN", meaning: "Natural interference" },
+  { name: "QRO", meaning: "Increase power" },
+  { name: "QRP", meaning: "Decrease power/low-powered" },
+  { name: "QRQ", meaning: "Send faster" },
+  { name: "QRS", meaning: "Send slower" },
+  { name: "QTH", meaning: "(What is your) Location(?)" },
+  { name: "QRT", meaning: "Stop(ped) sending" },
+  { name: "QSL", meaning: "Acknowledge receipt(?)" },
+  { name: "QSO", meaning: "Contact or conversation" },
+]
+
+const abbreviations = [
+  { name: "73", meaning: "Best regards" },
+  { name: "72", meaning: "Best regards (when transmitting QRP)" },
+  { name: "CQ", meaning: "Calling any station" },
+  { name: "DE", meaning: "From or This is" },
+  { name: "ES", meaning: "And" },
+  { name: "NR", meaning: "Number" },
+  { name: "R", meaning: "Received or Roger" },
+  { name: "TU", meaning: "Thank you" },
+  { name: "PSE", meaning: "Please" },
+  { name: "UR", meaning: "You are" },
+  { name: "WX", meaning: "Weather" },
+  {name: "GM", meaning: "Good morning"},
+  {name: "GA", meaning: "Good afternoon"},
+  {name: "GE", meaning: "Good evening"},
+  { name: "ANT", meaning: "Antenna" },
+  { name: "RPT", meaning: "Report" },
+  { name: "RST", meaning: "Readability, Signal Strength, Tone (signal report)" },
+]
+
+export { Item, lettersAtoM, lettersNtoZ, numbers, symbols, qcodes, abbreviations };

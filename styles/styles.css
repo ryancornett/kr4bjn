@@ -125,12 +125,22 @@ sl-radio-group {
     color: black;
 }
 
+.animate {
+    animation: fade-in 750ms ease-in-out;
+}
+
 #verse-ref {
     text-align: right;
     font-weight: bold;
     font-size: 0.8rem;
     margin-top: 0.5rem ;
 }
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 
 aside {
     background: -webkit-linear-gradient(var(--dark-gray), var(--dark-blue));
@@ -222,6 +232,26 @@ aside > h3 {
 
 .cw-decoded {
     margin-left: 0.75rem;
+}
+
+.q-codes-abbreviations {
+    display: flex;
+    justify-content: space-around;
+}
+
+.q-abbr {
+    padding-top: 1.25rem;
+}
+
+.q-abbr h5 {
+    font-size: 1.1rem;
+    text-decoration: underline;
+    margin-bottom: 0.25rem;
+    color:#05164c;
+}
+
+.q-abbr p {
+    margin-bottom: 1rem;
 }
 
 .band-conditions {
