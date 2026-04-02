@@ -1,6 +1,7 @@
 export const bibleVerses = [
     {
         id: 1,
+        version: "BSB",
         book: "John",
         chapter: "3",
         verses: "16",
@@ -8,6 +9,7 @@ export const bibleVerses = [
     },
     {
         id: 2,
+        version: "BSB",
         book: "Jeremiah",
         chapter: "29",
         verses: "11",
@@ -15,6 +17,7 @@ export const bibleVerses = [
     },
     {
         id: 3,
+        version: "BSB",
         book: "Romans",
         chapter: "8",
         verses: "28",
@@ -22,6 +25,7 @@ export const bibleVerses = [
     },
     {
         id: 4,
+        version: "BSB",
         book: "Genesis",
         chapter: "1",
         verses: "1",
@@ -29,6 +33,7 @@ export const bibleVerses = [
     },
     {
         id: 5,
+        version: "BSB",
         book: "Proverbs",
         chapter: "3",
         verses: "5-6",
@@ -36,6 +41,7 @@ export const bibleVerses = [
     },
     {
         id: 6,
+        version: "BSB",
         book: "Romans",
         chapter: "12",
         verses: "2",
@@ -43,6 +49,7 @@ export const bibleVerses = [
     },
     {
         id: 7,
+        version: "BSB",
         book: "Philippians",
         chapter: "4",
         verses: "6",
@@ -50,6 +57,7 @@ export const bibleVerses = [
     },
     {
         id: 8,
+        version: "BSB",
         book: "Matthew",
         chapter: "28",
         verses: "19-20",
@@ -57,6 +65,7 @@ export const bibleVerses = [
     },
     {
         id: 9,
+        version: "BSB",
         book: "1 Corinthians",
         chapter: "13",
         verses: "4-5",
@@ -64,6 +73,7 @@ export const bibleVerses = [
     },
     {
         id: 10,
+        version: "BSB",
         book: "Matthew",
         chapter: "6",
         verses: "34",
@@ -71,6 +81,7 @@ export const bibleVerses = [
     },
     {
         id: 11,
+        version: "BSB",
         book: "Proverbs",
         chapter: "16",
         verses: "2-3",
@@ -78,6 +89,7 @@ export const bibleVerses = [
     },
     {
         id: 12,
+        version: "BSB",
         book: "Isaiah",
         chapter: "41",
         verses: "10",
@@ -85,6 +97,7 @@ export const bibleVerses = [
     },
     {
         id: 13,
+        version: "BSB",
         book: "2 Corinthians",
         chapter: "4",
         verses: "6",
@@ -92,6 +105,7 @@ export const bibleVerses = [
     },
     {
         id: 14,
+        version: "BSB",
         book: "2 Corinthians",
         chapter: "5",
         verses: "21",
@@ -99,6 +113,7 @@ export const bibleVerses = [
     },
     {
         id: 15,
+        version: "BSB",
         book: "1 Thessalonians",
         chapter: "5",
         verses: "16-18",
@@ -106,6 +121,7 @@ export const bibleVerses = [
     },
     {
         id: 16,
+        version: "BSB",
         book: "Psalm",
         chapter: "42",
         verses: "11",
@@ -113,6 +129,7 @@ export const bibleVerses = [
     },
     {
         id: 17,
+        version: "BSB",
         book: "Matthew",
         chapter: "11",
         verses: "28-29",
@@ -120,6 +137,7 @@ export const bibleVerses = [
     },
     {
         id: 18,
+        version: "BSB",
         book: "Philippians",
         chapter: "4",
         verses: "8",
@@ -127,6 +145,7 @@ export const bibleVerses = [
     },
     {
         id: 19,
+        version: "BSB",
         book: "Psalm",
         chapter: "23",
         verses: "1-3",
@@ -134,6 +153,7 @@ export const bibleVerses = [
     },
     {
         id: 20,
+        version: "BSB",
         book: "Romans",
         chapter: "5",
         verses: "8",
@@ -141,6 +161,7 @@ export const bibleVerses = [
     },
     {
         id: 21,
+        version: "BSB",
         book: "Hebrews",
         chapter: "4",
         verses: "12",
@@ -148,6 +169,7 @@ export const bibleVerses = [
     },
     {
         id: 22,
+        version: "BSB",
         book: "Psalm",
         chapter: "47",
         verses: "7-8",
@@ -155,6 +177,7 @@ export const bibleVerses = [
     },
     {
         id: 23,
+        version: "BSB",
         book: "Psalm",
         chapter: "115",
         verses: "2-3",
@@ -162,6 +185,7 @@ export const bibleVerses = [
     },
     {
         id: 24,
+        version: "BSB",
         book: "Daniel",
         chapter: "4",
         verses: "3",
@@ -169,6 +193,7 @@ export const bibleVerses = [
     },
     {
         id: 25,
+        version: "BSB",
         book: "Ecclesiastes",
         chapter: "12",
         verses: "13",
@@ -176,6 +201,7 @@ export const bibleVerses = [
     },
     {
         id: 26,
+        version: "BSB",
         book: "Revelation",
         chapter: "22",
         verses: "17",
@@ -183,6 +209,7 @@ export const bibleVerses = [
     },
     {
         id: 27,
+        version: "BSB",
         book: "Jude",
         chapter: "1",
         verses: "24-25",
@@ -190,6 +217,7 @@ export const bibleVerses = [
     },
     {
         id: 28,
+        version: "BSB",
         book: "1 John",
         chapter: "1",
         verses: "8-9",
@@ -197,6 +225,7 @@ export const bibleVerses = [
     },
     {
         id: 29,
+        version: "BSB",
         book: "Colossians",
         chapter: "1",
         verses: "13-14",
@@ -204,9 +233,130 @@ export const bibleVerses = [
     },
     {
         id: 30,
+        version: "BSB",
         book: "John",
         chapter: "1",
         verses: "14",
         text: "The Word became flesh and made His dwelling among us. We have seen His glory, the glory of the one and only Son from the Father, full of grace and truth."
-    }
+    },
+    {
+        id: 31,
+        version: "KJV",
+        book: "Psalm",
+        chapter: "1",
+        verses: "1",
+        text: "Blessed is the man that walketh not in the counsel of the ungodly, nor standeth in the way of sinners, nor sitteth in the seat of the scornful."
+    },
+    {
+        id: 32,
+        version: "KJV",
+        book: "Psalm",
+        chapter: "1",
+        verses: "6",
+        text: "For the Lord knoweth the way of the righteous: but the way of the ungodly shall perish."
+    },
+    {
+        id: 33,
+        version: "KJV",
+        book: "Psalm",
+        chapter: "2",
+        verses: "11-12",
+        text: "Serve the Lord with fear, and rejoice with trembling. Kiss the Son, lest he be angry, and ye perish from the way, when his wrath is kindled but a little. Blessed are all they that put their trust in him."
+    },
+    {
+        id: 34,
+        version: "KJV",
+        book: "Psalm",
+        chapter: "3",
+        verses: "7-8",
+        text: "Arise, O Lord; save me, O my God: for thou hast smitten all mine enemies upon the cheek bone; thou hast broken the teeth of the ungodly. Salvation belongeth unto the Lord: thy blessing is upon thy people. Selah."
+    },
+    {
+        id: 35,
+        version: "KJV",
+        book: "Psalm",
+        chapter: "4",
+        verses: "7-8",
+        text: "Thou hast put gladness in my heart, more than in the time that their corn and their wine increased. I will both lay me down in peace, and sleep: for thou, Lord, only makest me dwell in safety."
+    },
+    {
+        id: 36,
+        version: "KJV",
+        book: "Psalm",
+        chapter: "8",
+        verses: "3-4",
+        text: "When I consider thy heavens, the work of thy fingers, the moon and the stars, which thou hast ordained;What is man, that thou art mindful of him? and the son of man, that thou visitest him?"
+    },
+    {
+        id: 37,
+        version: "KJV",
+        book: "Psalm",
+        chapter: "9",
+        verses: "13-14",
+        text: "Have mercy upon me, O Lord; consider my trouble which I suffer of them that hate me, thou that liftest me up from the gates of death: That I may shew forth all thy praise in the gates of the daughter of Zion: I will rejoice in thy salvation."
+    },
+    {
+        id: 38,
+        version: "KJV",
+        book: "Proverbs",
+        chapter: "1",
+        verses: "7",
+        text: "The fear of the Lord is the beginning of knowledge: but fools despise wisdom and instruction."
+    },
+    {
+        id: 39,
+        version: "KJV",
+        book: "Proverbs",
+        chapter: "4",
+        verses: "5-6",
+        text: "Get wisdom, get understanding: forget it not; neither decline from the words of my mouth. Forsake her not, and she shall preserve thee: love her, and she shall keep thee."
+    },
+    {
+        id: 40,
+        version: "KJV",
+        book: "Proverbs",
+        chapter: "9",
+        verses: "10",
+        text: "The fear of the Lord is the beginning of wisdom: and the knowledge of the holy is understanding."
+    },
+    {
+        id: 41,
+        version: "KJV",
+        book: "Proverbs",
+        chapter: "10",
+        verses: "2-3",
+        text: "Treasures of wickedness profit nothing: but righteousness delivereth from death. The Lord will not suffer the soul of the righteous to famish: but he casteth away the substance of the wicked."
+    },
+    {
+        id: 42,
+        version: "KJV",
+        book: "Proverbs",
+        chapter: "11",
+        verses: "7-8",
+        text: "When a wicked man dieth, his expectation shall perish: and the hope of unjust men perisheth. The righteous is delivered out of trouble, and the wicked cometh in his stead."
+    },
+    {
+        id: 43,
+        version: "KJV",
+        book: "Ecclesiastes",
+        chapter: "2",
+        verses: "24",
+        text: "There is nothing better for a man, than that he should eat and drink, and that he should make his soul enjoy good in his labour. This also I saw, that it was from the hand of God."
+    },
+    {
+        id: 44,
+        version: "KJV",
+        book: "Ecclesiastes",
+        chapter: "3",
+        verses: "14",
+        text: "I know that, whatsoever God doeth, it shall be for ever: nothing can be put to it, nor any thing taken from it: and God doeth it, that men should fear before him."
+    },
+    {
+        id: 45,
+        version: "KJV",
+        book: "Ecclesiastes",
+        chapter: "4",
+        verses: "9-10",
+        text: "Two are better than one; because they have a good reward for their labour. For if they fall, the one will lift up his fellow: but woe to him that is alone when he falleth; for he hath not another to help him up."
+    },
 ]

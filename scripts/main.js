@@ -61,7 +61,7 @@ function getRandomVerse() {
     verseText.offsetWidth; // Trigger reflow to restart animation
     verseRef.offsetWidth; // Trigger reflow to restart animation
     verseText.textContent = verse.text;
-    verseRef.textContent = `${verse.book} ${verse.chapter}:${verse.verses} BSB`;
+    verseRef.textContent = `${verse.book} ${verse.chapter}:${verse.verses} ${verse.version}`;
     verseText.classList.add("animate");
     verseRef.classList.add("animate");
   }
@@ -71,14 +71,14 @@ getRandomVerse();
 setInterval(getRandomVerse, 15000);
 
 const rightsText = "All rights reserved 2025";
-const rightsName = ", Ryan Cornett";
+const rightsName = "Ryan Cornett";
 const year = new Date().getFullYear();
 let rights = document.getElementById("rights");
 if (rights) {
 rights.textContent =
   year == 2025
     ? rightsText + rightsName
-    : `${rightsText}-${year}${rightsName}`;
+    : rightsName + " | " + rightsText + "-" + year;
 }
 
 async function getTimeData() {

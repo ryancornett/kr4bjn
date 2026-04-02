@@ -95,7 +95,7 @@ const gearLinks = [
         "Putikeeg Mini Straight Key Product Page"
     ),
     new AboutLink(
-        "Homemade end-fed half-wave antenna",
+        "Homebrew end-fed half-wave antenna",
         "https://www.youtube.com/watch?v=AfWvdS8uiLs",
         "Link to end-fed half-wave antenna build video",
         "End-Fed Half-Wave Antenna Build Video"
