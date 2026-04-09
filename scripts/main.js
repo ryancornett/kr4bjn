@@ -282,4 +282,52 @@ if (socialContainer) {
 
 // END FOOTER
 
+// BAND CONDITION INFO MODALS
+
+const bandsModalOpen = document.getElementById('bands-modal-open');
+const bandsModal = document.getElementById('bands-modal');
+const bandsModalClose = document.getElementById('bands-modal-close');
+
+if (bandsModalOpen) {
+  bandsModalOpen.addEventListener('click', () => {
+    bandsModal.showModal();
+  })
+}
+if (bandsModalClose) {
+  bandsModalClose.addEventListener('click', () => {
+    bandsModal.close();
+  })
+}
+
+const mufModalOpen = document.getElementById('muf-modal-open');
+const mufModal = document.getElementById('muf-modal');
+const mufModalClose = document.getElementById('muf-modal-close');
+
+if (mufModalOpen) {
+  mufModalOpen.addEventListener('click', () => {
+    mufModal.showModal();
+  })
+}
+
+if (mufModalClose) {
+  mufModalClose.addEventListener('click', () => {
+    mufModal.close();
+  })
+}
+
+bandsModal.addEventListener('click', (event) => {
+  if (event.target === bandsModal) {
+    bandsModal.close();
+  }
+});
+
+mufModal.addEventListener('click', (event) => {
+  if (event.target === mufModal) {
+    mufModal.close();
+  }
+});
+
+
+
+
 // TODO: Fix the raw morse output with Farnsworth timing adjustments

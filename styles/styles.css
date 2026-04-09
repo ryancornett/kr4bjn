@@ -569,5 +569,56 @@ footer {
     }
 
     #arrl { margin-top: 4rem; }
+
+    .my-modal {
+        position:absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 75vh;
+        width: 60vw;
+        overflow-y: scroll;
+        border: 2px solid #ccc;
+        background: #333;
+        opacity: 0.92;
+        color: #fff;
+        filter: drop-shadow(0 5px 10px #000);
+    }
+
+    .my-modal div {
+        display:flex;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 1rem;
+    }
+
+    wa-icon {
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+    }
+    wa-icon:hover {
+        color: var(--icon-link);
+    }
+
+    #bands-modal-close, #muf-modal-close {
+        font-size: 1.5rem;
+    }
+
+    #bands-modal-close:hover, #muf-modal-close:hover {
+        color: var(--icon-link-hover);
+    }
+
+    #solar-data-explainer, #muf-data-explainer {
+        width: 80%;
+        font-size: 1rem;
+    }
+    
+    #solar-data-explainer ul li, #muf-data-explainer ul li {
+        margin-bottom:0.65rem;
+    }
+    
+    #solar-data-explainer ul+div p, #muf-data-explainer ul+div p {
+        margin-bottom:0.65rem;
+    }
 }
   
