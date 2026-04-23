@@ -4,7 +4,7 @@ import { getARRLDisplayData } from "./arrl.js";
 import { interestLinks, gearLinks, clubLinks } from "./about.js";
 
 const navLinks = [
-  { name: "Photo Gallery", url: "/photos" },
+  { name: "Media", url: "/media" },
   { name: "Morse Code (CW)", url: "/cw" },
   { name: "HF Band Conditions", url: "/conditions" },
   { name: "POTA Info", url: "/pota" },
@@ -232,7 +232,7 @@ if (form) {
 // BEGIN FOOTER
 const footerLinks = [
   { name: "Home", url: "/", external: false },
-  { name: "Photo Gallery", url: "/photos", external: false },
+  { name: "Media", url: "/media", external: false },
   { name: "Morse Code (CW)", url: "/cw", external: false },
   { name: "HF Band Conditions", url: "/conditions", external: false },
   { name: "POTA Info", url: "/pota", external: false },
