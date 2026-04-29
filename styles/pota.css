@@ -19,8 +19,25 @@ main {
     justify-content: center;
 }
 
+#what-is-pota {
+    max-width: 65ch;
+    margin: 3rem 0;
+    padding: 0 1rem;
+    font-family: Inter, "sans-serif";
+}
+
+#what-is-pota h2 {
+    font-size: 1.75rem;
+    font-family: Domine, serif;
+    margin-bottom: 1rem;
+    background: var(--dark-blue);
+    color: #fff;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+}
+
 .my-pota iframe {
-    margin-top: 3rem;;
+    margin: 2rem 0;
     overflow-y: scroll;
 }
 

@@ -14,6 +14,11 @@
     --icon-link-hover: #b7c7e6;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-margin-top: 1.5rem;
+}
+
 main {
     display: flex;
     flex-direction: row;
@@ -684,6 +689,35 @@ footer {
         width:50%;
         background-color: var(--dark-gray);
         margin: 4rem auto 3rem auto;
+    }
+
+    .article-nav {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    width:80%;
+    align-items: center;
+    justify-content: center;
+    font-family: Inter, sans-serif;
+    }
+
+    .article-nav a {
+        text-decoration: none;
+        color: var(--icon-link);
+        font-weight: 600;
+        font-size: 0.8rem;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .article-nav a:hover {
+        color: var(--dark-blue);
+        transform: scale(1.05);
+    }
+
+    .article-nav span {
+        width:10%;
+        height:2px;
+        background: #000;
     }
 }
   

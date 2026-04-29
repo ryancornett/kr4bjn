@@ -79,9 +79,17 @@
 
 <nav>
 </nav>
+<div class="article-nav" style="margin:2rem auto">
+        <a href="#practice-oscillator">Practice Oscillator</a>
+        <span></span>
+        <a href="#sidetone-settings">Sidetone Settings</a>
+        <span></span>
+        <a href="#cw-characters-prosigns">CW Characters & Prosigns</a>
+      </div>
   <main id="cw-main">
+    
       <section class="oscillator">
-        <h3>Practice Oscillator</h3>
+        <h3 id="practice-oscillator">Practice Oscillator</h3>
         <input type="text" style="direction: rtl" id="morse-output" readonly />
         <button id="morse-output-clear">Clear</button>
 
@@ -131,7 +139,7 @@
           ></div>
         </div>
 
-        <div id="sidetone-waveform">
+        <div id="sidetone-waveform"">
           <sl-card
             class="settings-panel"
           >
@@ -207,7 +215,7 @@
             </section>
         </div>
 
-        <details class="letters-details">
+        <details class="letters-details" id="cw-characters-prosigns">
           <summary>Alphabet</summary>
           <div class="letters">
             <div class="letters_1">Loading...</div>
