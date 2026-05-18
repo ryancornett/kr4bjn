@@ -89,37 +89,25 @@ const gearLinks = [
         "CWMorse Outdoor Double Cootie Key Product Page"
     ),
     new AboutLink(
-        "Putikeeg Mini Straight Key",
-        "https://www.amazon.com/dp/B0CZH8BHV9?ref_=ppx_hzsearch_conn_dt_b_fed_asin_title_1&th=1",
-        "Link to Putikeeg Mini Straight Key",
-        "Putikeeg Mini Straight Key Product Page"
-    ),
-    new AboutLink(
-        "Homebrew end-fed half-wave antenna",
+        "Homebrew EFHW shack antenna for 40m, 20m, and 15m",
         "https://www.youtube.com/watch?v=AfWvdS8uiLs",
         "Link to end-fed half-wave antenna build video",
         "End-Fed Half-Wave Antenna Build Video"
+    ),
+    new AboutLink(
+        "Homebrew inverted-V dipole field antennas for 30m and 20m",
+        "https://www.youtube.com/watch?v=tx27XOgJFr0",
+        "Link to inverted V half-wave dipole antenna build video",
+        "Inverted V Half-Wave Dipole Antenna Build Video"
     ),
 ]
 
 const clubLinks = [
     new AboutLink(
-        "Lake Cumberland Amateur Radio Association (LCARA)",
-        "https://www.lcara.net/",
-        "Link to LCARA",
-        "Lake Cumberland Amateur Radio Association Website"
-    ),
-    new AboutLink(
         "Long Island CW Club (LICW) #7695",
         "https://longislandcwclub.org/",
         "Link to LICW",
         "Long Island CW Club Website"
-    ),
-    new AboutLink(
-        "American Radio Relay League (ARRL)",
-        "https://www.arrl.org/",
-        "Link to the ARRL",
-        "American Radio Relay League Website"
     ),
     new AboutLink(
         "North American QRP CW Club (NAQCC) #12239",
