@@ -36,6 +36,11 @@ main {
     padding: 0.25rem 0.75rem;
 }
 
+#what-is-pota p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
 .my-pota iframe {
     margin: 2rem 0;
     overflow-y: scroll;
@@ -115,6 +120,7 @@ main {
     font-size: 0.8rem;
     margin-top: 0.5rem;
     color: var(--icon-link);
+    max-width: 65ch;
 }
 
 .spinner {
