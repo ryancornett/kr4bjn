@@ -1,4 +1,11 @@
-import { lettersAtoM, lettersNtoZ, numbers, symbols, qcodes, abbreviations } from "./cw-legend.js";
+import {
+  lettersAtoM,
+  lettersNtoZ,
+  numbers,
+  symbols,
+  qcodes,
+  abbreviations,
+} from "./cw-legend.js";
 
 const rawMorseDisplay = document.getElementById("raw-morse");
 const sidetoneVolumeSlider = document.getElementById("sidetone-volume");
@@ -100,39 +107,45 @@ const waveformGroup = document.getElementById("waveform-group");
 // Load saved waveform from localStorage (if any)
 const savedWaveform = localStorage.getItem("cw_waveform");
 if (savedWaveform) {
-    waveformGroup.value = savedWaveform;
-    waveformType = savedWaveform;
+  waveformGroup.querySelectorAll("input").forEach((input) => {
+    input.checked = input.value === savedWaveform;
+  });
+  waveformType = ["sine", "square", "triangle", "sawtooth"].includes(
+    savedWaveform,
+  )
+    ? savedWaveform
+    : "sine";
 }
 
-// Listen for changes from Shoelace component
-waveformGroup.addEventListener("sl-change", (event) => {
-    waveformType = event.target.value;
-    localStorage.setItem("cw_waveform", waveformType);
-    drawWaveformPreview(waveformType);
+// Listen for changes to the native waveform radio buttons
+waveformGroup.addEventListener("change", (event) => {
+  waveformType = event.target.value;
+  localStorage.setItem("cw_waveform", waveformType);
+  drawWaveformPreview(waveformType);
 });
 
-
 function playTone(duration) {
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
+  if (audioCtx.state === "suspended") audioCtx.resume();
+  const oscillator = audioCtx.createOscillator();
+  const gainNode = audioCtx.createGain();
 
-    const pitch = parseInt(sidetonePitchSlider.value);
-    const volume = parseFloat(sidetoneVolumeSlider.value);
-    const now = audioCtx.currentTime;
+  const pitch = parseInt(sidetonePitchSlider.value);
+  const volume = Math.max(0.0001, parseFloat(sidetoneVolumeSlider.value));
+  const now = audioCtx.currentTime;
 
-    oscillator.type = waveformType || "sine";
-    oscillator.frequency.setValueAtTime(pitch, now);
+  oscillator.type = waveformType || "sine";
+  oscillator.frequency.setValueAtTime(pitch, now);
 
-    gainNode.gain.setValueAtTime(0.0001, now); // start silent
-    gainNode.gain.exponentialRampToValueAtTime(volume, now + 0.01); // smooth fade in
-    gainNode.gain.setValueAtTime(volume, now + duration / 1000 - 0.02); // hold
-    gainNode.gain.exponentialRampToValueAtTime(0.0001, now + duration / 1000); // smooth fade out
+  gainNode.gain.setValueAtTime(0.0001, now); // start silent
+  gainNode.gain.exponentialRampToValueAtTime(volume, now + 0.01); // smooth fade in
+  gainNode.gain.setValueAtTime(volume, now + duration / 1000 - 0.02); // hold
+  gainNode.gain.exponentialRampToValueAtTime(0.0001, now + duration / 1000); // smooth fade out
 
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
+  oscillator.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
 
-    oscillator.start(now);
-    oscillator.stop(now + duration / 1000 + 0.02); // let it fade out fully
+  oscillator.start(now);
+  oscillator.stop(now + duration / 1000 + 0.02); // let it fade out fully
 }
 
 function playDit() {
@@ -193,16 +206,9 @@ function updateRawDisplay() {
   rawMorseDisplay.innerText = morseInput;
 }
 
-// Touch for mobile paddles
-document.getElementById("dit-indicator").addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  playDit();
-});
-
-document.getElementById("dah-indicator").addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  playDah();
-});
+// Native buttons provide keyboard, mouse and touch activation without duplicate taps.
+ditIndicator.addEventListener("click", playDit);
+dahIndicator.addEventListener("click", playDah);
 
 // Mouse hover activates paddle mode
 document.getElementById("paddle-zone").addEventListener("mouseenter", () => {
@@ -217,7 +223,7 @@ document.getElementById("paddle-zone").addEventListener("mouseleave", () => {
 
 // Handle mouse down for left/right click
 document.addEventListener("mousedown", (event) => {
-  if (!paddleMode) return;
+  if (!paddleMode || event.target.closest("button")) return;
   event.preventDefault();
 
   if (event.button === 0) ditPressed = true;
@@ -260,15 +266,6 @@ document
   .getElementById("paddle-zone")
   .addEventListener("contextmenu", (e) => e.preventDefault());
 
-wpmSlider.addEventListener("input", () => {
-  document.getElementById("wpm").textContent = wpmSlider.value;
-});
-
-farnsworthSlider.addEventListener("input", () => {
-  document.getElementById("farnsworth").textContent =
-    farnsworthSlider.value;
-});
-
 // Save settings when user changes controls
 sidetoneVolumeSlider.addEventListener("input", () => {
   localStorage.setItem("cw_volume", sidetoneVolumeSlider.value);
@@ -305,7 +302,7 @@ function playMorseCodeSequence(codeStr) {
 }
 
 // Restore saved settings
-window.addEventListener("DOMContentLoaded", () => {
+function initializeKeyer() {
   if (localStorage.getItem("cw_volume")) {
     sidetoneVolumeSlider.value = localStorage.getItem("cw_volume");
   }
@@ -322,13 +319,13 @@ window.addEventListener("DOMContentLoaded", () => {
     farnsworthSlider.value = localStorage.getItem("cw_farnsworth");
   }
 
-    const lettersAtoMContainer = document.querySelector(".letters_1");
-    lettersAtoMContainer.innerHTML = ""; // Clear loading text
-    lettersAtoM.forEach((item) => {
-      const el = item.build("p", playMorseCodeSequence);
-      el.classList.add("cw-character");
-      lettersAtoMContainer.appendChild(el);
-    });
+  const lettersAtoMContainer = document.querySelector(".letters_1");
+  lettersAtoMContainer.innerHTML = ""; // Clear loading text
+  lettersAtoM.forEach((item) => {
+    const el = item.build("p", playMorseCodeSequence);
+    el.classList.add("cw-character");
+    lettersAtoMContainer.appendChild(el);
+  });
 
   const lettersNtoZContainer = document.querySelector(".letters_2");
   lettersNtoZContainer.innerHTML = ""; // Clear loading text
@@ -353,7 +350,7 @@ window.addEventListener("DOMContentLoaded", () => {
     el.classList.add("cw-character");
     symbolsContainer.appendChild(el);
   });
-  
+
   const qcodesContainer = document.querySelector(".qcodes");
   qcodesContainer.innerHTML = ""; // Clear loading text
   qcodes.forEach((item) => {
@@ -381,53 +378,68 @@ window.addEventListener("DOMContentLoaded", () => {
     el.appendChild(meaning);
     abbreviationsContainer.appendChild(el);
   });
-});
+}
+initializeKeyer();
+for (const slider of [
+  sidetonePitchSlider,
+  sidetoneVolumeSlider,
+  wpmSlider,
+  farnsworthSlider,
+]) {
+  const output = document.createElement("output");
+  output.htmlFor = slider.id;
+  output.textContent = slider.value;
+  slider.previousElementSibling.append(" ", output);
+  slider.addEventListener("input", () => {
+    output.textContent = slider.value;
+  });
+}
 
-const previewCanvas = document.getElementById('waveform-preview');
-const ctx = previewCanvas.getContext('2d');
+const previewCanvas = document.getElementById("waveform-preview");
+const ctx = previewCanvas.getContext("2d");
 
-function drawWaveformPreview(type = 'sine') {
-    const width = previewCanvas.width;
-    const height = previewCanvas.height;
-    ctx.clearRect(0, 0, width, height);
+function drawWaveformPreview(type = "sine") {
+  const width = previewCanvas.width;
+  const height = previewCanvas.height;
+  ctx.clearRect(0, 0, width, height);
 
-    ctx.beginPath();
-    ctx.strokeStyle = '#4a90e2';
-    ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.strokeStyle = "#4a90e2";
+  ctx.lineWidth = 2;
 
-    const step = width / 100;
-    const mid = height / 2;
-    const amp = height / 2.5;
+  const step = width / 100;
+  const mid = height / 2;
+  const amp = height / 2.5;
 
-    for (let x = 0; x <= width; x += step) {
-        const t = x / width; // time (0 to 1)
-        let y;
+  for (let x = 0; x <= width; x += step) {
+    const t = x / width; // time (0 to 1)
+    let y;
 
-        switch (type) {
-            case 'square':
-                y = (t % 1) < 0.5 ? -1 : 1;
-                break;
-            case 'triangle':
-                y = 2 * Math.abs(2 * (t - Math.floor(t + 0.5))) - 1;
-                break;
-            case 'sawtooth':
-                y = 2 * (t - Math.floor(t + 0.5));
-                break;
-            case 'sine':
-            default:
-                y = Math.sin(t * 2 * Math.PI * 4); // 4 cycles
-                break;
-        }
-
-        const drawY = mid - y * amp;
-
-        if (x === 0) {
-            ctx.moveTo(x, drawY);
-        } else {
-            ctx.lineTo(x, drawY);
-        }
+    switch (type) {
+      case "square":
+        y = t % 1 < 0.5 ? -1 : 1;
+        break;
+      case "triangle":
+        y = 2 * Math.abs(2 * (t - Math.floor(t + 0.5))) - 1;
+        break;
+      case "sawtooth":
+        y = 2 * (t - Math.floor(t + 0.5));
+        break;
+      case "sine":
+      default:
+        y = Math.sin(t * 2 * Math.PI * 4); // 4 cycles
+        break;
     }
 
-    ctx.stroke();
+    const drawY = mid - y * amp;
+
+    if (x === 0) {
+      ctx.moveTo(x, drawY);
+    } else {
+      ctx.lineTo(x, drawY);
+    }
+  }
+
+  ctx.stroke();
 }
 drawWaveformPreview(waveformType);

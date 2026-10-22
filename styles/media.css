@@ -1,76 +1,83 @@
 #media-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 2rem;
-        width: 100%;
-    }
-
-    #media-container h2 {
-        font-size: 2.25rem;
-        margin-top: 2rem;
-    }
-
-    #media-container article {
-        width: 80%;
-        display: flex;
-        flex-direction: column;
-    }
-    #media-container article h3{
-        font-family: Domine, serif;
-        color:#222;
-        width: 100%;
-        margin: 0 auto;
-        font-size: 1.5rem;
-        padding: 0.75rem;
-        background: var(--dark-gray);
-        color: #fff;
-    }
-    #media-container article h5 {
-        
-        margin-bottom: 0.25rem;
-    }
-
-    .article-meta {
-        display: flex;
-        justify-content: space-between;
-        margin: 0.5rem 0;
-    }
-    #media-container article p{
-        width: 60ch;
-        margin: 4rem 0 1.5rem 0;
-        font-family: Inter, sans-serif;
-        font-size: 1.1rem;
-    }
-
-    #media-container article h6 {
-        font-size: 0.95rem;
-        color: var(--dark-gray);
-    }
-
-    .categories-pill {
-        display: inline-block;
-        padding: 0.25rem 0.75rem;
-        background-color: var(--icon-link);
-        color: white;
-        font-size: 0.75rem;
-        border-radius: 9999px;
-    }
-
-    .article-end {
-        content: "";
-        height: 2px;
-        width:50%;
-        background-color: var(--dark-gray);
-        margin: 4rem auto 3rem auto;
-    }
-
-.article-content {
-  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  gap: 2rem;
 }
-
+#media-container > h2 {
+  font-size: 2rem;
+}
+#media-container article {
+  min-width: 0;
+  width: 100%;
+  padding: clamp(1.15rem, 4vw, 2.5rem);
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: 0 5px 25px #05164c04;
+}
+#media-container article h3 {
+  background: var(--dark-gray);
+  color: white;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  padding: 1rem 1.25rem;
+  border-radius: 0.6rem;
+  margin-bottom: 1rem;
+}
+.article-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+  color: var(--muted);
+}
+.article-meta h5 {
+  font:
+    500 0.8rem/1.8 Inter,
+    system-ui,
+    sans-serif;
+}
+.categories-pill {
+  display: inline-block;
+  background: #edf0fb;
+  color: #303f9e;
+  padding: 0.15rem 0.65rem;
+  border-radius: 2rem;
+  margin: 0.15rem;
+  font-size: 0.75rem;
+}
+#media-container article p {
+  max-width: 70ch;
+  margin: 1rem auto 1.4rem;
+  line-height: 1.85;
+}
+.article-content {
+  max-width: 76ch;
+  margin: auto;
+  min-width: 0;
+}
 .media-img {
-  max-width: 80ch;
+  width: 100%;
   height: auto;
-  margin: 1em 0;
+  display: block;
+  margin: 1.75rem auto;
+  border-radius: 0.5rem;
+}
+#media-container iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  margin: 1rem auto 0;
+  display: block;
+}
+.article-end {
+  display: none;
+}
+@media (max-width: 42rem) {
+  .article-meta {
+    flex-direction: column;
+  }
+  #media-container article h3 {
+    padding: 1rem;
+  }
 }

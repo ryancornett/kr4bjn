@@ -8,12 +8,17 @@ class Item {
   }
 
   build(htmlElementType, playCallback) {
-    const el = document.createElement(htmlElementType);
+    const el = document.createElement("button");
+    el.type = "button";
+    el.setAttribute(
+      "aria-label",
+      `Play ${this.character}, ${this.phoneticOrName}: ${this.codeStr}`,
+    );
     el.setAttribute("id", this.id);
     el.setAttribute("title", `${this.character} (${this.phoneticOrName})`);
     el.setAttribute(
       "data-label",
-      `${this.character} \u00A0 \u00A0${this.codeSym}`
+      `${this.character} \u00A0 \u00A0${this.codeSym}`,
     );
     el.setAttribute("data-code-str", this.codeStr);
     el.setAttribute("data-code-sym", this.codeSym);
@@ -101,7 +106,7 @@ const qcodes = [
   { name: "QRT", meaning: "Stop(ped) sending" },
   { name: "QSL", meaning: "Acknowledge receipt(?)" },
   { name: "QSO", meaning: "Contact or conversation" },
-]
+];
 
 const abbreviations = [
   { name: "73", meaning: "Best regards" },
@@ -115,12 +120,23 @@ const abbreviations = [
   { name: "PSE", meaning: "Please" },
   { name: "UR", meaning: "You are" },
   { name: "WX", meaning: "Weather" },
-  {name: "GM", meaning: "Good morning"},
-  {name: "GA", meaning: "Good afternoon"},
-  {name: "GE", meaning: "Good evening"},
+  { name: "GM", meaning: "Good morning" },
+  { name: "GA", meaning: "Good afternoon" },
+  { name: "GE", meaning: "Good evening" },
   { name: "ANT", meaning: "Antenna" },
   { name: "RPT", meaning: "Report" },
-  { name: "RST", meaning: "Readability, Signal Strength, Tone (signal report)" },
-]
+  {
+    name: "RST",
+    meaning: "Readability, Signal Strength, Tone (signal report)",
+  },
+];
 
-export { Item, lettersAtoM, lettersNtoZ, numbers, symbols, qcodes, abbreviations };
+export {
+  Item,
+  lettersAtoM,
+  lettersNtoZ,
+  numbers,
+  symbols,
+  qcodes,
+  abbreviations,
+};

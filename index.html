@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -52,33 +52,45 @@
       }
     </script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css"
-    />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
-    ></script>
-
     <link rel="stylesheet" href="styles/styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#index-main">Skip to main content</a>
     <header>
       <div class="left-header">
-        <h1>KR4BJN</h1>
-        <h2>EM87 | Eastern Kentucky, USA</h2>
+        <h1><a href="/" aria-label="KR4BJN home">KR4BJN</a></h1>
+        <p class="station-location">EM87 | Eastern Kentucky, USA</p>
       </div>
       <div class="right-header">
         <p class="callsign-phonetic">
           kilo • romeo • four • bravo • juliett • november
         </p>
-        <p class="callsign-phonetic cw-call custom">-·- ·-· ····- -··· ·--- -·</p>
+        <p class="callsign-phonetic cw-call custom" aria-hidden="true">
+          -·- ·-· ····- -··· ·--- -·
+        </p>
       </div>
     </header>
 
-    <nav></nav>
-    <main id="index-main">
+    <nav class="site-nav" aria-label="Main navigation">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-links"
+        hidden
+      >
+        Menu <span aria-hidden="true">☰</span>
+      </button>
+      <ul id="primary-links">
+        <li><a href="/" aria-current="page">Home</a></li>
+        <li><a href="/media/">Media</a></li>
+        <li><a href="/cw/">Morse Code (CW)</a></li>
+        <li><a href="/conditions/">HF Band Conditions</a></li>
+        <li><a href="/pota/">POTA Info</a></li>
+        <li><a href="/qsos/">QSO Log</a></li>
+      </ul>
+    </nav>
+    <main id="index-main" tabindex="-1">
       <div id="left-wrapper">
         <div id="hero-container">
           <img
@@ -146,6 +158,7 @@
       <div id="footer-center">
         <div id="verses">
           <p id="verse-text"></p>
+          <button type="button" id="next-verse">Another passage</button>
           <p id="verse-ref"></p>
         </div>
         <section id="arrl">
@@ -158,13 +171,17 @@
             <a
               href="https://www.arrl.org/w1aw-operating-schedule"
               target="_blank"
-              >here.</a
+              >in the W1AW operating schedule.</a
             >
           </p>
         </section>
       </div>
 
-      <div class="footer-links"></div>
+      <div
+        class="footer-links"
+        role="navigation"
+        aria-label="Footer navigation"
+      ></div>
     </footer>
     <p id="rights"></p>
 

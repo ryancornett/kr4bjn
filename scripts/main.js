@@ -3,25 +3,30 @@ import { getARRLDisplayData } from "./arrl.js";
 
 import { interestLinks, gearLinks, clubLinks } from "./about.js";
 
-const navLinks = [
-  { name: "Media", url: "/media" },
-  { name: "Morse Code (CW)", url: "/cw" },
-  { name: "HF Band Conditions", url: "/conditions" },
-  { name: "POTA Info", url: "/pota" },
-  { name: "QSO Log", url: "/qsos" },
-];
-const nav = document.querySelector("nav");
-if (nav) {
-  const ul = document.createElement("ul");
-  navLinks.map((link) => {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
-    a.href = link.url;
-    a.textContent = link.name;
-    li.appendChild(a);
-    ul.appendChild(li);
+const nav = document.querySelector(".site-nav");
+const menuButton = nav?.querySelector(".nav-toggle");
+if (menuButton) {
+  menuButton.hidden = false;
+  nav.classList.add("enhanced");
+  const setMenu = (open) => {
+    menuButton.setAttribute("aria-expanded", String(open));
+    nav.classList.toggle("is-open", open);
+  };
+  menuButton.addEventListener("click", () =>
+    setMenu(menuButton.getAttribute("aria-expanded") !== "true"),
+  );
+  nav.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMenu(false);
+      menuButton.focus();
+    }
   });
-  nav.appendChild(ul);
+  nav
+    .querySelectorAll("a")
+    .forEach((link) => link.addEventListener("click", () => setMenu(false)));
+  matchMedia("(min-width: 60rem)").addEventListener("change", () =>
+    setMenu(false),
+  );
 }
 
 const interestLinksContainer = document.getElementById("interests-ul");
@@ -68,17 +73,19 @@ function getRandomVerse() {
 }
 
 getRandomVerse();
-setInterval(getRandomVerse, 15000);
+document
+  .getElementById("next-verse")
+  ?.addEventListener("click", getRandomVerse);
 
 const rightsText = "All rights reserved 2025";
 const rightsName = "Ryan Cornett";
 const year = new Date().getFullYear();
 let rights = document.getElementById("rights");
 if (rights) {
-rights.textContent =
-  year == 2025
-    ? rightsText + rightsName
-    : rightsName + " | " + rightsText + "-" + year;
+  rights.textContent =
+    year == 2025
+      ? rightsText + rightsName
+      : rightsName + " | " + rightsText + "-" + year;
 }
 
 async function getTimeData() {
@@ -202,13 +209,6 @@ if (arrlDetails) {
   arrlDetails.textContent = arrlDataForDisplay.details;
 }
 
-const homeBtn = document.querySelector("h1");
-if (homeBtn) {
-  homeBtn.addEventListener("click", () => {
-    window.location.href = "/";
-  });
-}
-
 // CONTACT FORM HANDLING
 const form = document.getElementById("contact-form");
 if (form) {
@@ -241,7 +241,7 @@ const footerLinks = [
 ];
 
 const footerLinksContainer = document.querySelector(".footer-links");
-if (footerLinks) {
+if (footerLinksContainer) {
   const ul = document.createElement("ul");
   footerLinks.map((link) => {
     const li = document.createElement("li");
@@ -259,8 +259,16 @@ if (footerLinks) {
 }
 
 const socials = [
-  { name: "Twitter", url: "https://twitter.com/ryancornettky", icon: "twitter-x" },
-  { name: "YouTube", url: "https://www.youtube.com/@RyanCornett", icon: "youtube" },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/ryancornettky",
+    icon: "twitter-x",
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/@RyanCornett",
+    icon: "youtube",
+  },
   { name: "QRZ", url: "https://www.qrz.com/db/KR4BJN", icon: "globe2" },
   { name: "GitHub", url: "https://github.com/ryancornett", icon: "github" },
 ];
@@ -273,8 +281,10 @@ if (socialContainer) {
     a.target = "_blank";
     a.rel = "noopener noreferrer";
     a.classList.add("social-icon");
-    const icon = document.createElement("sl-icon");
-    icon.name = social.icon;
+    a.setAttribute("aria-label", social.name);
+    const icon = document.createElement("span");
+    icon.textContent = social.name;
+    icon.setAttribute("aria-hidden", "true");
     a.appendChild(icon);
     socialContainer.appendChild(a);
   });
@@ -284,50 +294,47 @@ if (socialContainer) {
 
 // BAND CONDITION INFO MODALS
 
-const bandsModalOpen = document.getElementById('bands-modal-open');
-const bandsModal = document.getElementById('bands-modal');
-const bandsModalClose = document.getElementById('bands-modal-close');
+const bandsModalOpen = document.getElementById("bands-modal-open");
+const bandsModal = document.getElementById("bands-modal");
+const bandsModalClose = document.getElementById("bands-modal-close");
 
 if (bandsModalOpen) {
-  bandsModalOpen.addEventListener('click', () => {
+  bandsModalOpen.addEventListener("click", () => {
     bandsModal.showModal();
-  })
+  });
 }
 if (bandsModalClose) {
-  bandsModalClose.addEventListener('click', () => {
+  bandsModalClose.addEventListener("click", () => {
     bandsModal.close();
-  })
+  });
 }
 
-const mufModalOpen = document.getElementById('muf-modal-open');
-const mufModal = document.getElementById('muf-modal');
-const mufModalClose = document.getElementById('muf-modal-close');
+const mufModalOpen = document.getElementById("muf-modal-open");
+const mufModal = document.getElementById("muf-modal");
+const mufModalClose = document.getElementById("muf-modal-close");
 
 if (mufModalOpen) {
-  mufModalOpen.addEventListener('click', () => {
+  mufModalOpen.addEventListener("click", () => {
     mufModal.showModal();
-  })
+  });
 }
 
 if (mufModalClose) {
-  mufModalClose.addEventListener('click', () => {
+  mufModalClose.addEventListener("click", () => {
     mufModal.close();
-  })
+  });
 }
 
-bandsModal.addEventListener('click', (event) => {
+bandsModal?.addEventListener("click", (event) => {
   if (event.target === bandsModal) {
     bandsModal.close();
   }
 });
 
-mufModal.addEventListener('click', (event) => {
+mufModal?.addEventListener("click", (event) => {
   if (event.target === mufModal) {
     mufModal.close();
   }
 });
-
-
-
 
 // TODO: Fix the raw morse output with Farnsworth timing adjustments

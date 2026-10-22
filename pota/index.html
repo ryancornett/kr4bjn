@@ -1,10 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>
-      POTA Spots | KR4BJN
-    </title>
+    <title>POTA Spots | KR4BJN</title>
 
     <meta
       name="description"
@@ -14,10 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="../favicon.png" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="POTA Spots | KR4BJN"
-    />
+    <meta property="og:title" content="POTA Spots | KR4BJN" />
     <meta
       property="og:description"
       content="Browse recent operating activity, and Parks on the Air activations regional to amateur radio station KR4BJN in Eastern Kentucky."
@@ -52,36 +47,48 @@
       }
     </script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css"
-    />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
-    ></script>
-
     <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="stylesheet" href="../styles/pota.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header>
       <div class="left-header">
-        <h1>KR4BJN</h1>
-        <h2>EM87 | Eastern Kentucky, USA</h2>
+        <h1><a href="/" aria-label="KR4BJN home">KR4BJN</a></h1>
+        <p class="station-location">EM87 | Eastern Kentucky, USA</p>
       </div>
       <div class="right-header">
         <p class="callsign-phonetic">
           kilo • romeo • four • bravo • juliett • november
         </p>
-        <p class="callsign-phonetic cw-call custom">-·- ·-· ····- -··· ·--- -·</p>
+        <p class="callsign-phonetic cw-call custom" aria-hidden="true">
+          -·- ·-· ····- -··· ·--- -·
+        </p>
       </div>
     </header>
 
-    <nav></nav>
+    <nav class="site-nav" aria-label="Main navigation">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-links"
+        hidden
+      >
+        Menu <span aria-hidden="true">☰</span>
+      </button>
+      <ul id="primary-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/media/">Media</a></li>
+        <li><a href="/cw/">Morse Code (CW)</a></li>
+        <li><a href="/conditions/">HF Band Conditions</a></li>
+        <li><a href="/pota/" aria-current="page">POTA Info</a></li>
+        <li><a href="/qsos/">QSO Log</a></li>
+      </ul>
+    </nav>
 
-    <main>
-      <div class="article-nav">
+    <main id="main-content" tabindex="-1">
+      <div role="navigation" aria-label="On this page" class="article-nav">
         <a href="#what-is-pota">What is POTA?</a>
         <span></span>
         <a href="#my-pota-activity">My POTA Stats</a>
@@ -91,56 +98,99 @@
       <section id="what-is-pota">
         <h2>What is POTA?</h2>
         <p>
-          Parks on the Air® (POTA) is a popular ham radio program promoting emergency preparedness and portable operations from national/state parks and protected public lands. The program promotes outdoor radio communication and helps raise awareness about the importance of preserving natural spaces.
+          Parks on the Air® (POTA) is a popular ham radio program promoting
+          emergency preparedness and portable operations from national/state
+          parks and protected public lands. The program promotes outdoor radio
+          communication and helps raise awareness about the importance of
+          preserving natural spaces.
         </p>
         <p>
-          The American Radio Relay League (ARRL) ran a special, year-long event in 2016 called NPOTA (National Parks on the Air) to celebrate the 100th anniversary of the National Park Service. The NPOTA event was wildly popular, and when it concluded many amateur radio operators didn't want the portable operating fun to end.
+          The American Radio Relay League (ARRL) ran a special, year-long event
+          in 2016 called NPOTA (National Parks on the Air) to celebrate the
+          100th anniversary of the National Park Service. The NPOTA event was
+          wildly popular, and when it concluded many amateur radio operators
+          didn't want the portable operating fun to end.
         </p>
         <p>
-          In early 2017, a group of volunteers banded together to keep the spirit alive, and POTA was born. As participation numbers boomed, a dedicated nonprofit organization was established in 2018 to manage the program permanently. Today, POTA has evolved from a temporary ARRL special event into a massive worldwide radio-sport phenomenon, with participants activating parks across more than 90 countries.
+          In early 2017, a group of volunteers banded together to keep the
+          spirit alive, and POTA was born. As participation numbers boomed, a
+          dedicated nonprofit organization was established in 2018 to manage the
+          program permanently. Today, POTA has evolved from a temporary ARRL
+          special event into a massive worldwide radio-sport phenomenon, with
+          participants activating parks across more than 90 countries.
         </p>
       </section>
       <section class="my-pota" id="my-pota-activity">
-        <iframe src="https://pota-stats.wd4dan.net/?call=KR4BJN&options=hunteronly" height="800" width="708" frameborder="0" scrolling="no"></iframe>
+        <h2>My POTA Activity</h2>
+        <p class="embed-note">
+          <a
+            href="https://pota-stats.wd4dan.net/?call=KR4BJN&amp;options=hunteronly"
+            >Open hunting statistics directly</a
+          >
+          or
+          <a href="https://pota.app/#/profile/KR4BJN">visit my POTA profile</a>.
+        </p>
+        <iframe
+          title="KR4BJN POTA hunting statistics"
+          src="https://pota-stats.wd4dan.net/?call=KR4BJN&options=hunteronly"
+          height="800"
+          width="708"
+          frameborder="0"
+          scrolling="no"
+        ></iframe>
       </section>
       <div class="pota" id="regional-pota-activations">
         <h2>Regional POTA Activation Schedule</h2>
         <div class="legend">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-activator">Activator <sl-icon name="box-arrow-up-right"></sl-icon></h3>
-            <h3 class="card-reference">Park ID <sl-icon name="box-arrow-up-right"></sl-icon></h3>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-activator">
+                Activator <span aria-hidden="true">↗</span>
+              </h3>
+              <h3 class="card-reference">
+                Park ID <span aria-hidden="true">↗</span>
+              </h3>
+            </div>
+            <div>
+              <div class="card-info-row">
+                <img
+                  class="pota-png"
+                  src="img/location-icon.png"
+                  alt="Location icon"
+                />
+                <div>Park Name</div>
+              </div>
+              <div class="card-state-row">
+                <img
+                  class="pota-png"
+                  src="img/star-icon.png"
+                  alt="State icon"
+                />
+                <p>STATE</p>
+              </div>
+              <div class="card-state-row">
+                <img
+                  class="pota-png"
+                  src="img/dial-icon.png"
+                  alt="Tuning dial icon"
+                />
+                <div>Frequency(ies)/Band(s)/Mode(s)/etc.</div>
+              </div>
+              <div class="card-state-row">
+                <img class="pota-png" src="img/utc-icon.png" alt="Clock icon" />
+                <div>MM-DD ##:## UTC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              Additional information provided by the activator, typically: the
+              mode used (CW, FT8, SSB, etc.), special event info, unique park
+              stats, or requests for hunters to 'spot' the activation because
+              it's in a remote area with poor cellphone coverage.
+            </div>
           </div>
-          <div>
-            <div class="card-info-row">
-              <img
-                class="pota-png"
-                src="img/location-icon.png"
-                alt="Location icon"
-              />
-              <div>Park Name</div>
-            </div>
-            <div class="card-state-row">
-              <img class="pota-png" src="img/star-icon.png" alt="State icon" />
-              <p>STATE</p>
-            </div>
-            <div class="card-state-row">
-              <img
-                class="pota-png"
-                src="img/dial-icon.png"
-                alt="Tuning dial icon"
-              />
-              <div>Frequency(ies)/Band(s)/Mode(s)/etc.</div>
-            </div>
-            <div class="card-state-row">
-              <img class="pota-png" src="img/utc-icon.png" alt="Clock icon" />
-              <div>MM-DD ##:## UTC</div>
-            </div>
-          </div>
-          <div class="card-footer">Additional information provided by the activator, typically: the mode used (CW, FT8, SSB, etc.), special event info, unique park stats, or requests for hunters to 'spot' the activation because it's in a remote area with poor cellphone coverage.</div>
         </div>
-      </div>
-        <div class="cards">
+        <p id="pota-status" role="status">Loading regional activations…</p>
+        <div class="cards" aria-busy="true">
           <p>Loading...</p>
           <div class="spinner rotate-center">
             <img src="img/state-park-icon.png" alt="Amateur Radio Icon" />
@@ -150,7 +200,6 @@
     </main>
 
     <footer>
-   
       <div id="footer-left">
         <img src="../img/site-icon.png" alt="" />
         <div id="footer-socials"></div>
@@ -159,6 +208,7 @@
       <div id="footer-center">
         <div id="verses">
           <p id="verse-text"></p>
+          <button type="button" id="next-verse">Another passage</button>
           <p id="verse-ref"></p>
         </div>
         <section id="arrl">
@@ -168,15 +218,20 @@
           <p id="arrl-details"></p>
           <p class="small">
             Find frequencies and other info
-            <a href="https://www.arrl.org/w1aw-operating-schedule" target="_blank"
-              >here.</a
+            <a
+              href="https://www.arrl.org/w1aw-operating-schedule"
+              target="_blank"
+              >in the W1AW operating schedule.</a
             >
           </p>
         </section>
       </div>
 
-      <div class="footer-links">
-      </div>
+      <div
+        class="footer-links"
+        role="navigation"
+        aria-label="Footer navigation"
+      ></div>
     </footer>
     <p id="rights"></p>
 

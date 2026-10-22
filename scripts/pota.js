@@ -31,7 +31,7 @@ async function getPotaActivations() {
 
     activations = await response.json();
   } catch (error) {
-    console.error(error.message);
+    throw error;
   }
 }
 
@@ -73,7 +73,7 @@ const cardHolder = document.querySelector(".cards");
 
 function populateActivationCards() {
   const upcomingActivations = regionalActivations.filter(
-    (act) => act.startDate >= todayStr
+    (act) => act.startDate >= todayStr,
   );
   upcomingActivations.forEach((activation) => {
     const card = document.createElement("div");
@@ -172,9 +172,25 @@ function populateActivationCards() {
 }
 
 async function displayData() {
-  await getRegionalActivations();
-  cardHolder.innerHTML = "";
-  populateActivationCards();
+  const status = document.getElementById("pota-status");
+  try {
+    await getRegionalActivations();
+    cardHolder.replaceChildren();
+    populateActivationCards();
+    status.textContent = cardHolder.children.length
+      ? `${cardHolder.children.length} upcoming regional activations. All times UTC.`
+      : "No upcoming regional activations are currently listed.";
+  } catch (error) {
+    cardHolder.replaceChildren();
+    status.textContent =
+      "Regional activations could not be loaded. Please try again later or visit POTA directly.";
+    const link = document.createElement("a");
+    link.href = "https://pota.app/";
+    link.textContent = "View activations on POTA";
+    cardHolder.append(link);
+  } finally {
+    cardHolder.setAttribute("aria-busy", "false");
+  }
 }
 
-setTimeout(await displayData, 3000);
+displayData();

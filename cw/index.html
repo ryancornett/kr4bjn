@@ -1,10 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>
-      CW Oscillator | KR4BJN
-    </title>
+    <title>CW Oscillator | KR4BJN</title>
 
     <meta
       name="description"
@@ -14,10 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="../favicon.png" />
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="CW Oscillator | KR4BJN"
-    />
+    <meta property="og:title" content="CW Oscillator | KR4BJN" />
     <meta
       property="og:description"
       content="Use a browser-based CW practice oscillator by KR4BJN. Adjust WPM, Farnsworth spacing, sidetone pitch, and practice Morse code right from your desktop or phone."
@@ -52,64 +47,98 @@
       }
     </script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css"
-    />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace-autoloader.js"
-    ></script>
-
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#cw-main">Skip to main content</a>
     <header>
       <div class="left-header">
-        <h1>KR4BJN</h1>
-        <h2>EM87 | Eastern Kentucky, USA</h2>
+        <h1><a href="/" aria-label="KR4BJN home">KR4BJN</a></h1>
+        <p class="station-location">EM87 | Eastern Kentucky, USA</p>
       </div>
       <div class="right-header">
         <p class="callsign-phonetic">
           kilo • romeo • four • bravo • juliett • november
         </p>
-        <p class="callsign-phonetic cw-call custom">-·- ·-· ····- -··· ·--- -·</p>
+        <p class="callsign-phonetic cw-call custom" aria-hidden="true">
+          -·- ·-· ····- -··· ·--- -·
+        </p>
       </div>
     </header>
 
-<nav>
-</nav>
-<div class="article-nav" style="margin:2rem auto">
-        <a href="#practice-oscillator">Practice Oscillator</a>
-        <span></span>
-        <a href="#sidetone-settings">Sidetone Settings</a>
-        <span></span>
-        <a href="#cw-characters-prosigns">CW Characters & Prosigns</a>
-      </div>
-  <main id="cw-main">
-    
+    <nav class="site-nav" aria-label="Main navigation">
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-links"
+        hidden
+      >
+        Menu <span aria-hidden="true">☰</span>
+      </button>
+      <ul id="primary-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/media/">Media</a></li>
+        <li><a href="/cw/" aria-current="page">Morse Code (CW)</a></li>
+        <li><a href="/conditions/">HF Band Conditions</a></li>
+        <li><a href="/pota/">POTA Info</a></li>
+        <li><a href="/qsos/">QSO Log</a></li>
+      </ul>
+    </nav>
+    <div
+      role="navigation"
+      aria-label="On this page"
+      class="article-nav"
+      style="margin: 2rem auto"
+    >
+      <a href="#practice-oscillator">Practice Oscillator</a>
+      <span></span>
+      <a href="#sidetone-settings">Sidetone Settings</a>
+      <span></span>
+      <a href="#cw-characters-prosigns">CW Characters & Prosigns</a>
+    </div>
+    <main id="cw-main" tabindex="-1">
       <section class="oscillator">
-        <h3 id="practice-oscillator">Practice Oscillator</h3>
-        <input type="text" style="direction: rtl" id="morse-output" readonly />
+        <h2 id="practice-oscillator">CW Practice Oscillator</h2>
+        <p id="paddle-help">
+          Tap Dit or Dah, or focus a paddle and press Enter or Space. With a
+          mouse, use left/tap / Enter / Space in the center zone.
+        </p>
+        <label for="morse-output">Decoded Morse</label>
+        <input type="text" id="morse-output" readonly />
         <button id="morse-output-clear">Clear</button>
 
         <div id="paddle-zone">
           <div class="left-paddle">
-            <div id="dit-indicator" class="indicator touch-paddle">Dit</div>
+            <button
+              type="button"
+              id="dit-indicator"
+              class="indicator touch-paddle"
+              aria-describedby="paddle-help"
+            >
+              Dit
+            </button>
             <p class="small" style="text-align: center; margin-top: 0.25rem">
-              left click / tap
+              tap / Enter / Space
             </p>
           </div>
           <div class="middle-paddle">
             Paddle Zone
             <p class="small" style="text-align: center; margin-top: 0.25rem">
-              (hover here)
+              (mouse left / right click)
             </p>
           </div>
           <div class="right-paddle">
-            <div id="dah-indicator" class="indicator touch-paddle">Dah</div>
+            <button
+              type="button"
+              id="dah-indicator"
+              class="indicator touch-paddle"
+              aria-describedby="paddle-help"
+            >
+              Dah
+            </button>
             <p class="small" style="text-align: center; margin-top: 0.25rem">
-              right click
+              tap / Enter / Space
             </p>
           </div>
         </div>
@@ -126,9 +155,11 @@
         </div>
 
         <div style="margin-top: 1rem">
-          <label>Raw Morse:</label>
+          <p id="raw-morse-label">Raw Morse:</p>
           <div
             id="raw-morse"
+            role="status"
+            aria-labelledby="raw-morse-label"
             style="
               font-family: monospace;
               background: #111;
@@ -139,80 +170,83 @@
           ></div>
         </div>
 
-        <div id="sidetone-waveform"">
-          <sl-card
-            class="settings-panel"
-          >
+        <div id="sidetone-waveform">
+          <div class="settings-panel">
             <section id="sidetone-settings">
-              <strong slot="header">Sidetone Settings</strong>
-              <sl-input
-                label="Pitch (Hz)"
+              <h3>Sidetone Settings</h3>
+              <label class="range-label" for="sidetone-pitch">Pitch (Hz)</label
+              ><input
                 type="range"
                 min="300"
                 max="1000"
                 step="10"
                 id="sidetone-pitch"
                 value="600"
-                pill
-              ></sl-input>
-              <sl-input
-                label="Volume"
+              />
+              <label class="range-label" for="sidetone-volume">Volume</label
+              ><input
                 type="range"
                 min="0"
                 max="1"
                 step="0.01"
                 id="sidetone-volume"
                 value="0.5"
-                pill
-              ></sl-input>
-              <sl-input
-                label="WPM"
+              />
+              <label class="range-label" for="wpm">WPM</label
+              ><input
                 type="range"
                 min="5"
                 max="40"
                 step="1"
                 id="wpm"
                 value="20"
-                pill
-              ></sl-input>
-              <sl-input
-                label="Farnsworth (%)"
+              />
+              <label class="range-label" for="farnsworth">Farnsworth (%)</label
+              ><input
                 type="range"
                 min="0"
                 max="100"
                 step="5"
                 id="farnsworth"
                 value="0"
-                pill
-              ></sl-input>
+              />
             </section>
-          
-          </sl-card>
+          </div>
           <section id="waveform-wrapper">
-              <sl-card>
-                <sl-radio-group
-                  label="Waveform"
-                  name="waveform"
-                  value="sine"
-                  id="waveform-group"
+            <div class="settings-card">
+              <fieldset id="waveform-group">
+                <legend>Waveform</legend>
+                <label
+                  ><input type="radio" name="waveform" value="sine" checked />
+                  Sine</label
                 >
-                  <sl-radio value="sine">Sine</sl-radio>
-                  <sl-radio value="square">Square</sl-radio>
-                  <sl-radio value="triangle">Triangle</sl-radio>
-                  <sl-radio value="sawtooth">Sawtooth</sl-radio>
-                </sl-radio-group>
-                <canvas
-                  id="waveform-preview"
-                  width="400"
-                  height="80"
-                  style="
-                    width: 100%;
-                    border: 1px solid var(--sl-color-neutral-200);
-                    margin-top: 1rem;
-                  "
-                ></canvas>
-              </sl-card>
-            </section>
+                <label
+                  ><input type="radio" name="waveform" value="square" />
+                  Square</label
+                >
+                <label
+                  ><input type="radio" name="waveform" value="triangle" />
+                  Triangle</label
+                >
+                <label
+                  ><input type="radio" name="waveform" value="sawtooth" />
+                  Sawtooth</label
+                >
+              </fieldset>
+              <canvas
+                id="waveform-preview"
+                role="img"
+                aria-label="Preview of the selected sidetone waveform"
+                width="400"
+                height="80"
+                style="
+                  width: 100%;
+                  border: 1px solid var(--sl-color-neutral-200);
+                  margin-top: 1rem;
+                "
+              ></canvas>
+            </div>
+          </section>
         </div>
 
         <details class="letters-details" id="cw-characters-prosigns">
@@ -240,7 +274,6 @@
     </main>
 
     <footer>
-   
       <div id="footer-left">
         <img src="../img/site-icon.png" alt="" />
         <div id="footer-socials"></div>
@@ -249,6 +282,7 @@
       <div id="footer-center">
         <div id="verses">
           <p id="verse-text"></p>
+          <button type="button" id="next-verse">Another passage</button>
           <p id="verse-ref"></p>
         </div>
         <section id="arrl">
@@ -258,15 +292,20 @@
           <p id="arrl-details"></p>
           <p class="small">
             Find frequencies and other info
-            <a href="https://www.arrl.org/w1aw-operating-schedule" target="_blank"
-              >here.</a
+            <a
+              href="https://www.arrl.org/w1aw-operating-schedule"
+              target="_blank"
+              >in the W1AW operating schedule.</a
             >
           </p>
         </section>
       </div>
 
-      <div class="footer-links">
-      </div>
+      <div
+        class="footer-links"
+        role="navigation"
+        aria-label="Footer navigation"
+      ></div>
     </footer>
     <p id="rights"></p>
 
